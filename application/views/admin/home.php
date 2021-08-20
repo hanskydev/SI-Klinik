@@ -783,7 +783,7 @@
 	<!-- footer -->
 	<!-- ============================================================== -->
 	<footer class="footer text-center">
-		All Rights Reserved by Matrix-admin. Designed and Developed by <a
+	Sistem Informasi Klinik &copy; <?php echo date("Y"); ?>. Template by <a
 			href="https://www.wrappixel.com">WrapPixel</a>.
 	</footer>
 	<!-- ============================================================== -->

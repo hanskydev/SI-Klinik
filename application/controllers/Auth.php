@@ -11,6 +11,7 @@ class Auth extends CI_Controller{
 
 	function index(){
 		$this->load->view('auth/login');
+		$this->load->view('message');
 	}
 
 	function login(){
@@ -29,15 +30,15 @@ class Auth extends CI_Controller{
 				);
 
 			$this->session->set_userdata($data_session);
-			redirect(base_url("dashboard"));
+			redirect(base_url("dashboard?msg=login"));
 
 		}else{
-			echo "Username dan password salah !";
+			redirect(base_url('auth?msg=login_error'));
 		}
 	}
 
 	function logout(){
 		$this->session->sess_destroy();
-		redirect(base_url('auth'));
+		redirect(base_url('auth?msg=logout'));
 	}
 }

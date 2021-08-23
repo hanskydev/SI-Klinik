@@ -8,6 +8,9 @@
 	<script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
 	<script src="assets/extra-libs/sparkline/sparkline.js"></script>
+	<!-- Toastr -->
+	<link href="assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
+	<script src="assets/libs/toastr/build/toastr.min.js"></script>
 </head>
 
 <body class="main-bg">

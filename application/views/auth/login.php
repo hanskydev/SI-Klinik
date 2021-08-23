@@ -18,7 +18,7 @@
 		</br>
 		<div class="container-content">
 			<div class="card">
-				<form class="form-horizontal">
+				<form class="form-horizontal" action="<?php echo base_url('auth/login'); ?>" method="post">
 					<div class="card-body">
 						<h4 class="card-title">Personal Info</h4>
 						<div class="form-group row">
@@ -36,7 +36,7 @@
 					</div>
 					<div class="border-top">
 						<div class="card-body">
-							<button type="button" class="btn btn-dark btn-md">Login</button>
+							<button type="submit" class="btn btn-dark btn-md">Login</button>
 						</div>
 					</div>
 				</form>

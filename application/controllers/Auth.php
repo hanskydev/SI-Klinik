@@ -6,7 +6,6 @@ class Auth extends CI_Controller{
 	function __construct(){
 		parent::__construct();		
 		$this->load->model('m_login');
-
 	}
 
 	function index(){
@@ -21,16 +20,17 @@ class Auth extends CI_Controller{
 			'username' => $username,
 			'password' => md5($password)
 			);
-		$cek = $this->m_login->cek_login("admin",$where)->num_rows();
-		if($cek > 0){
 
+		$cek = $this->m_login->cek_login("admin",$where)->num_rows();
+		
+		if($cek > 0){
 			$data_session = array(
 				'username' => $username,
 				'status' => "login"
 				);
 
 			$this->session->set_userdata($data_session);
-			redirect(base_url("dashboard?msg=login"));
+			redirect(base_url("admin?msg=login"));
 
 		}else{
 			redirect(base_url('auth?msg=login_error'));
@@ -41,4 +41,5 @@ class Auth extends CI_Controller{
 		$this->session->sess_destroy();
 		redirect(base_url('auth?msg=logout'));
 	}
+	
 }

@@ -1,6 +1,7 @@
 <html>
 
 <head>
+	<title>SI Klinik - Login</title>
 	<link href="dist/css/login.css" rel="stylesheet">
 	<link href="dist/css/style.min.css" rel="stylesheet">
 	<script src="assets/libs/jquery/dist/jquery.min.js"></script>

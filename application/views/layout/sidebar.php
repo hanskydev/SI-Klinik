@@ -22,7 +22,7 @@
 				<!-- ============================================================== -->
 				<!-- Logo -->
 				<!-- ============================================================== -->
-				<a class="navbar-brand" href="index.html">
+				<a class="navbar-brand" href="<?php echo base_url(''); ?>">
 					<!-- Logo icon -->
 					<b class="logo-icon ps-2">
 						<!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -192,7 +192,7 @@
 						</a>
 						<ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="javascript:void(0)"><i class="ti-user me-1 ms-1"></i>
-							<?php echo $this->session->userdata("username"); ?></a>
+								<?php echo $this->session->userdata("username"); ?></a>
 							<a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet me-1 ms-1"></i>
 								My Balance</a>
 							<a class="dropdown-item" href="javascript:void(0)"><i class="ti-email me-1 ms-1"></i>
@@ -201,7 +201,8 @@
 							<a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings me-1 ms-1"></i>
 								Account Setting</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="<?php echo base_url('auth/logout'); ?>"><i class="fa fa-power-off me-1 ms-1"></i>
+							<a class="dropdown-item" href="<?php echo base_url('auth/logout'); ?>"><i
+									class="fa fa-power-off me-1 ms-1"></i>
 								Logout</a>
 							<div class="dropdown-divider"></div>
 							<div class="ps-4 p-10"><a href="javascript:void(0)"
@@ -228,29 +229,26 @@
 			<nav class="sidebar-nav">
 				<ul id="sidebarnav" class="pt-4">
 					<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="index.html" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
+							href="<?php echo base_url(''); ?>" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
 								class="hide-menu">Dashboard</span></a></li>
-					<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="charts.html" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span
-								class="hide-menu">Charts</span></a></li>
-					<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="widgets.html" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span
-								class="hide-menu">Widgets</span></a></li>
-					<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="tables.html" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span
-								class="hide-menu">Tables</span></a></li>
-					<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="grid.html" aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span
-								class="hide-menu">Full Width</span></a></li>
 					<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
 							href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span
-								class="hide-menu">Forms </span></a>
+								class="hide-menu">Admin </span></a>
 						<ul aria-expanded="false" class="collapse  first-level">
-							<li class="sidebar-item"><a href="form-basic.html" class="sidebar-link"><i
-										class="mdi mdi-note-outline"></i><span class="hide-menu"> Form Basic
+							<li class="sidebar-item"><a href="<?php echo base_url('dokter'); ?>" class="sidebar-link"><i
+										class="mdi mdi-note-outline"></i><span class="hide-menu"> Dokter
 									</span></a></li>
-							<li class="sidebar-item"><a href="form-wizard.html" class="sidebar-link"><i
-										class="mdi mdi-note-plus"></i><span class="hide-menu"> Form Wizard
+							<li class="sidebar-item"><a href="<?php echo base_url('pasien'); ?>" class="sidebar-link"><i
+										class="mdi mdi-note-outline"></i><span class="hide-menu"> Pasien
+									</span></a></li>
+							<li class="sidebar-item"><a href="<?php echo base_url('obat'); ?>" class="sidebar-link"><i
+										class="mdi mdi-note-outline"></i><span class="hide-menu"> Obat
+									</span></a></li>
+							<li class="sidebar-item"><a href="<?php echo base_url('kunjungan'); ?>" class="sidebar-link"><i
+										class="mdi mdi-note-outline"></i><span class="hide-menu"> Kunjungan
+									</span></a></li>
+							<li class="sidebar-item"><a href="<?php echo base_url('laporan'); ?>" class="sidebar-link"><i
+										class="mdi mdi-note-outline"></i><span class="hide-menu"> Laporan
 									</span></a></li>
 						</ul>
 					</li>

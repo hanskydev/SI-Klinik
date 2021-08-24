@@ -13,9 +13,15 @@ if ($msg=='login_error') {
     </script>
     ";
 }
+if ($msg=='login_warning') {
+	echo "<script> 
+	toastr.warning('Harap login terlebih dahulu', 'Peringatan!');
+    </script>
+    ";
+}
 if ($msg=='logout') {
 	echo "<script> 
-	toastr.success('Anda berhasil keluar', 'Logout Berhasil!');
+	toastr.success('Anda telah keluar dengan aman', 'Logout Berhasil!');
     </script>
     ";
 }

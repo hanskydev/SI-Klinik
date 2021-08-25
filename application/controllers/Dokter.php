@@ -18,9 +18,18 @@ class Dokter extends CI_Controller {
 		$data['dokter'] = $this->m_dokter->getAll();
 
 		$this->load->view('layout/header');
-		$this->load->view('message');
+		$this->load->view('admin/message');
 		$this->load->view('layout/sidebar');
-		$this->load->view('admin/dokter');
+		$this->load->view('admin/dokter/read', $data);
+		$this->load->view('layout/footer');
+	}
+
+	public function create()
+	{
+		$this->load->view('layout/header');
+		$this->load->view('admin/message');
+		$this->load->view('layout/sidebar');
+		$this->load->view('admin/dokter/create');
 		$this->load->view('layout/footer');
 	}
 	

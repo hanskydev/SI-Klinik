@@ -1,8 +1,8 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_dokter extends CI_Model
+class M_pasien extends CI_Model
 {
-    private $table = "dokter";
+    private $table = "pasien";
 
     public function getAll()
     {

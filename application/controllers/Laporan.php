@@ -14,7 +14,7 @@ class Laporan extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('layout/header');
-		$this->load->view('message');
+		$this->load->view('admin/message');
 		$this->load->view('layout/sidebar');
 		$this->load->view('admin/laporan');
 		$this->load->view('layout/footer');

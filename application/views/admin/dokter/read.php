@@ -1,4 +1,4 @@
-<title>SI Klinik - Pasien</title>
+<title>SI Klinik - Dokter</title>
 <div class="page-wrapper">
 	<!-- ============================================================== -->
 	<!-- Bread crumb and right sidebar toggle -->
@@ -6,12 +6,12 @@
 	<div class="page-breadcrumb">
 		<div class="row">
 			<div class="col-12 d-flex no-block align-items-center">
-				<h4 class="page-title">Pasien</h4>
+				<h4 class="page-title">Dokter</h4>
 				<div class="ms-auto text-end">
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="<?php echo base_url(''); ?>">Dashboard</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Pasien</li>
+							<li class="breadcrumb-item active" aria-current="page">Dokter</li>
 						</ol>
 					</nav>
 				</div>
@@ -50,34 +50,27 @@
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
-					<h5 class="card-title">Basic Datatable</h5>
+					<h5 class="card-title">Daftar Dokter</h5>
 					<div class="table-responsive">
 						<table id="zero_config" class="table table-striped table-bordered">
 							<thead>
 								<tr>
 									<th>No</th>
-									<th>Nomor Rekam Medis</th>
 									<th>Nama</th>
-									<th>Identitas</th>
 									<th>Jenis Kelamin</th>
-									<th>Golongan Darah</th>
-									<th>Agama</th>
 									<th>Tempat Lahir</th>
 									<th>Tanggal Lahir</th>
-									<th>No Telepon</th>
 									<th>Alamat</th>
-									<th>STTS Nikah</th>
-									<th>Pekerjaan</th>
-									<th>Nama Anggota Keluarga</th>
-									<th>Status Keluarga</th>
-									<th>No Telepon Anggota Keluarga</th>
-									<th>Tanggal Rekam Medis</th>
+									<th>No Telepon</th>
+									<th>SIP</th>
+									<th>Spesialisasi</th>
+									<th>Aksi</th>
 								</tr>
 							</thead>
 							<tbody>
 							<?php 
 							$no = 1;
-							foreach($pasien as $data)
+							foreach($dokter as $data)
 							{
 							?>
 								<tr>
@@ -90,6 +83,17 @@
 									<td><?php echo $data->no_telepon; ?></td>
 									<td><?php echo $data->sip; ?></td>
 									<td><?php echo $data->spesialisasi; ?></td>
+									<td>
+									<div class="btn-group">
+                                        <button type="button" class="btn btn-primary dropdown-toggle"
+                                            data-bs-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">Pilih</button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="<?php echo base_url(); ?>dokter/edit/<?php echo $data->kd_dokter; ?>">Edit</a>
+                                            <a class="dropdown-item" href="<?php echo base_url(); ?>dokter/delete/<?php echo $data->kd_dokter; ?>">Hapus</a>
+                                        </div>
+                                    </div>
+									</td>
 								</tr>
 							<?php
 							}

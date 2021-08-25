@@ -30,7 +30,7 @@ class Auth extends CI_Controller{
 				);
 
 			$this->session->set_userdata($data_session);
-			redirect(base_url("admin?msg=login"));
+			redirect(base_url("?msg=login"));
 
 		}else{
 			redirect(base_url('auth?msg=login_error'));

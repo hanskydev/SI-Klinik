@@ -8,4 +8,5 @@ class M_pasien extends CI_Model
     {
         return $this->db->get($this->table)->result();
     }
+    
 }

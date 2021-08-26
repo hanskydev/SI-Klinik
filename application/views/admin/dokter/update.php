@@ -29,14 +29,15 @@
 		<div class="row">
 			<div class="col-12">
 				<div class="card">
-					<form class="form-horizontal" method="post" action="<?php echo base_url(); ?>dokter/save">
+					<form class="form-horizontal" method="post" action="<?php echo base_url(); ?>dokter/update">
 						<div class="card-body">
-							<h5 class="card-title">Data Informasi Dokter</h5>
+							<h5 class="card-title">Perbarui Data Informasi Dokter</h5>
 							<br>
 							<div class="form-group row">
 								<label class="col-md-3">Nama Dokter</label>
 								<div class="col-md-9">
-									<input type="text" class="form-control" name="nama" required>
+                                <input type="hidden" class="form-control" name="kd_dokter" value="<?php echo $dokter->kd_dokter; ?>" required>
+									<input type="text" class="form-control" name="nama" value="<?php echo $dokter->nm_dokter; ?>" required>
 								</div>
 							</div>
 							<div class="form-group row">
@@ -59,7 +60,7 @@
 							<div class="form-group row">
 								<label class="col-md-3">Tempat Lahir</label>
 								<div class="col-md-9">
-									<input type="text" class="form-control" name="tempat_lahir" required>
+									<input type="text" class="form-control" name="tempat_lahir" value="<?php echo $dokter->tempat_lahir; ?>" required>
 								</div>
 							</div>
 							<div class="form-group row">
@@ -67,7 +68,7 @@
 								<div class="col-md-9">
 									<div class="input-group">
 										<input type="text" class="form-control" id="datepicker-autoclose"
-											placeholder="dd/mm/yyyy" name="tanggal_lahir" required>
+											placeholder="dd/mm/yyyy" name="tanggal_lahir" value="<?php echo $dokter->tanggal_lahir; ?>" required>
 										<div class="input-group-append">
 											<span class="input-group-text h-100"><i class="fa fa-calendar"></i></span>
 										</div>
@@ -78,7 +79,7 @@
 								<label class="col-md-3">No Telepon</label>
 								<div class="col-md-9">
 									<input type="text" class="form-control" name="no_telp" maxlength="13"
-										onkeypress='validate(event)' required>
+										onkeypress='validate(event)' value="<?php echo $dokter->no_telepon; ?>" required>
 									<script>
 										function validate(evt) {
 											var theEvent = evt || window.event;
@@ -103,19 +104,19 @@
 							<div class="form-group row">
 								<label class="col-md-3">SIP</label>
 								<div class="col-md-9">
-									<input type="text" class="form-control" name="sip" required>
+									<input type="text" class="form-control" name="sip" value="<?php echo $dokter->sip; ?>" required>
 								</div>
 							</div>
 							<div class="form-group row">
 								<label class="col-md-3">Spesialisasi</label>
 								<div class="col-md-9">
-									<input type="text" class="form-control" name="spesialisasi" required>
+									<input type="text" class="form-control" name="spesialisasi" value="<?php echo $dokter->spesialisasi; ?>" required>
 								</div>
 							</div>
 							<div class="form-group row">
 								<label class="col-md-3">Alamat</label>
 								<div class="col-md-9">
-									<textarea class="form-control" name="alamat" required></textarea>
+									<textarea class="form-control" name="alamat" required><?php echo $dokter->alamat; ?></textarea>
 								</div>
 							</div>
 						</div>

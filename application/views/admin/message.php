@@ -25,4 +25,34 @@ if ($msg=='logout') {
     </script>
     ";
 }
+if ($msg=='input_success') {
+	echo "<script> 
+	toastr.success('Data berhasil ditambahkan', 'Berhasil!');
+    </script>
+    ";
+}
+if ($msg=='input_error') {
+	echo "<script> 
+	toastr.warning('Data tidak valid', 'Peringatan!');
+    </script>
+    ";
+}
+if ($msg=='edit_success') {
+	echo "<script> 
+	toastr.success('Data berhasil diperbarui', 'Berhasil!');
+    </script>
+    ";
+}
+if ($msg=='edit_error') {
+	echo "<script> 
+	toastr.warning('Perubahan data tidak valid', 'Peringatan!');
+    </script>
+    ";
+}
+if ($msg=='delete_success') {
+	echo "<script> 
+	toastr.success('Data berhasil dihapus', 'Berhasil!');
+    </script>
+    ";
+}
 ?>

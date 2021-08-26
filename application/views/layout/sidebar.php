@@ -66,34 +66,6 @@
 					<li class="nav-item d-none d-lg-block"><a class="nav-link sidebartoggler waves-effect waves-light"
 							href="javascript:void(0)" data-sidebartype="mini-sidebar"><i
 								class="mdi mdi-menu font-24"></i></a></li>
-					<!-- ============================================================== -->
-					<!-- create new -->
-					<!-- ============================================================== -->
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							<span class="d-none d-md-block">Create New <i class="fa fa-angle-down"></i></span>
-							<span class="d-block d-md-none"><i class="fa fa-plus"></i></span>
-						</a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="#">Action</a></li>
-							<li><a class="dropdown-item" href="#">Another action</a></li>
-							<li>
-								<hr class="dropdown-divider">
-							</li>
-							<li><a class="dropdown-item" href="#">Something else here</a></li>
-						</ul>
-					</li>
-					<!-- ============================================================== -->
-					<!-- Search -->
-					<!-- ============================================================== -->
-					<li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark"
-							href="javascript:void(0)"><i class="ti-search"></i></a>
-						<form class="app-search position-absolute">
-							<input type="text" class="form-control" placeholder="Search &amp; enter"> <a
-								class="srh-btn"><i class="ti-close"></i></a>
-						</form>
-					</li>
 				</ul>
 				<!-- ============================================================== -->
 				<!-- Right side toggle and nav items -->
@@ -232,8 +204,8 @@
 							href="<?php echo base_url(''); ?>" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
 								class="hide-menu">Dashboard</span></a></li>
 					<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
-							href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span
-								class="hide-menu">Admin </span></a>
+							href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-database"></i><span
+								class="hide-menu">Data </span></a>
 						<ul aria-expanded="false" class="collapse  first-level">
 							<li class="sidebar-item"><a href="<?php echo base_url('dokter'); ?>" class="sidebar-link"><i
 										class="mdi mdi-note-outline"></i><span class="hide-menu"> Dokter

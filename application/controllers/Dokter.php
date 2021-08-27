@@ -37,7 +37,6 @@ class Dokter extends CI_Controller {
 	{
 		$this->form_validation->set_rules('nama','Nama','required');
 		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','required');
-		$this->form_validation->set_rules('tempat_lahir','Tempat Lahir','required');
 		$this->form_validation->set_rules('tanggal_lahir','Tanggal Lahir','required');
 		$this->form_validation->set_rules('no_telp','Nomor Telepon','required');
 		$this->form_validation->set_rules('sip','SIP','required');
@@ -47,7 +46,6 @@ class Dokter extends CI_Controller {
         {
 			$data['nm_dokter'] = $this->input->post('nama');
 			$data['jns_kelamin'] = $this->input->post('jenis_kelamin');
-			$data['tempat_lahir'] = $this->input->post('tempat_lahir');
 			$data['tanggal_lahir'] = $this->input->post('tanggal_lahir');
 			$data['no_telepon'] = $this->input->post('no_telp');
 			$data['sip'] = $this->input->post('sip');
@@ -77,7 +75,6 @@ class Dokter extends CI_Controller {
 	{
 		$this->form_validation->set_rules('nama','Nama','required');
 		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','required');
-		$this->form_validation->set_rules('tempat_lahir','Tempat Lahir','required');
 		$this->form_validation->set_rules('tanggal_lahir','Tanggal Lahir','required');
 		$this->form_validation->set_rules('no_telp','Nomor Telepon','required');
 		$this->form_validation->set_rules('sip','SIP','required');
@@ -88,7 +85,6 @@ class Dokter extends CI_Controller {
 			$kd_dokter = $this->input->post('kd_dokter');
 			$data['nm_dokter'] = $this->input->post('nama');
 			$data['jns_kelamin'] = $this->input->post('jenis_kelamin');
-			$data['tempat_lahir'] = $this->input->post('tempat_lahir');
 			$data['tanggal_lahir'] = $this->input->post('tanggal_lahir');
 			$data['no_telepon'] = $this->input->post('no_telp');
 			$data['sip'] = $this->input->post('sip');

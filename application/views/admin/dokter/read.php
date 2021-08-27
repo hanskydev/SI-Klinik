@@ -57,7 +57,6 @@
 									<th>No</th>
 									<th>Nama</th>
 									<th>Jenis Kelamin</th>
-									<th>Tempat Lahir</th>
 									<th>Tanggal Lahir</th>
 									<th>Alamat</th>
 									<th>No Telepon</th>
@@ -76,7 +75,6 @@
 									<td><?php echo $no++; ?></td>
 									<td><?php echo $data->nm_dokter; ?></td>
 									<td><?php echo $data->jns_kelamin; ?></td>
-									<td><?php echo $data->tempat_lahir; ?></td>
 									<td><?php echo $data->tanggal_lahir; ?></td>
 									<td><?php echo $data->alamat; ?></td>
 									<td><?php echo $data->no_telepon; ?></td>

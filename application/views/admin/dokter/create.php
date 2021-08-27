@@ -57,12 +57,6 @@
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-md-3">Tempat Lahir</label>
-								<div class="col-md-9">
-									<input type="text" class="form-control" name="tempat_lahir" required>
-								</div>
-							</div>
-							<div class="form-group row">
 								<label class="col-md-3">Tanggal Lahir</label>
 								<div class="col-md-9">
 									<div class="input-group">

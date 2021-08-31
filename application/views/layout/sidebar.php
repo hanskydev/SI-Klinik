@@ -27,14 +27,16 @@
 					<b class="logo-icon ps-2">
 						<!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
 						<!-- Dark Logo icon -->
-						<img src="<?php echo base_url(); ?>assets/images/logo-icon.png" alt="homepage" class="light-logo" />
+						<img src="<?php echo base_url(); ?>assets/images/logo-icon.png" alt="homepage"
+							class="light-logo" />
 
 					</b>
 					<!--End Logo icon -->
 					<!-- Logo text -->
 					<span class="logo-text">
 						<!-- dark Logo text -->
-						<img src="<?php echo base_url(); ?>assets/images/logo-text.png" alt="homepage" class="light-logo" />
+						<img src="<?php echo base_url(); ?>assets/images/logo-text.png" alt="homepage"
+							class="light-logo" />
 
 					</span>
 					<!-- Logo icon -->
@@ -77,7 +79,7 @@
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false">
-							<i class="mdi mdi-bell font-24"></i>
+							<i class="mdi mdi-pencil font-24"></i>
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" href="#">Action</a></li>
@@ -160,13 +162,13 @@
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#"
 							id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							<img src="<?php echo base_url(); ?>assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31">
+							<img src="<?php echo base_url(); ?>assets/images/users/1.jpg" alt="user"
+								class="rounded-circle" width="31">
 						</a>
 						<ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="javascript:void(0)"><i class="ti-user me-1 ms-1"></i>
 								<?php echo $this->session->userdata("username"); ?></a>
-							<a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet me-1 ms-1"></i>
-								My Balance</a>
+							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="javascript:void(0)"><i class="ti-email me-1 ms-1"></i>
 								Inbox</a>
 							<div class="dropdown-divider"></div>
@@ -176,9 +178,6 @@
 							<a class="dropdown-item" href="<?php echo base_url('auth/logout'); ?>"><i
 									class="fa fa-power-off me-1 ms-1"></i>
 								Logout</a>
-							<div class="dropdown-divider"></div>
-							<div class="ps-4 p-10"><a href="javascript:void(0)"
-									class="btn btn-sm btn-success btn-rounded text-white">View Profile</a></div>
 						</ul>
 					</li>
 					<!-- ============================================================== -->
@@ -201,8 +200,8 @@
 			<nav class="sidebar-nav">
 				<ul id="sidebarnav" class="pt-4">
 					<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="<?php echo base_url(''); ?>" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
-								class="hide-menu">Dashboard</span></a></li>
+							href="<?php echo base_url(''); ?>" aria-expanded="false"><i
+								class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
 					<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
 							href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-database"></i><span
 								class="hide-menu">Data </span></a>
@@ -216,83 +215,19 @@
 							<li class="sidebar-item"><a href="<?php echo base_url('obat'); ?>" class="sidebar-link"><i
 										class="mdi mdi-note-outline"></i><span class="hide-menu"> Obat
 									</span></a></li>
-							<li class="sidebar-item"><a href="<?php echo base_url('kunjungan'); ?>" class="sidebar-link"><i
-										class="mdi mdi-note-outline"></i><span class="hide-menu"> Kunjungan
+							<li class="sidebar-item"><a href="<?php echo base_url('kunjungan'); ?>"
+									class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">
+										Kunjungan
 									</span></a></li>
-							<li class="sidebar-item"><a href="<?php echo base_url('laporan'); ?>" class="sidebar-link"><i
-										class="mdi mdi-note-outline"></i><span class="hide-menu"> Laporan
+							<li class="sidebar-item"><a href="<?php echo base_url('laporan'); ?>"
+									class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">
+										Laporan
 									</span></a></li>
 						</ul>
 					</li>
-					<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="pages-buttons.html" aria-expanded="false"><i class="mdi mdi-relative-scale"></i><span
-								class="hide-menu">Buttons</span></a></li>
-					<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
-							href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-face"></i><span
-								class="hide-menu">Icons </span></a>
-						<ul aria-expanded="false" class="collapse  first-level">
-							<li class="sidebar-item"><a href="icon-material.html" class="sidebar-link"><i
-										class="mdi mdi-emoticon"></i><span class="hide-menu"> Material Icons
-									</span></a></li>
-							<li class="sidebar-item"><a href="icon-fontawesome.html" class="sidebar-link"><i
-										class="mdi mdi-emoticon-cool"></i><span class="hide-menu"> Font Awesome
-										Icons </span></a></li>
-						</ul>
-					</li>
-					<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="pages-elements.html" aria-expanded="false"><i class="mdi mdi-pencil"></i><span
+					<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+							aria-expanded="false"><i class="mdi mdi-pencil"></i><span
 								class="hide-menu">Elements</span></a></li>
-					<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
-							href="javascript:void(0)" aria-expanded="false"><i
-								class="mdi mdi-move-resize-variant"></i><span class="hide-menu">Addons </span></a>
-						<ul aria-expanded="false" class="collapse  first-level">
-							<li class="sidebar-item"><a href="index2.html" class="sidebar-link"><i
-										class="mdi mdi-view-dashboard"></i><span class="hide-menu"> Dashboard-2
-									</span></a></li>
-							<li class="sidebar-item"><a href="pages-gallery.html" class="sidebar-link"><i
-										class="mdi mdi-multiplication-box"></i><span class="hide-menu"> Gallery
-									</span></a></li>
-							<li class="sidebar-item"><a href="pages-calendar.html" class="sidebar-link"><i
-										class="mdi mdi-calendar-check"></i><span class="hide-menu"> Calendar
-									</span></a></li>
-							<li class="sidebar-item"><a href="pages-invoice.html" class="sidebar-link"><i
-										class="mdi mdi-bulletin-board"></i><span class="hide-menu"> Invoice
-									</span></a></li>
-							<li class="sidebar-item"><a href="pages-chat.html" class="sidebar-link"><i
-										class="mdi mdi-message-outline"></i><span class="hide-menu"> Chat Option
-									</span></a></li>
-						</ul>
-					</li>
-					<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
-							href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-account-key"></i><span
-								class="hide-menu">Authentication </span></a>
-						<ul aria-expanded="false" class="collapse  first-level">
-							<li class="sidebar-item"><a href="authentication-login.html" class="sidebar-link"><i
-										class="mdi mdi-all-inclusive"></i><span class="hide-menu"> Login </span></a>
-							</li>
-							<li class="sidebar-item"><a href="authentication-register.html" class="sidebar-link"><i
-										class="mdi mdi-all-inclusive"></i><span class="hide-menu"> Register
-									</span></a></li>
-						</ul>
-					</li>
-					<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
-							href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-alert"></i><span
-								class="hide-menu">Errors </span></a>
-						<ul aria-expanded="false" class="collapse  first-level">
-							<li class="sidebar-item"><a href="error-403.html" class="sidebar-link"><i
-										class="mdi mdi-alert-octagon"></i><span class="hide-menu"> Error 403
-									</span></a></li>
-							<li class="sidebar-item"><a href="error-404.html" class="sidebar-link"><i
-										class="mdi mdi-alert-octagon"></i><span class="hide-menu"> Error 404
-									</span></a></li>
-							<li class="sidebar-item"><a href="error-405.html" class="sidebar-link"><i
-										class="mdi mdi-alert-octagon"></i><span class="hide-menu"> Error 405
-									</span></a></li>
-							<li class="sidebar-item"><a href="error-500.html" class="sidebar-link"><i
-										class="mdi mdi-alert-octagon"></i><span class="hide-menu"> Error 500
-									</span></a></li>
-						</ul>
-					</li>
 				</ul>
 			</nav>
 			<!-- End Sidebar navigation -->

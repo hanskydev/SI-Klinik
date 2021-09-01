@@ -35,7 +35,7 @@ class Dokter extends CI_Controller {
 
 	public function save()
 	{
-		$this->form_validation->set_rules('nama','Nama','required');
+		$this->form_validation->set_rules('nama','Nama Dokter','required');
 		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','required');
 		$this->form_validation->set_rules('tanggal_lahir','Tanggal Lahir','required');
 		$this->form_validation->set_rules('no_telp','Nomor Telepon','required');
@@ -52,11 +52,11 @@ class Dokter extends CI_Controller {
 			$data['spesialisasi'] = $this->input->post('spesialisasi');
 			$data['alamat'] = $this->input->post('alamat');
 			$this->m_dokter->save($data);
-			redirect('dokter?msg=input_success');
+			redirect(base_url('dokter?msg=input_success'));
 		}
 		else
 		{
-			redirect('dokter?msg=input_error');
+			redirect(base_url('dokter?msg=input_error'));
 		}
 	}
 
@@ -73,7 +73,7 @@ class Dokter extends CI_Controller {
 
 	public function update()
 	{
-		$this->form_validation->set_rules('nama','Nama','required');
+		$this->form_validation->set_rules('nama','Nama Dokter','required');
 		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','required');
 		$this->form_validation->set_rules('tanggal_lahir','Tanggal Lahir','required');
 		$this->form_validation->set_rules('no_telp','Nomor Telepon','required');
@@ -91,11 +91,11 @@ class Dokter extends CI_Controller {
 			$data['spesialisasi'] = $this->input->post('spesialisasi');
 			$data['alamat'] = $this->input->post('alamat');
 			$this->m_dokter->update($data, $kd_dokter);
-			redirect('dokter?msg=edit_success');
+			redirect(base_url('dokter?msg=edit_success'));
 		}
 		else
 		{
-			redirect('dokter?msg=edit_error');
+			redirect(base_url('dokter?msg=edit_error'));
 		}
 	}
 

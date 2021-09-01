@@ -90,7 +90,6 @@
 												if (theEvent.preventDefault) theEvent.preventDefault();
 											}
 										}
-
 									</script>
 								</div>
 							</div>
@@ -109,7 +108,7 @@
 							<div class="form-group row">
 								<label class="col-md-3">Alamat</label>
 								<div class="col-md-9">
-									<textarea class="form-control" name="alamat" required></textarea>
+									<textarea class="form-control" name="alamat" rows="3" required></textarea>
 								</div>
 							</div>
 						</div>

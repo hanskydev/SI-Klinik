@@ -1,4 +1,4 @@
-<title>SI Klinik - Tambah Dokter</title>
+<title>SI Klinik - Tambah Obat</title>
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/libs/select2/dist/css/select2.min.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/libs/jquery-minicolors/jquery.minicolors.css">
@@ -29,51 +29,33 @@
 		<div class="row">
 			<div class="col-12">
 				<div class="card">
-					<form class="form-horizontal" method="post" action="<?php echo base_url(); ?>dokter/update">
+					<form class="form-horizontal" method="post" action="<?php echo base_url(); ?>obat/save">
 						<div class="card-body">
-							<h5 class="card-title">Perbarui Data Informasi Dokter</h5>
+							<h5 class="card-title">Data Informasi Obat</h5>
 							<br>
 							<div class="form-group row">
-								<label class="col-md-3">Nama Dokter</label>
+								<label class="col-md-3">Nama Obat</label>
 								<div class="col-md-9">
-                                <input type="hidden" class="form-control" name="kd_dokter" value="<?php echo $dokter->kd_dokter; ?>" required>
-									<input type="text" class="form-control" name="nama" value="<?php echo $dokter->nm_dokter; ?>" required>
+									<input type="text" class="form-control" name="nama" required>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-md-3">Jenis Kelamin</label>
+								<label class="col-md-3">Deskripsi</label>
 								<div class="col-md-9">
-									<div class="form-check">
-										<input type="radio" class="form-check-input" id="customControlValidation1"
-											name="jenis_kelamin" value="Laki-laki" required>
-										<label class="form-check-label mb-0"
-											for="customControlValidation1">Laki-laki</label>
-									</div>
-									<div class="form-check">
-										<input type="radio" class="form-check-input" id="customControlValidation2"
-											name="jenis_kelamin" value="Perempuan" required>
-										<label class="form-check-label mb-0"
-											for="customControlValidation2">Perempuan</label>
-									</div>
+									<textarea class="form-control" name="deskripsi" rows="3" required></textarea>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-md-3">Tanggal Lahir</label>
+								<label class="col-md-3">Stok</label>
 								<div class="col-md-9">
-									<div class="input-group">
-										<input type="text" class="form-control" id="datepicker-autoclose"
-											placeholder="dd/mm/yyyy" name="tanggal_lahir" value="<?php echo $dokter->tanggal_lahir; ?>" required>
-										<div class="input-group-append">
-											<span class="input-group-text h-100"><i class="fa fa-calendar"></i></span>
-										</div>
-									</div>
+									<input type="number" class="form-control" name="stok" required>
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-md-3">No Telepon</label>
+								<label class="col-md-3">Harga Modal</label>
 								<div class="col-md-9">
-									<input type="text" class="form-control" name="no_telp" maxlength="13"
-										onkeypress='validate(event)' value="<?php echo $dokter->no_telepon; ?>" required>
+									<input type="text" class="form-control" name="harga_modal" maxlength="20"
+										onkeypress='validate(event)' required>
 									<script>
 										function validate(evt) {
 											var theEvent = evt || window.event;
@@ -95,21 +77,28 @@
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-md-3">SIP</label>
+								<label class="col-md-3">Harga Jual</label>
 								<div class="col-md-9">
-									<input type="text" class="form-control" name="sip" value="<?php echo $dokter->sip; ?>" required>
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-md-3">Spesialisasi</label>
-								<div class="col-md-9">
-									<input type="text" class="form-control" name="spesialisasi" value="<?php echo $dokter->spesialisasi; ?>" required>
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-md-3">Alamat</label>
-								<div class="col-md-9">
-									<textarea class="form-control" name="alamat" rows="3" required><?php echo $dokter->alamat; ?></textarea>
+									<input type="text" class="form-control" name="harga_jual" maxlength="20"
+										onkeypress='validate(event)' required>
+									<script>
+										function validate(evt) {
+											var theEvent = evt || window.event;
+											// Handle paste
+											if (theEvent.type === 'paste') {
+												key = event.clipboardData.getData('text/plain');
+											} else {
+												// Handle key press
+												var key = theEvent.keyCode || theEvent.which;
+												key = String.fromCharCode(key);
+											}
+											var regex = /[0-9]|\./;
+											if (!regex.test(key)) {
+												theEvent.returnValue = false;
+												if (theEvent.preventDefault) theEvent.preventDefault();
+											}
+										}
+									</script>
 								</div>
 							</div>
 						</div>

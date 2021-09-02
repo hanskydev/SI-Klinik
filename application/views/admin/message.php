@@ -7,6 +7,12 @@ if ($msg=='login') {
     </script>
     ";
 }
+if ($msg=='login_info') {
+	echo "<script> 
+	toastr.info('Anda telah login', 'Info!');
+    </script>
+    ";
+}
 if ($msg=='login_error') {
 	echo "<script> 
 	toastr.error('Pengguna tidak ditemukan, cek kembali data anda', 'Gagal!');

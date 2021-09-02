@@ -27,13 +27,13 @@
 						<h4 class="card-title">Personal Info</h4>
 						</br>
 						<div class="form-group row">
-							<label for="lname" class="col-sm-3 text-end control-label col-form-label">Username</label>
+							<label for="username" class="col-sm-3 text-end control-label col-form-label">Username</label>
 							<div class="col-sm-9">
 								<input type="text" class="form-control" name="username">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="lname" class="col-sm-3 text-end control-label col-form-label">Password</label>
+							<label for="password" class="col-sm-3 text-end control-label col-form-label">Password</label>
 							<div class="col-sm-9">
 								<input type="password" class="form-control" name="password">
 							</div>

@@ -145,7 +145,6 @@
                     <!-- ============================================================== -->
                     <!-- End Messages -->
                     <!-- ============================================================== -->
-
                     <!-- ============================================================== -->
                     <!-- User profile and search -->
                     <!-- ============================================================== -->
@@ -187,6 +186,7 @@
             <nav class="sidebar-nav">
                 <ul id="sidebarnav" class="pt-4">
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url(''); ?>" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url('kunjungan'); ?>" aria-expanded="false"><i class="mdi mdi-calendar-check"></i><span class="hide-menu">Kunjungan</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-database"></i><span class="hide-menu">Data </span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
                             <li class="sidebar-item"><a href="<?php echo base_url('dokter'); ?>" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Dokter
@@ -195,15 +195,10 @@
                                     </span></a></li>
                             <li class="sidebar-item"><a href="<?php echo base_url('obat'); ?>" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Obat
                                     </span></a></li>
-                            <li class="sidebar-item"><a href="<?php echo base_url('kunjungan'); ?>" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">
-                                        Kunjungan
-                                    </span></a></li>
-                            <li class="sidebar-item"><a href="<?php echo base_url('laporan'); ?>" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu">
-                                        Laporan
-                                    </span></a></li>
                         </ul>
                     </li>
-                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false"><i class="mdi mdi-pencil"></i><span class="hide-menu">Elements</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url('laporan'); ?>" aria-expanded="false"><i class="mdi mdi-file-document"></i><span class="hide-menu">Laporan</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url('auth/logout'); ?>" aria-expanded="false"><i class="fa fa-power-off"></i><span class="hide-menu">Logout</span></a></li>
                 </ul>
             </nav>
             <!-- End Sidebar navigation -->

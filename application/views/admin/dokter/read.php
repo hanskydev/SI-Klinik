@@ -1,30 +1,30 @@
 <title>SI Klinik - Dokter</title>
 <div class="page-wrapper">
-	<!-- ============================================================== -->
-	<!-- Bread crumb and right sidebar toggle -->
-	<!-- ============================================================== -->
-	<div class="page-breadcrumb">
-		<div class="row">
-			<div class="col-12 d-flex no-block align-items-center">
-				<h4 class="page-title">Dokter</h4>
-				<div class="ms-auto text-end">
-					<nav aria-label="breadcrumb">
-						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="<?php echo base_url(''); ?>">Dashboard</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Dokter</li>
-						</ol>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- ============================================================== -->
-	<!-- End Bread crumb and right sidebar toggle -->
-	<!-- ============================================================== -->
-	<!-- ============================================================== -->
-	<!-- Container fluid  -->
-	<!-- ============================================================== -->
-	<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+                <h4 class="page-title">Dokter</h4>
+                <div class="ms-auto text-end">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="<?php echo base_url(''); ?>">Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Dokter</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
 		<!-- ============================================================== -->
 		<!-- Main  -->
 		<!-- ============================================================== -->
@@ -88,7 +88,7 @@
 											<div class="dropdown-menu">
 												<a class="dropdown-item"
 													href="<?php echo base_url(); ?>dokter/edit/<?php echo $data->kd_dokter; ?>">Edit</a>
-												<a class="dropdown-item" onclick="return confirm('Hapus Data Berikut?')"
+												<a class="dropdown-item" onclick="return confirm('Hapus data berikut?')"
 													href="<?php echo base_url(); ?>dokter/delete/<?php echo $data->kd_dokter; ?>">Hapus</a>
 											</div>
 										</div>
@@ -103,22 +103,20 @@
 				</div>
 			</div>
 		</div>
+        <!-- ============================================================== -->
+        <!-- End Main -->
+        <!-- ============================================================== -->
 	</div>
-	<!-- ============================================================== -->
-	<!-- End Main -->
-	<!-- ============================================================== -->
-</div>
-
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+<!-- This Page JS -->
 <script src="<?php echo base_url(); ?>assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
 <script src="<?php echo base_url(); ?>assets/extra-libs/multicheck/jquery.multicheck.js"></script>
 <script src="<?php echo base_url(); ?>assets/extra-libs/DataTables/datatables.min.js"></script>
 <script>
-	/****************************************
-	 *       Basic Table                   *
-	 ****************************************/
-	$('#zero_config').DataTable();
-
+    /****************************************
+     *       Basic Table                   *
+     ****************************************/
+    $('#zero_config').DataTable();
 </script>
-<!-- ============================================================== -->
-<!-- End Container fluid  -->
-<!-- ============================================================== -->

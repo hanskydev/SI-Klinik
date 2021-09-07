@@ -89,25 +89,11 @@
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-
         <title>SI Klinik - Login</title>
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="page-breadcrumb">
-                <div class="row">
-                    <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Login Area</h4>
-                    </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
-            <div class="container-fluid" style="height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #eeeeee;">
+            <div class="container-fluid mt-5" style="height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #eeeeee;">
                 <!-- ============================================================== -->
                 <!-- Main  -->
                 <!-- ============================================================== -->
@@ -117,8 +103,7 @@
                             <form class="form-horizontal" action="<?php echo base_url('auth/login'); ?>" method="post">
                                 <div class="card-body">
                                     <h1 class="logo-badge text-center"><i class="fa fa-user-circle fa-2x"></i></h1>
-                                    <h5 class="card-title text-center">Personal Info</h5>
-                                    <br>
+                                    <h5 class="card-title text-center mb-3">Personal Info</h5>
                                     <div class="form-group row">
                                         <div class="col-md-12">
                                             <label class="col-md-12">Username</label>
@@ -168,8 +153,7 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <br>
-            <footer class="footer text-center">
+            <footer class="footer text-center mt-4">
                 &copy;<?php echo date("Y"); ?> Sistem Informasi Klinik.
             </footer>
             <!-- ============================================================== -->

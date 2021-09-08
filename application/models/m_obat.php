@@ -2,7 +2,7 @@
 
 class M_obat extends CI_Model
 {
-    private $table = "obat";
+    private $table = 'obat';
 
     public function getAll()
     {
@@ -16,7 +16,7 @@ class M_obat extends CI_Model
 
     public function getById($id)
     {
-        return $this->db->get_where($this->table, ["kd_obat" => $id])->row();
+        return $this->db->get_where($this->table, ['kd_obat' => $id])->row();
     }
 
     public function update($data, $id)
@@ -26,7 +26,7 @@ class M_obat extends CI_Model
 
     public function delete($id)
     {
-        return $this->db->delete($this->table, array("kd_obat" => $id));
+        return $this->db->delete($this->table, array('kd_obat' => $id));
     }
 
 }

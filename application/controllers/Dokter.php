@@ -8,8 +8,8 @@ class Dokter extends CI_Controller {
 		$this->load->model('m_dokter');
         $this->load->library('form_validation');
 
-		if($this->session->userdata('status') != "login"){
-			redirect(base_url("auth?msg=login_warning"));
+		if($this->session->userdata('status') != 'login'){
+			redirect(base_url('auth?msg=login_warning'));
 		}
 	}
 
@@ -46,7 +46,7 @@ class Dokter extends CI_Controller {
         {
 			$data['nm_dokter'] = $this->input->post('nama');
 			$data['jns_kelamin'] = $this->input->post('jenis_kelamin');
-			$data['tanggal_lahir'] = $this->input->post('tanggal_lahir');
+			$data['tgl_lahir'] = $this->input->post('tanggal_lahir');
 			$data['no_telepon'] = $this->input->post('no_telp');
 			$data['sip'] = $this->input->post('sip');
 			$data['spesialisasi'] = $this->input->post('spesialisasi');
@@ -85,7 +85,7 @@ class Dokter extends CI_Controller {
 			$kd_dokter = $this->input->post('kd_dokter');
 			$data['nm_dokter'] = $this->input->post('nama');
 			$data['jns_kelamin'] = $this->input->post('jenis_kelamin');
-			$data['tanggal_lahir'] = $this->input->post('tanggal_lahir');
+			$data['tgl_lahir'] = $this->input->post('tanggal_lahir');
 			$data['no_telepon'] = $this->input->post('no_telp');
 			$data['sip'] = $this->input->post('sip');
 			$data['spesialisasi'] = $this->input->post('spesialisasi');
@@ -102,7 +102,7 @@ class Dokter extends CI_Controller {
 	public function delete($kd_dokter)
 	{
 		$this->m_dokter->delete($kd_dokter);
-		redirect('dokter?msg=delete_success');
+		redirect(base_url('dokter?msg=delete_success'));
 	}
 	
 }

@@ -62,7 +62,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php 
+                            <?php 
 							$no = 1;
 							foreach($obat as $data)
 							{
@@ -84,7 +84,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <?php
+                            <?php
 							}
 							?>
                             </tbody>
@@ -100,13 +100,13 @@
     <!-- ============================================================== -->
     <!-- End Container fluid  -->
     <!-- ============================================================== -->
-<!-- This Page JS -->
-<script src="<?php echo base_url(); ?>assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
-<script src="<?php echo base_url(); ?>assets/extra-libs/multicheck/jquery.multicheck.js"></script>
-<script src="<?php echo base_url(); ?>assets/extra-libs/DataTables/datatables.min.js"></script>
-<script>
-    /****************************************
-     *       Basic Table                   *
-     ****************************************/
-    $('#zero_config').DataTable();
-</script>
+    <!-- This Page JS -->
+    <script src="<?php echo base_url(); ?>assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+    <script src="<?php echo base_url(); ?>assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+    <script src="<?php echo base_url(); ?>assets/extra-libs/DataTables/datatables.min.js"></script>
+    <script>
+        /****************************************
+         *       Basic Table                   *
+         ****************************************/
+        $('#zero_config').DataTable();
+    </script>

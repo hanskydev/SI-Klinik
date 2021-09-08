@@ -12,8 +12,8 @@ class Auth extends CI_Controller{
 		$this->load->view('auth/login');
 		$this->load->view('admin/message');
 
-		if($this->session->userdata('status') == "login"){
-			redirect(base_url("?msg=login_info"));
+		if($this->session->userdata('status') == 'login'){
+			redirect(base_url('?msg=login_info'));
 		}
 	}
 
@@ -25,16 +25,16 @@ class Auth extends CI_Controller{
 			'password' => md5($password)
 			);
 
-		$cek = $this->m_login->cek_login("admin",$where)->num_rows();
+		$cek = $this->m_login->cek_login('admin',$where)->num_rows();
 		
 		if($cek > 0){
 			$data_session = array(
 				'username' => $username,
-				'status' => "login"
+				'status' => 'login'
 				);
 
 			$this->session->set_userdata($data_session);
-			redirect(base_url("?msg=login"));
+			redirect(base_url('?msg=login'));
 
 		}else{
 			redirect(base_url('auth?msg=login_error'));

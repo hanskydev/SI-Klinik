@@ -8,8 +8,8 @@ class Obat extends CI_Controller {
 		$this->load->model('m_obat');
         $this->load->library('form_validation');
 
-		if($this->session->userdata('status') != "login"){
-			redirect(base_url("auth?msg=login_warning"));
+		if($this->session->userdata('status') != 'login'){
+			redirect(base_url('auth?msg=login_warning'));
 		}
 	}
 
@@ -94,7 +94,7 @@ class Obat extends CI_Controller {
 	public function delete($kd_obat)
 	{
 		$this->m_obat->delete($kd_obat);
-		redirect('obat?msg=delete_success');
+		redirect(base_url('obat?msg=delete_success'));
 	}
 	
 }

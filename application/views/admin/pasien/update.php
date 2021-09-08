@@ -1,4 +1,4 @@
-<title>SI Klinik - Tambah Obat</title>
+<title>SI Klinik - Edit Pasien</title>
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/libs/select2/dist/css/select2.min.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/libs/jquery-minicolors/jquery.minicolors.css">
@@ -12,13 +12,13 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-                <h4 class="page-title">Tambah Obat</h4>
+                <h4 class="page-title">Edit Pasien</h4>
                 <div class="ms-auto text-end">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?php echo base_url(''); ?>">Dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="<?php echo base_url('obat'); ?>">Obat</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Tambah Obat</li>
+                            <li class="breadcrumb-item"><a href="<?php echo base_url('pasien'); ?>">Pasien</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Edit Pasien</li>
                         </ol>
                     </nav>
                 </div>
@@ -38,32 +38,27 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>obat/save">
+                    <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>pasien/update">
                         <div class="card-body">
-                            <h5 class="card-title">Data Informasi Obat</h5>
+                            <h5 class="card-title">Data Informasi Pasien</h5>
                             <br>
                             <div class="form-group row">
-                                <label class="col-md-3">Nama Obat</label>
+                                <label class="col-md-3">Nama Pasien</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="nama" required>
+                                    <input type="hidden" class="form-control" name="kd_pasien" value="<?php echo $pasien->kd_pasien; ?>" required>
+                                    <input type="text" class="form-control" name="nama" value="<?php echo $pasien->nm_pasien; ?>" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3">Deskripsi</label>
+                                <label class="col-md-3">Nomor Registrasi</label>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" name="deskripsi" rows="5" required></textarea>
+                                    <input type="text" class="form-control" name="no_registrasi" value="<?php echo $pasien->no_registrasi; ?>" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3">Stok</label>
+                                <label class="col-md-3">Nomor Identitas</label>
                                 <div class="col-md-9">
-                                    <input type="number" class="form-control" name="stok" required>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-3">Harga Modal</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" name="harga_modal" maxlength="20" onkeypress='validate(event)' required>
+                                    <input type="text" class="form-control" name="no_identitas" maxlength="18" onkeypress='validate(event)' value="<?php echo $pasien->no_identitas; ?>" required>
                                     <script>
                                         function validate(evt) {
                                             var theEvent = evt || window.event;
@@ -85,9 +80,33 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3">Harga Jual</label>
+                                <label class="col-md-3">Jenis Kelamin</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="harga_jual" maxlength="20" onkeypress='validate(event)' required>
+                                    <div class="form-check">
+                                        <input type="radio" class="form-check-input" id="customControlValidation1" name="jenis_kelamin" value="Laki-laki" <?php if ($pasien->jns_kelamin=='Laki-laki') echo 'checked'?> required>
+                                        <label class="form-check-label mb-0" for="customControlValidation1">Laki-laki</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" class="form-check-input" id="customControlValidation2" name="jenis_kelamin" value="Perempuan" <?php if ($pasien->jns_kelamin=='Perempuan') echo 'checked'?> required>
+                                        <label class="form-check-label mb-0" for="customControlValidation2">Perempuan</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3">Tanggal Lahir</label>
+                                <div class="col-md-9">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="datepicker-autoclose" placeholder="dd/mm/yyyy" name="tanggal_lahir" value="<?php echo $pasien->tgl_lahir; ?>" required>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text h-100"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3">No Telepon</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="no_telp" maxlength="13" onkeypress='validate(event)' value="<?php echo $pasien->no_telepon; ?>" required>
                                     <script>
                                         function validate(evt) {
                                             var theEvent = evt || window.event;
@@ -106,6 +125,23 @@
                                             }
                                         }
                                     </script>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3">Golongan Darah</label>
+                                <div class="col-md-9">
+                                <select class="form-select" name="gol_darah">
+                                    <option <?php if ($pasien->gol_darah=='A') echo 'selected'?>>A</option>
+                                    <option <?php if ($pasien->gol_darah=='B') echo 'selected'?>>B</option>
+                                    <option <?php if ($pasien->gol_darah=='AB') echo 'selected'?>>AB</option>
+                                    <option <?php if ($pasien->gol_darah=='O') echo 'selected'?>>O</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3">Alamat</label>
+                                <div class="col-md-9">
+                                    <textarea class="form-control" name="alamat" rows="3" required><?php echo $pasien->alamat; ?></textarea>
                                 </div>
                             </div>
                         </div>

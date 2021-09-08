@@ -52,7 +52,7 @@
                             <div class="form-group row">
                                 <label class="col-md-3">Deskripsi</label>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" name="deskripsi" rows="3" required><?php echo $obat->deskripsi; ?></textarea>
+                                    <textarea class="form-control" name="deskripsi" rows="5" required><?php echo $obat->deskripsi; ?></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">

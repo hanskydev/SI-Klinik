@@ -53,11 +53,11 @@
                                 <label class="col-md-3">Jenis Kelamin</label>
                                 <div class="col-md-9">
                                     <div class="form-check">
-                                        <input type="radio" class="form-check-input" id="customControlValidation1" name="jenis_kelamin" value="Laki-laki" required>
+                                        <input type="radio" class="form-check-input" id="customControlValidation1" name="jenis_kelamin" value="Laki-laki" <?php if ($dokter->jns_kelamin=='Laki-laki') echo 'checked'?> required>
                                         <label class="form-check-label mb-0" for="customControlValidation1">Laki-laki</label>
                                     </div>
                                     <div class="form-check">
-                                        <input type="radio" class="form-check-input" id="customControlValidation2" name="jenis_kelamin" value="Perempuan" required>
+                                        <input type="radio" class="form-check-input" id="customControlValidation2" name="jenis_kelamin" value="Perempuan" <?php if ($dokter->jns_kelamin=='Perempuan') echo 'checked'?> required>
                                         <label class="form-check-label mb-0" for="customControlValidation2">Perempuan</label>
                                     </div>
                                 </div>
@@ -66,7 +66,7 @@
                                 <label class="col-md-3">Tanggal Lahir</label>
                                 <div class="col-md-9">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="datepicker-autoclose" placeholder="dd/mm/yyyy" name="tanggal_lahir" value="<?php echo $dokter->tanggal_lahir; ?>" required>
+                                        <input type="text" class="form-control" id="datepicker-autoclose" placeholder="dd/mm/yyyy" name="tanggal_lahir" value="<?php echo $dokter->tgl_lahir; ?>" required>
                                         <div class="input-group-append">
                                             <span class="input-group-text h-100"><i class="fa fa-calendar"></i></span>
                                         </div>

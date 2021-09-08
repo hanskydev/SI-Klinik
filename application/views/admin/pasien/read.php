@@ -29,18 +29,15 @@
         <!-- Main  -->
         <!-- ============================================================== -->
         <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Full Width</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                            deserunt mollit anim id est laborum.</p>
+            <div class="col-md-6 col-lg-2 col-xlg-3">
+                <a href="<?php echo base_url(); ?>pasien/create">
+                    <div class="card card-hover">
+                        <div class="box bg-success text-center">
+                            <h1 class="font-light text-white"><i class="mdi mdi-account-plus"></i></h1>
+                            <h6 class="text-white">Tambah Pasien</h6>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
 
@@ -50,7 +47,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Basic Datatable</h5>
+                    <h5 class="card-title">Daftar Pasien</h5>
                     <div class="table-responsive">
                         <table id="zero_config" class="table table-striped table-bordered">
                             <thead>
@@ -58,13 +55,13 @@
                                     <th>No</th>
                                     <th>Nama Pasien</th>
                                     <th>Jenis Kelamin</th>
-                                    <th>Umur</th>
+                                    <th>Nomor Telepon</th>
                                     <th>Alamat</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php 
+                            <?php 
 							$no = 1;
 							foreach($pasien as $data)
 							{
@@ -73,19 +70,20 @@
                                     <td><?php echo $no++; ?></td>
                                     <td><?php echo $data->nm_pasien; ?></td>
                                     <td><?php echo $data->jns_kelamin; ?></td>
-                                    <td><?php echo $data->umur; ?></td>
+                                    <td><?php echo $data->no_telepon; ?></td>
                                     <td><?php echo $data->alamat; ?></td>
                                     <td>
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pilih</button>
                                             <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="<?php echo base_url(); ?>pasien/detail/<?php echo $data->kd_pasien; ?>">Detail</a>
                                                 <a class="dropdown-item" href="<?php echo base_url(); ?>pasien/edit/<?php echo $data->kd_pasien; ?>">Edit</a>
                                                 <a class="dropdown-item" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>pasien/delete/<?php echo $data->kd_pasien; ?>">Hapus</a>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
-                                <?php
+                            <?php
 							}
 							?>
                             </tbody>
@@ -101,13 +99,13 @@
     <!-- ============================================================== -->
     <!-- End Container fluid  -->
     <!-- ============================================================== -->
-<!-- This Page JS -->
-<script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
-<script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
-<script src="assets/extra-libs/DataTables/datatables.min.js"></script>
-<script>
-    /****************************************
-     *       Basic Table                   *
-     ****************************************/
-    $('#zero_config').DataTable();
-</script>
+    <!-- This Page JS -->
+    <script src="<?php echo base_url(); ?>assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+    <script src="<?php echo base_url(); ?>assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+    <script src="<?php echo base_url(); ?>assets/extra-libs/DataTables/datatables.min.js"></script>
+    <script>
+        /****************************************
+         *       Basic Table                   *
+         ****************************************/
+        $('#zero_config').DataTable();
+    </script>

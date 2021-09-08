@@ -6,8 +6,8 @@ class Laporan extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 	
-		if($this->session->userdata('status') != "login"){
-			redirect(base_url("auth?msg=login_warning"));
+		if($this->session->userdata('status') != 'login'){
+			redirect(base_url('auth?msg=login_warning'));
 		}
 	}
 

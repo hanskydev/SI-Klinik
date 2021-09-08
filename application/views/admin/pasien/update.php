@@ -16,7 +16,7 @@
                 <div class="ms-auto text-end">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?php echo base_url(''); ?>">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Dashboard</a></li>
                             <li class="breadcrumb-item"><a href="<?php echo base_url('pasien'); ?>">Pasien</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Edit Pasien</li>
                         </ol>
@@ -50,9 +50,9 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3">Nomor Registrasi</label>
+                                <label class="col-md-3">Nomor Pasien</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="no_registrasi" value="<?php echo $pasien->no_registrasi; ?>" required>
+                                    <input type="text" class="form-control" name="no_pasien" value="<?php echo $pasien->no_pasien; ?>" required>
                                 </div>
                             </div>
                             <div class="form-group row">

@@ -10,7 +10,7 @@
                 <div class="ms-auto text-end">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?php echo base_url(''); ?>">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Dashboard</a></li>
                             <li class="breadcrumb-item"><a href="<?php echo base_url('pasien'); ?>">Pasien</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Detail Pasien</li>
                         </ol>
@@ -41,8 +41,8 @@
                                     <td><?php echo $pasien->nm_pasien; ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Nomor Registrasi</th>
-                                    <td><?php echo $pasien->no_registrasi; ?></td>
+                                    <th>Nomor Pasien</th>
+                                    <td><?php echo $pasien->no_pasien; ?></td>
                                 </tr>
                                 <tr>
                                     <th>Nomor Identitas</th>

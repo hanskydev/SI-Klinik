@@ -48,7 +48,7 @@ class Pasien extends CI_Controller {
 	public function save()
 	{
 		$this->form_validation->set_rules('nama','Nama Pasien','required');
-		$this->form_validation->set_rules('no_registrasi','Nomor Registrasi','required');
+		$this->form_validation->set_rules('no_pasien','Nomor Pasien','required');
 		$this->form_validation->set_rules('no_identitas','Nomor Identitas','required');
 		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','required');
 		$this->form_validation->set_rules('tanggal_lahir','Tanggal Lahir','required');
@@ -58,7 +58,7 @@ class Pasien extends CI_Controller {
 		if ($this->form_validation->run()==true)
         {
 			$data['nm_pasien'] = $this->input->post('nama');
-			$data['no_registrasi'] = $this->input->post('no_registrasi');
+			$data['no_pasien'] = $this->input->post('no_pasien');
 			$data['no_identitas'] = $this->input->post('no_identitas');
 			$data['jns_kelamin'] = $this->input->post('jenis_kelamin');
 			$data['tgl_lahir'] = $this->input->post('tanggal_lahir');
@@ -88,7 +88,7 @@ class Pasien extends CI_Controller {
 	public function update()
 	{
 		$this->form_validation->set_rules('nama','Nama Pasien','required');
-		$this->form_validation->set_rules('no_registrasi','Nomor Registrasi','required');
+		$this->form_validation->set_rules('no_pasien','Nomor Pasien','required');
 		$this->form_validation->set_rules('no_identitas','Nomor Identitas','required');
 		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','required');
 		$this->form_validation->set_rules('tanggal_lahir','Tanggal Lahir','required');
@@ -99,7 +99,7 @@ class Pasien extends CI_Controller {
         {
 			$kd_pasien = $this->input->post('kd_pasien');
 			$data['nm_pasien'] = $this->input->post('nama');
-			$data['no_registrasi'] = $this->input->post('no_registrasi');
+			$data['no_pasien'] = $this->input->post('no_pasien');
 			$data['no_identitas'] = $this->input->post('no_identitas');
 			$data['jns_kelamin'] = $this->input->post('jenis_kelamin');
 			$data['tgl_lahir'] = $this->input->post('tanggal_lahir');

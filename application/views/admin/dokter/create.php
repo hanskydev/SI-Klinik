@@ -16,7 +16,7 @@
                 <div class="ms-auto text-end">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="<?php echo base_url(''); ?>">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Dashboard</a></li>
                             <li class="breadcrumb-item"><a href="<?php echo base_url('dokter'); ?>">Dokter</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Tambah Dokter</li>
                         </ol>

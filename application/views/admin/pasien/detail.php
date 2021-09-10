@@ -57,12 +57,12 @@
                                     <td><?php echo $pasien->tgl_lahir; ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Nomor Telepon</th>
-                                    <td><?php echo $pasien->no_telepon; ?></td>
-                                </tr>
-                                <tr>
                                     <th>Golongan Darah</th>
                                     <td><?php echo $pasien->gol_darah; ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Nomor Telepon</th>
+                                    <td><?php echo $pasien->no_telepon; ?></td>
                                 </tr>
                                 <tr>
                                     <th>Alamat</th>
@@ -169,7 +169,7 @@
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover table-responsive text-center">
                                 <tr>
-                                    <th>#</th>
+                                    <th>No</th>
                                     <th>Tanggal</th>
                                     <th>Status</th>
                                     <th><i class="mdi mdi-briefcase-check mdi-18px"></i></th>

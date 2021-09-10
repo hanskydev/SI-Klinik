@@ -73,7 +73,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3">No Telepon</label>
+                                <label class="col-md-3">Nomor Telepon</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" name="no_telp" maxlength="13" onkeypress='validate(event)' required>
                                     <script>

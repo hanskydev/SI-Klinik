@@ -104,7 +104,18 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3">No Telepon</label>
+                                <label class="col-md-3">Golongan Darah</label>
+                                <div class="col-md-9">
+                                <select class="form-select" name="gol_darah">
+                                    <option <?php if ($pasien->gol_darah=='A') echo 'selected'?>>A</option>
+                                    <option <?php if ($pasien->gol_darah=='B') echo 'selected'?>>B</option>
+                                    <option <?php if ($pasien->gol_darah=='AB') echo 'selected'?>>AB</option>
+                                    <option <?php if ($pasien->gol_darah=='O') echo 'selected'?>>O</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3">Nomor Telepon</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" name="no_telp" maxlength="13" onkeypress='validate(event)' value="<?php echo $pasien->no_telepon; ?>" required>
                                     <script>
@@ -125,17 +136,6 @@
                                             }
                                         }
                                     </script>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-3">Golongan Darah</label>
-                                <div class="col-md-9">
-                                <select class="form-select" name="gol_darah">
-                                    <option <?php if ($pasien->gol_darah=='A') echo 'selected'?>>A</option>
-                                    <option <?php if ($pasien->gol_darah=='B') echo 'selected'?>>B</option>
-                                    <option <?php if ($pasien->gol_darah=='AB') echo 'selected'?>>AB</option>
-                                    <option <?php if ($pasien->gol_darah=='O') echo 'selected'?>>O</option>
-                                </select>
                                 </div>
                             </div>
                             <div class="form-group row">

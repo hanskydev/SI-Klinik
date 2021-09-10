@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                <div class="card-header bg-dark text-white font-weight-bold text-center">Pendaftaran Kunjungan Pasien</div>
+                    <div class="card-header bg-dark text-white font-weight-bold text-center">Pendaftaran Kunjungan Pasien</div>
                     <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>obat/save">
                         <div class="card-body">
                             <div class="form-group row">
@@ -85,13 +85,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="border-top">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <button type="reset" class="btn btn-warning">Reset</button>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
+                        <div class="border-top"></div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <button type="reset" class="btn btn-warning">Reset</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
+                        </div>
                     </form>
                 </div>
             </div>

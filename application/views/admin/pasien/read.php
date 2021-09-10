@@ -74,7 +74,7 @@
                                     <td><?php echo $data->alamat; ?></td>
                                     <td>
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pilih</button>
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-settings mdi-18px"></i></button>
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" href="<?php echo base_url(); ?>pasien/detail/<?php echo $data->kd_pasien; ?>">Detail</a>
                                                 <a class="dropdown-item" href="<?php echo base_url(); ?>pasien/edit/<?php echo $data->kd_pasien; ?>">Edit</a>

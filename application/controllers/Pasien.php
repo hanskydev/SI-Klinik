@@ -52,8 +52,8 @@ class Pasien extends CI_Controller {
 		$this->form_validation->set_rules('no_identitas','Nomor Identitas','required');
 		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','required');
 		$this->form_validation->set_rules('tanggal_lahir','Tanggal Lahir','required');
-		$this->form_validation->set_rules('no_telp','Nomor Telepon','required');
 		$this->form_validation->set_rules('gol_darah','Golongan Darah','required');
+		$this->form_validation->set_rules('no_telp','Nomor Telepon','required');
 		$this->form_validation->set_rules('alamat','alamat','required');
 		if ($this->form_validation->run()==true)
         {
@@ -62,8 +62,8 @@ class Pasien extends CI_Controller {
 			$data['no_identitas'] = $this->input->post('no_identitas');
 			$data['jns_kelamin'] = $this->input->post('jenis_kelamin');
 			$data['tgl_lahir'] = $this->input->post('tanggal_lahir');
-			$data['no_telepon'] = $this->input->post('no_telp');
 			$data['gol_darah'] = $this->input->post('gol_darah');
+			$data['no_telepon'] = $this->input->post('no_telp');
 			$data['alamat'] = $this->input->post('alamat');
 			$this->m_pasien->save($data);
 			redirect(base_url('pasien?msg=input_success'));
@@ -92,8 +92,8 @@ class Pasien extends CI_Controller {
 		$this->form_validation->set_rules('no_identitas','Nomor Identitas','required');
 		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','required');
 		$this->form_validation->set_rules('tanggal_lahir','Tanggal Lahir','required');
-		$this->form_validation->set_rules('no_telp','Nomor Telepon','required');
 		$this->form_validation->set_rules('gol_darah','Golongan Darah','required');
+		$this->form_validation->set_rules('no_telp','Nomor Telepon','required');
 		$this->form_validation->set_rules('alamat','alamat','required');
 		if ($this->form_validation->run()==true)
         {
@@ -103,8 +103,8 @@ class Pasien extends CI_Controller {
 			$data['no_identitas'] = $this->input->post('no_identitas');
 			$data['jns_kelamin'] = $this->input->post('jenis_kelamin');
 			$data['tgl_lahir'] = $this->input->post('tanggal_lahir');
-			$data['no_telepon'] = $this->input->post('no_telp');
 			$data['gol_darah'] = $this->input->post('gol_darah');
+			$data['no_telepon'] = $this->input->post('no_telp');
 			$data['alamat'] = $this->input->post('alamat');
 			$this->m_pasien->update($data, $kd_pasien);
 			redirect(base_url('pasien?msg=edit_success'));

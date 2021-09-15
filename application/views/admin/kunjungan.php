@@ -42,18 +42,30 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header bg-dark text-white font-weight-bold text-center">Pendaftaran Kunjungan Pasien</div>
-                    <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>obat/save">
+                    <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>kunjungan/save">
                         <div class="card-body">
+                            <div class="form-group row">
+                                <label class="col-md-3">Pasien</label>
+                                <div class="col-md-9">
+                                    <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" name="pasien" id="pasien" required>
+                                        <option>Pilih</option>
+                                        <?php foreach($pasien as $pasien) : ?>
+                                        <option kode="<?php echo $pasien->kd_pasien;?>" nama="<?php echo $pasien->nm_pasien;?>" no="<?php echo $pasien->no_pasien;?>"><?php echo $pasien->nm_pasien; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <label class="col-md-3">Nama Pasien</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="nama" required>
+                                    <input type="hidden" class="form-control" name="kd_pasien" id="kd_pasien" required>
+                                    <input type="text" class="form-control" name="nm_pasien" id="nm_pasien" readonly required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3">Nomor Pasien</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="no_pasien" required>
+                                    <input type="text" class="form-control" name="no_pasien" id="no_pasien" readonly required>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -79,9 +91,18 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3">Jam</label>
+                                <label class="col-md-3">Jam Kunjungan</label>
                                 <div class="col-md-9">
                                     <input type="time" class="form-control" name="jam">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3">Status Kunjungan</label>
+                                <div class="col-md-9">
+                                    <select class="form-select" name="status">
+                                        <option>Menunggu</option>
+                                        <option>Selesai</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -107,35 +128,37 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Pasien</th>
-                                    <th>Jenis Kelamin</th>
-                                    <th>Nomor Telepon</th>
-                                    <th>Alamat</th>
+                                    <th>Tanggal Pendaftaran</th>
+                                    <th>Tanggal Kunjungan</th>
+                                    <th>Jam</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php 
+                            <?php 
 							$no = 1;
-							
+							foreach($kunjungan as $data)
+							{
 							?>
                                 <tr>
                                     <td><?php echo $no++; ?></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td><?php echo $data->nm_pasien; ?></td>
+                                    <td><?php echo $data->tgl_daftar; ?></td>
+                                    <td><?php echo $data->tgl_kunjungan; ?></td>
+                                    <td><?php echo $data->jam; ?></td>
+                                    <td><?php echo $data->status; ?></td>
                                     <td>
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pilih</button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="">Detail</a>
-                                                <a class="dropdown-item" href="">Edit</a>
-                                                <a class="dropdown-item" onclick="return confirm('Hapus data berikut?')" href="">Hapus</a>
-                                            </div>
+                                            <a class="btn btn-outline-success" href="#"><i class="mdi mdi-check"></i></a>
+                                            <a class="btn btn-outline-warning" href="#"><i class="mdi mdi-close"></i></a>
+                                            <a class="btn btn-outline-danger" href="#"><i class="mdi mdi-delete"></i></a>
                                         </div>
                                     </td>
                                 </tr>
-
+                            <?php
+							}
+							?>
                             </tbody>
                         </table>
                     </div>
@@ -213,5 +236,14 @@
         });
         var quill = new Quill('#editor', {
             theme: 'snow'
+        });
+
+        $('#pasien').on('change', function() {
+            var kode = $(this).find(":selected").attr("kode");
+            var nama = $(this).find(":selected").attr("nama");
+            var no = $(this).find(":selected").attr("no");
+            $('#kd_pasien').val(kode);
+            $('#nm_pasien').val(nama);
+            $('#no_pasien').val(no);
         });
     </script>

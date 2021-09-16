@@ -91,9 +91,9 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3">Jam Kunjungan</label>
+                                <label class="col-md-3">Jam Kunjungan <small class="text-muted">09:30</small></label>
                                 <div class="col-md-9">
-                                    <input type="time" class="form-control" name="jam">
+                                    <input type="text" class="form-control" name="jam" pattern="[0-9]{2}[:][0-9]{2}" value="09:30">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -127,9 +127,9 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>Tanggal Kunjungan</th>
                                     <th>Nama Pasien</th>
                                     <th>Tanggal Pendaftaran</th>
-                                    <th>Tanggal Kunjungan</th>
                                     <th>Jam</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
@@ -143,16 +143,20 @@
 							?>
                                 <tr>
                                     <td><?php echo $no++; ?></td>
+                                    <td><?php echo $data->tgl_kunjungan; ?></td>
                                     <td><?php echo $data->nm_pasien; ?></td>
                                     <td><?php echo $data->tgl_daftar; ?></td>
-                                    <td><?php echo $data->tgl_kunjungan; ?></td>
                                     <td><?php echo $data->jam; ?></td>
-                                    <td><?php echo $data->status; ?></td>
+                                    <td><?php 
+                                    if ($data->status=='Menunggu'){
+                                        echo '<span class="badge bg-warning">';}
+                                    elseif ($data->status=='Selesai'){
+                                        echo '<span class="badge bg-success">';}?><?php echo $data->status; ?></span></td>
                                     <td>
                                         <div class="btn-group">
-                                            <a class="btn btn-outline-success" href="#"><i class="mdi mdi-check"></i></a>
-                                            <a class="btn btn-outline-warning" href="#"><i class="mdi mdi-close"></i></a>
-                                            <a class="btn btn-outline-danger" href="#"><i class="mdi mdi-delete"></i></a>
+                                            <a class="btn btn-outline-success" href="<?php echo base_url(); ?>kunjungan/done/<?php echo $data->no_pendaftaran; ?>"><i class="mdi mdi-check"></i></a>
+                                            <a class="btn btn-outline-warning" href="<?php echo base_url(); ?>kunjungan/wait/<?php echo $data->no_pendaftaran; ?>"><i class="mdi mdi-close"></i></a>
+                                            <a class="btn btn-outline-danger" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>kunjungan/delete/<?php echo $data->no_pendaftaran; ?>"><i class="mdi mdi-delete"></i></a>
                                         </div>
                                     </td>
                                 </tr>

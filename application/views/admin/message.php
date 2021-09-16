@@ -61,4 +61,16 @@ if ($msg=='delete_success') {
     </script>
     ";
 }
+if ($msg=='set_done') {
+	echo "<script> 
+	toastr.info('Kunjungan ditandai selesai', 'Ditandai!');
+    </script>
+    ";
+}
+if ($msg=='set_wait') {
+	echo "<script> 
+	toastr.info('Kunjungan ditandai menunggu', 'Ditandai!');
+    </script>
+    ";
+}
 ?>

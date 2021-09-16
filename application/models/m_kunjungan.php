@@ -9,6 +9,7 @@ class M_kunjungan extends CI_Model
         $this->db->select('*');
         $this->db->from('kunjungan');
         $this->db->join('pasien','kunjungan.kd_pasien = pasien.kd_pasien');
+        $this->db->order_by('status', 'asc');
         $query = $this->db->get();
         return $query->result();
     }
@@ -35,9 +36,19 @@ class M_kunjungan extends CI_Model
 
     public function getPasien()
     {
-        $this->db->order_by("nm_pasien", "asc");
+        $this->db->order_by('nm_pasien', 'asc');
         $query = $this->db->get('pasien')->result();
         return $query;
+    }
+
+    public function setDone($data, $id)
+    {
+        return $this->db->update($this->table, $data, array('no_pendaftaran' => $id));
+    }
+
+    public function setWait($data, $id)
+    {
+        return $this->db->update($this->table, $data, array('no_pendaftaran' => $id));
     }
 
 }

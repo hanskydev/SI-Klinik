@@ -47,5 +47,25 @@ class Kunjungan extends CI_Controller {
 			redirect(base_url('kunjungan?msg=input_error'));
 		}
 	}
+
+	public function done($no_pendaftaran)
+	{
+		$data['status'] = 'Selesai';
+		$this->m_kunjungan->setDone($data, $no_pendaftaran);
+		redirect(base_url('kunjungan?msg=set_done'));
+	}
+
+	public function wait($no_pendaftaran)
+	{
+		$data['status'] = 'Menunggu';
+		$this->m_kunjungan->setWait($data, $no_pendaftaran);
+		redirect(base_url('kunjungan?msg=set_wait'));
+	}
+
+	public function delete($no_pendaftaran)
+	{
+		$this->m_kunjungan->delete($no_pendaftaran);
+		redirect(base_url('kunjungan?msg=delete_success'));
+	}
 	
 }

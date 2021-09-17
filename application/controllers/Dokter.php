@@ -20,7 +20,7 @@ class Dokter extends CI_Controller {
 		$this->load->view('layout/header');
 		$this->load->view('admin/message');
 		$this->load->view('layout/sidebar');
-		$this->load->view('admin/dokter/read', $data);
+		$this->load->view('admin/dokter/dokter', $data);
 		$this->load->view('layout/footer');
 	}
 

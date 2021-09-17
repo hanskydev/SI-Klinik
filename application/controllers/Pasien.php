@@ -20,7 +20,7 @@ class Pasien extends CI_Controller {
 		$this->load->view('layout/header');
 		$this->load->view('admin/message');
 		$this->load->view('layout/sidebar');
-		$this->load->view('admin/pasien/read', $data);
+		$this->load->view('admin/pasien/pasien', $data);
 		$this->load->view('layout/footer');
 	}
 

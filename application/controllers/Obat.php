@@ -20,16 +20,7 @@ class Obat extends CI_Controller {
 		$this->load->view('layout/header');
 		$this->load->view('admin/message');
 		$this->load->view('layout/sidebar');
-		$this->load->view('admin/obat/read', $data);
-		$this->load->view('layout/footer');
-	}
-
-	public function create()
-	{
-		$this->load->view('layout/header');
-		$this->load->view('admin/message');
-		$this->load->view('layout/sidebar');
-		$this->load->view('admin/obat/create');
+		$this->load->view('admin/obat/obat', $data);
 		$this->load->view('layout/footer');
 	}
 

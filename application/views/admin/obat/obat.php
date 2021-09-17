@@ -1,10 +1,4 @@
-<title>SI Klinik - Kunjungan</title>
-
-<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/libs/select2/dist/css/select2.min.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/libs/jquery-minicolors/jquery.minicolors.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/libs/quill/dist/quill.snow.css">
-
+<title>SI Klinik - Obat</title>
 <div class="page-wrapper">
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
@@ -12,12 +6,12 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-                <h4 class="page-title">Kunjungan</h4>
+                <h4 class="page-title">Obat</h4>
                 <div class="ms-auto text-end">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Kunjungan</li>
+                            <li class="breadcrumb-item active" aria-current="page">Obat</li>
                         </ol>
                     </nav>
                 </div>
@@ -41,69 +35,73 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header bg-dark text-white font-weight-bold text-center">Pendaftaran Kunjungan Pasien</div>
-                    <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>kunjungan/save">
+                    <div class="card-header bg-dark text-white font-weight-bold text-center">Tambah Data Obat</div>
+                    <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>obat/save">
                         <div class="card-body">
                             <div class="form-group row">
-                                <label class="col-md-3">Pasien</label>
+                                <label class="col-md-3">Nama Obat</label>
                                 <div class="col-md-9">
-                                    <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" name="pasien" id="pasien" required>
-                                        <option>Pilih</option>
-                                        <?php foreach($pasien as $pasien) : ?>
-                                        <option kode="<?php echo $pasien->kd_pasien;?>" nama="<?php echo $pasien->nm_pasien;?>" no="<?php echo $pasien->no_pasien;?>"><?php echo $pasien->nm_pasien; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
+                                    <input type="text" class="form-control" name="nama" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3">Nama Pasien</label>
+                                <label class="col-md-3">Deskripsi</label>
                                 <div class="col-md-9">
-                                    <input type="hidden" class="form-control" name="kd_pasien" id="kd_pasien" required>
-                                    <input type="text" class="form-control" name="nm_pasien" id="nm_pasien" readonly required>
+                                    <textarea class="form-control" name="deskripsi" rows="5" required></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3">Nomor Pasien</label>
+                                <label class="col-md-3">Stok</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="no_pasien" id="no_pasien" readonly required>
+                                    <input type="number" class="form-control" name="stok" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3">Tanggal Pendaftaran</label>
+                                <label class="col-md-3">Harga Modal</label>
                                 <div class="col-md-9">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="datepicker-autoclose" placeholder="dd/mm/yyyy" name="tanggal_daftar" required>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text h-100"><i class="fa fa-calendar"></i></span>
-                                        </div>
-                                    </div>
+                                    <input type="text" class="form-control" name="harga_modal" maxlength="20" onkeypress='validate(event)' required>
+                                    <script>
+                                        function validate(evt) {
+                                            var theEvent = evt || window.event;
+                                            // Handle paste
+                                            if (theEvent.type === 'paste') {
+                                                key = event.clipboardData.getData('text/plain');
+                                            } else {
+                                                // Handle key press
+                                                var key = theEvent.keyCode || theEvent.which;
+                                                key = String.fromCharCode(key);
+                                            }
+                                            var regex = /[0-9]|\./;
+                                            if (!regex.test(key)) {
+                                                theEvent.returnValue = false;
+                                                if (theEvent.preventDefault) theEvent.preventDefault();
+                                            }
+                                        }
+                                    </script>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3">Tanggal Kunjungan</label>
+                                <label class="col-md-3">Harga Jual</label>
                                 <div class="col-md-9">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="datepicker-autoclose-1" placeholder="dd/mm/yyyy" name="tanggal_kunjungan" required>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text h-100"><i class="fa fa-calendar"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-3">Jam Kunjungan</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" name="jam" pattern="[0-9]{2}[:][0-9]{2}" value="00:00">
-                                    <small>Format Waktu 09:30</small>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-3">Status Kunjungan</label>
-                                <div class="col-md-9">
-                                    <select class="form-select" name="status">
-                                        <option>Menunggu</option>
-                                        <option>Selesai</option>
-                                    </select>
+                                    <input type="text" class="form-control" name="harga_jual" maxlength="20" onkeypress='validate(event)' required>
+                                    <script>
+                                        function validate(evt) {
+                                            var theEvent = evt || window.event;
+                                            // Handle paste
+                                            if (theEvent.type === 'paste') {
+                                                key = event.clipboardData.getData('text/plain');
+                                            } else {
+                                                // Handle key press
+                                                var key = theEvent.keyCode || theEvent.which;
+                                                key = String.fromCharCode(key);
+                                            }
+                                            var regex = /[0-9]|\./;
+                                            if (!regex.test(key)) {
+                                                theEvent.returnValue = false;
+                                                if (theEvent.preventDefault) theEvent.preventDefault();
+                                            }
+                                        }
+                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -122,42 +120,40 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Daftar Kunjungan</h5>
+                    <h5 class="card-title">Daftar Obat</h5>
                     <div class="table-responsive">
                         <table id="zero_config" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Tanggal Kunjungan</th>
-                                    <th>Nama Pasien</th>
-                                    <th>Tanggal Pendaftaran</th>
-                                    <th>Jam</th>
-                                    <th>Status</th>
+                                    <th>Nama Obat</th>
+                                    <th>Deskripsi</th>
+                                    <th>Stok</th>
+                                    <th>Harga Modal</th>
+                                    <th>Harga Jual</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                             <?php 
 							$no = 1;
-							foreach($kunjungan as $data)
+							foreach($obat as $data)
 							{
 							?>
                                 <tr>
                                     <td><?php echo $no++; ?></td>
-                                    <td><?php echo $data->tgl_kunjungan; ?></td>
-                                    <td><?php echo $data->nm_pasien; ?></td>
-                                    <td><?php echo $data->tgl_daftar; ?></td>
-                                    <td><?php echo $data->jam; ?></td>
-                                    <td><?php 
-                                    if ($data->status=='Menunggu'){
-                                        echo '<span class="badge bg-warning">';}
-                                    elseif ($data->status=='Selesai'){
-                                        echo '<span class="badge bg-success">';}?><?php echo $data->status; ?></span></td>
+                                    <td><?php echo $data->nm_obat; ?></td>
+                                    <td><?php echo $data->deskripsi; ?></td>
+                                    <td><?php echo $data->stok; ?></td>
+                                    <td><?php echo $data->harga_modal; ?></td>
+                                    <td><?php echo $data->harga_jual; ?></td>
                                     <td>
                                         <div class="btn-group">
-                                            <a class="btn btn-outline-success" href="<?php echo base_url(); ?>kunjungan/done/<?php echo $data->no_pendaftaran; ?>"><i class="mdi mdi-check"></i></a>
-                                            <a class="btn btn-outline-warning" href="<?php echo base_url(); ?>kunjungan/wait/<?php echo $data->no_pendaftaran; ?>"><i class="mdi mdi-close"></i></a>
-                                            <a class="btn btn-outline-danger" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>kunjungan/delete/<?php echo $data->no_pendaftaran; ?>"><i class="mdi mdi-delete"></i></a>
+                                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-settings mdi-18px"></i></button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="<?php echo base_url(); ?>obat/edit/<?php echo $data->kd_obat; ?>">Edit</a>
+                                                <a class="dropdown-item" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>obat/delete/<?php echo $data->kd_obat; ?>">Hapus</a>
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>
@@ -241,14 +237,5 @@
         });
         var quill = new Quill('#editor', {
             theme: 'snow'
-        });
-
-        $('#pasien').on('change', function() {
-            var kode = $(this).find(":selected").attr("kode");
-            var nama = $(this).find(":selected").attr("nama");
-            var no = $(this).find(":selected").attr("no");
-            $('#kd_pasien').val(kode);
-            $('#nm_pasien').val(nama);
-            $('#no_pasien').val(no);
         });
     </script>

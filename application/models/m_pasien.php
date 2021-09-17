@@ -39,7 +39,7 @@ class M_pasien extends CI_Model
     {
     $this->db->select('*');
     $this->db->from('keluarga');
-    $this->db->join('pasien','keluarga.kd_pasien=pasien.kd_pasien');
+    $this->db->join('pasien','keluarga.kd_pasien = pasien.kd_pasien');
     $this->db->where('keluarga.kd_pasien', $id);
     $query = $this->db->get();
     return $query->result();

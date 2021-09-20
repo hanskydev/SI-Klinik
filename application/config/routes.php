@@ -57,6 +57,7 @@ $route['dokter'] = 'dokter';
 $route['pasien'] = 'pasien';
 $route['obat'] = 'obat';
 $route['kunjungan'] = 'kunjungan';
+$route['penyakit'] = 'penyakit';
 $route['laporan'] = 'laporan';
 
 $route['404_override'] = '';

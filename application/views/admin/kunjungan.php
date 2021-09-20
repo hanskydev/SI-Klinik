@@ -121,8 +121,8 @@
 
         <div class="col-12">
             <div class="card">
+                <div class="card-header bg-dark text-white font-weight-bold text-center">Daftar Kunjungan</div>
                 <div class="card-body">
-                    <h5 class="card-title">Daftar Kunjungan</h5>
                     <div class="table-responsive">
                         <table id="zero_config" class="table table-striped table-bordered">
                             <thead>
@@ -150,14 +150,14 @@
                                     <td><?php echo $data->jam; ?></td>
                                     <td><?php 
                                     if ($data->status=='Menunggu'){
-                                        echo '<span class="badge bg-warning">';}
+                                        echo '<span class="badge bg-warning"><i class="mdi mdi-calendar-clock"></i>';}
                                     elseif ($data->status=='Selesai'){
-                                        echo '<span class="badge bg-success">';}?><?php echo $data->status; ?></span></td>
+                                        echo '<span class="badge bg-success"><i class="mdi mdi-calendar-check"></i>';}?> <?php echo $data->status; ?></span></td>
                                     <td>
                                         <div class="btn-group">
-                                            <a class="btn btn-outline-success" href="<?php echo base_url(); ?>kunjungan/done/<?php echo $data->no_pendaftaran; ?>"><i class="mdi mdi-check"></i></a>
-                                            <a class="btn btn-outline-warning" href="<?php echo base_url(); ?>kunjungan/wait/<?php echo $data->no_pendaftaran; ?>"><i class="mdi mdi-close"></i></a>
-                                            <a class="btn btn-outline-danger" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>kunjungan/delete/<?php echo $data->no_pendaftaran; ?>"><i class="mdi mdi-delete"></i></a>
+                                            <a class="btn btn-outline-success btn-sm" href="<?php echo base_url(); ?>kunjungan/done/<?php echo $data->no_pendaftaran; ?>"><i class="mdi mdi-check"></i></a>
+                                            <a class="btn btn-outline-warning btn-sm" href="<?php echo base_url(); ?>kunjungan/wait/<?php echo $data->no_pendaftaran; ?>"><i class="mdi mdi-close"></i></a>
+                                            <a class="btn btn-outline-danger btn-sm" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>kunjungan/delete/<?php echo $data->no_pendaftaran; ?>"><i class="mdi mdi-delete"></i></a>
                                         </div>
                                     </td>
                                 </tr>

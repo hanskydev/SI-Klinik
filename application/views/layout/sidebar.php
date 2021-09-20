@@ -153,17 +153,13 @@
                             <img src="<?php echo base_url(); ?>assets/images/users/user.png" alt="user" class="rounded-circle" width="31">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user me-1 ms-1"></i>
-                                <?php echo $this->session->userdata("username"); ?></a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user me-1 ms-1"></i><?php echo $this->session->userdata("username"); ?></a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email me-1 ms-1"></i>
-                                Inbox</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email me-1 ms-1"></i>Inbox</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings me-1 ms-1"></i>
-                                Account Setting</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings me-1 ms-1"></i>Account Setting</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="<?php echo base_url('auth/logout'); ?>"><i class="fa fa-power-off me-1 ms-1"></i>
-                                Logout</a>
+                            <a class="dropdown-item" href="<?php echo base_url('auth/logout'); ?>"><i class="fa fa-power-off me-1 ms-1"></i>Logout</a>
                         </ul>
                     </li>
                     <!-- ============================================================== -->
@@ -185,16 +181,14 @@
             <!-- Sidebar navigation-->
             <nav class="sidebar-nav">
                 <ul id="sidebarnav" class="pt-4">
-                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url(); ?>" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url('kunjungan'); ?>" aria-expanded="false"><i class="mdi mdi-calendar-check"></i><span class="hide-menu">Kunjungan</span></a></li>
-                    <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-database"></i><span class="hide-menu">Data </span></a>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url(); ?>" aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu">Dashboard</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url('kunjungan'); ?>" aria-expanded="false"><i class="mdi mdi-calendar"></i><span class="hide-menu">Kunjungan</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-file-document-box"></i><span class="hide-menu">Data </span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item"><a href="<?php echo base_url('dokter'); ?>" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Dokter
-                                    </span></a></li>
-                            <li class="sidebar-item"><a href="<?php echo base_url('pasien'); ?>" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Pasien
-                                    </span></a></li>
-                            <li class="sidebar-item"><a href="<?php echo base_url('obat'); ?>" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Obat
-                                    </span></a></li>
+                            <li class="sidebar-item"><a href="<?php echo base_url('dokter'); ?>" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Dokter</span></a></li>
+                            <li class="sidebar-item"><a href="<?php echo base_url('pasien'); ?>" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Pasien</span></a></li>
+                            <li class="sidebar-item"><a href="<?php echo base_url('obat'); ?>" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Obat</span></a></li>
+                            <li class="sidebar-item"><a href="<?php echo base_url('penyakit'); ?>" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Penyakit</span></a></li>
                         </ul>
                     </li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url('laporan'); ?>" aria-expanded="false"><i class="mdi mdi-file-document"></i><span class="hide-menu">Laporan</span></a></li>

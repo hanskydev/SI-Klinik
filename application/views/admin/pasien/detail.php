@@ -35,7 +35,7 @@
                     <div class="card-header bg-dark text-white font-weight-bold text-center">Biodata Pasien</div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-hover table-responsive">
+                            <table class="table table-bordered table-hover">
                                 <tr>
                                     <th>Nama Pasien</th>
                                     <td><?php echo $pasien->nm_pasien; ?></td>
@@ -142,6 +142,9 @@
                                     <th><i class="mdi mdi-settings mdi-18px"></i></th>
                                 </tr>
                                 <?php 
+                                if (empty($kontak)){
+                                    echo '<td colspan="4">Tidak ada kontak</td>';
+                                }
 							    $no = 1;
 							    foreach($kontak as $k)
 							    {
@@ -175,6 +178,9 @@
                                     <th><i class="mdi mdi-briefcase-check mdi-18px"></i></th>
                                 </tr>
                                 <?php 
+                                if (empty($kontak)){
+                                    echo '<td colspan="4">Belum ada data</td>';
+                                }
 							    $no = 1;
 							    foreach($kontak as $k)
 							    {

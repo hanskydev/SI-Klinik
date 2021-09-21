@@ -1,14 +1,14 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_kunjungan extends CI_Model
+class M_pendaftaran extends CI_Model
 {
-    private $table = 'kunjungan';
+    private $table = 'pendaftaran';
 
     public function getAll()
     {
         $this->db->select('*');
-        $this->db->from('kunjungan');
-        $this->db->join('pasien','kunjungan.kd_pasien = pasien.kd_pasien');
+        $this->db->from('pendaftaran');
+        $this->db->join('pasien','pendaftaran.kd_pasien = pasien.kd_pasien');
         $this->db->order_by('status', 'asc');
         $query = $this->db->get();
         return $query->result();

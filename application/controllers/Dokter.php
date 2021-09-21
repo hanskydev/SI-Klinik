@@ -40,7 +40,7 @@ class Dokter extends CI_Controller {
 		$this->form_validation->set_rules('tanggal_lahir','Tanggal Lahir','required');
 		$this->form_validation->set_rules('no_telp','Nomor Telepon','required');
 		$this->form_validation->set_rules('sip','SIP','required');
-		$this->form_validation->set_rules('spesialisasi','Spesialisasi','required');
+		$this->form_validation->set_rules('spesialis','Spesialis','required');
 		$this->form_validation->set_rules('alamat','alamat','required');
 		if ($this->form_validation->run()==true)
         {
@@ -49,7 +49,7 @@ class Dokter extends CI_Controller {
 			$data['tgl_lahir'] = $this->input->post('tanggal_lahir');
 			$data['no_telepon'] = $this->input->post('no_telp');
 			$data['sip'] = $this->input->post('sip');
-			$data['spesialisasi'] = $this->input->post('spesialisasi');
+			$data['spesialis'] = $this->input->post('spesialis');
 			$data['alamat'] = $this->input->post('alamat');
 			$this->m_dokter->save($data);
 			redirect(base_url('dokter?msg=input_success'));
@@ -78,7 +78,7 @@ class Dokter extends CI_Controller {
 		$this->form_validation->set_rules('tanggal_lahir','Tanggal Lahir','required');
 		$this->form_validation->set_rules('no_telp','Nomor Telepon','required');
 		$this->form_validation->set_rules('sip','SIP','required');
-		$this->form_validation->set_rules('spesialisasi','Spesialisasi','required');
+		$this->form_validation->set_rules('spesialis','Spesialis','required');
 		$this->form_validation->set_rules('alamat','alamat','required');
 		if ($this->form_validation->run()==true)
         {
@@ -88,7 +88,7 @@ class Dokter extends CI_Controller {
 			$data['tgl_lahir'] = $this->input->post('tanggal_lahir');
 			$data['no_telepon'] = $this->input->post('no_telp');
 			$data['sip'] = $this->input->post('sip');
-			$data['spesialisasi'] = $this->input->post('spesialisasi');
+			$data['spesialis'] = $this->input->post('spesialis');
 			$data['alamat'] = $this->input->post('alamat');
 			$this->m_dokter->update($data, $kd_dokter);
 			redirect(base_url('dokter?msg=edit_success'));

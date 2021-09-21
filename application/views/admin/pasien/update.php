@@ -38,10 +38,9 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
+                    <div class="card-header bg-dark text-white font-weight-bold text-center">Perbarui Data Informasi Pasien</div>
                     <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>pasien/update">
                         <div class="card-body">
-                            <h5 class="card-title">Data Informasi Pasien</h5>
-                            <br>
                             <div class="form-group row">
                                 <label class="col-md-3">Nama Pasien</label>
                                 <div class="col-md-9">

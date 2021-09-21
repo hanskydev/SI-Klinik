@@ -2,11 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Obat extends CI_Controller {
+	public $CI = NULL;
 
 	function __construct(){
 		parent::__construct();
 		$this->load->model('m_obat');
         $this->load->library('form_validation');
+		$this->CI = & get_instance();
 
 		if($this->session->userdata('status') != 'login'){
 			redirect(base_url('auth?msg=login_warning'));
@@ -87,5 +89,11 @@ class Obat extends CI_Controller {
 		$this->m_obat->delete($kd_obat);
 		redirect(base_url('obat?msg=delete_success'));
 	}
+
+	public function rupiah($angka)
+    {
+        $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+        return $hasil_rupiah;
+    }
 	
 }

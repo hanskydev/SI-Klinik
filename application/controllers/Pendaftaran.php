@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Kunjungan extends CI_Controller {
+class Pendaftaran extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-		$this->load->model('m_kunjungan');
+		$this->load->model('m_pendaftaran');
         $this->load->library('form_validation');
 	
 		if($this->session->userdata('status') != 'login'){
@@ -15,13 +15,13 @@ class Kunjungan extends CI_Controller {
 
 	public function index()
 	{
-		$data['kunjungan'] = $this->m_kunjungan->getAll();
-		$data['pasien'] = $this->m_kunjungan->getPasien();
+		$data['pendaftaran'] = $this->m_pendaftaran->getAll();
+		$data['pasien'] = $this->m_pendaftaran->getPasien();
 
 		$this->load->view('layout/header');
 		$this->load->view('admin/message');
 		$this->load->view('layout/sidebar');
-		$this->load->view('admin/kunjungan', $data);
+		$this->load->view('admin/pendaftaran/pendaftaran', $data);
 		$this->load->view('layout/footer');
 	}
 
@@ -36,36 +36,36 @@ class Kunjungan extends CI_Controller {
         {
 			$data['kd_pasien'] = $this->input->post('kd_pasien');
 			$data['tgl_daftar'] = $this->input->post('tanggal_daftar');
-			$data['tgl_kunjungan'] = $this->input->post('tanggal_kunjungan');
+			$data['tgl_kunjungan '] = $this->input->post('tanggal_kunjungan');
 			$data['jam'] = $this->input->post('jam');
 			$data['status'] = $this->input->post('status');
-			$this->m_kunjungan->save($data);
-			redirect(base_url('kunjungan?msg=input_success'));
+			$this->m_pendaftaran->save($data);
+			redirect(base_url('pendaftaran?msg=input_success'));
 		}
 		else
 		{
-			redirect(base_url('kunjungan?msg=input_error'));
+			redirect(base_url('pendaftaran?msg=input_error'));
 		}
 	}
 
 	public function done($no_pendaftaran)
 	{
 		$data['status'] = 'Selesai';
-		$this->m_kunjungan->setDone($data, $no_pendaftaran);
-		redirect(base_url('kunjungan?msg=set_done'));
+		$this->m_pendaftaran->setDone($data, $no_pendaftaran);
+		redirect(base_url('pendaftaran?msg=set_done'));
 	}
 
 	public function wait($no_pendaftaran)
 	{
 		$data['status'] = 'Menunggu';
-		$this->m_kunjungan->setWait($data, $no_pendaftaran);
-		redirect(base_url('kunjungan?msg=set_wait'));
+		$this->m_pendaftaran->setWait($data, $no_pendaftaran);
+		redirect(base_url('pendaftaran?msg=set_wait'));
 	}
 
 	public function delete($no_pendaftaran)
 	{
-		$this->m_kunjungan->delete($no_pendaftaran);
-		redirect(base_url('kunjungan?msg=delete_success'));
+		$this->m_pendaftaran->delete($no_pendaftaran);
+		redirect(base_url('pendaftaran?msg=delete_success'));
 	}
 	
 }

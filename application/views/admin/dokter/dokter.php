@@ -59,7 +59,7 @@
                                     <th>Alamat</th>
                                     <th>Nomor Telepon</th>
                                     <th>SIP</th>
-                                    <th>Spesialisasi</th>
+                                    <th>Spesialis</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -77,7 +77,7 @@
                                     <td><?php echo $data->alamat; ?></td>
                                     <td><?php echo $data->no_telepon; ?></td>
                                     <td><?php echo $data->sip; ?></td>
-                                    <td><?php echo $data->spesialisasi; ?></td>
+                                    <td><?php echo $data->spesialis; ?></td>
                                     <td>
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-settings mdi-18px"></i></button>

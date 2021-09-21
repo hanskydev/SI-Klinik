@@ -1,4 +1,4 @@
-<title>SI Klinik - Edit Obat</title>
+<title>SI Klinik - Tambah Periksa</title>
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/libs/select2/dist/css/select2.min.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/libs/jquery-minicolors/jquery.minicolors.css">
@@ -12,13 +12,13 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-                <h4 class="page-title">Edit Obat</h4>
+                <h4 class="page-title">Tambah Periksa</h4>
                 <div class="ms-auto text-end">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="<?php echo base_url('obat'); ?>">Obat</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Edit Obat</li>
+                            <li class="breadcrumb-item"><a href="<?php echo base_url('periksa'); ?>">Periksa</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Tambah Periksa</li>
                         </ol>
                     </nav>
                 </div>
@@ -38,37 +38,44 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header bg-dark text-white font-weight-bold text-center">Perbarui Data Informasi Obat</div>
-                    <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>obat/update">
+                    <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>periksa/save">
                         <div class="card-body">
+                            <h5 class="card-title">Data Informasi Periksa</h5>
+                            <br>
                             <div class="form-group row">
-                                <label class="col-md-3">Nama Obat</label>
+                                <label class="col-md-3">Nama Periksa</label>
                                 <div class="col-md-9">
-                                    <input type="hidden" class="form-control" name="kd_obat" value="<?php echo $obat->kd_obat; ?>" required>
-                                    <input type="text" class="form-control" name="nama" value="<?php echo $obat->nm_obat; ?>" required>
+                                    <input type="text" class="form-control" name="nama" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3">Deskripsi</label>
+                                <label class="col-md-3">Jenis Kelamin</label>
                                 <div class="col-md-9">
-                                    <textarea class="form-control" name="deskripsi" rows="5" required><?php echo $obat->deskripsi; ?></textarea>
+                                    <div class="form-check">
+                                        <input type="radio" class="form-check-input" id="customControlValidation1" name="jenis_kelamin" value="Laki-laki" required>
+                                        <label class="form-check-label mb-0" for="customControlValidation1">Laki-laki</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" class="form-check-input" id="customControlValidation2" name="jenis_kelamin" value="Perempuan" required>
+                                        <label class="form-check-label mb-0" for="customControlValidation2">Perempuan</label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3">Stok</label>
-                                <div class="col-md-9">
-                                    <input type="number" class="form-control" name="stok" value="<?php echo $obat->stok; ?>" required>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-3">Harga Modal</label>
+                                <label class="col-md-3">Tanggal Lahir</label>
                                 <div class="col-md-9">
                                     <div class="input-group">
+                                        <input type="text" class="form-control" id="datepicker-autoclose" placeholder="dd/mm/yyyy" name="tanggal_lahir" required>
                                         <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2">Rp</span>
+                                            <span class="input-group-text h-100"><i class="fa fa-calendar"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" name="harga_modal" maxlength="20" onkeypress='validate(event)' value="<?php echo $obat->harga_modal; ?>" aria-describedby="basic-addon2" required>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3">Nomor Telepon</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="no_telp" maxlength="13" onkeypress='validate(event)' required>
                                     <script>
                                         function validate(evt) {
                                             var theEvent = evt || window.event;
@@ -90,32 +97,21 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3">Harga Jual</label>
+                                <label class="col-md-3">SIP</label>
                                 <div class="col-md-9">
-                                    <div class="input-group">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2">Rp</span>
-                                        </div>
-                                        <input type="text" class="form-control" name="harga_jual" maxlength="20" onkeypress='validate(event)' value="<?php echo $obat->harga_jual; ?>" aria-describedby="basic-addon2" required>
-                                    </div>
-                                    <script>
-                                        function validate(evt) {
-                                            var theEvent = evt || window.event;
-                                            // Handle paste
-                                            if (theEvent.type === 'paste') {
-                                                key = event.clipboardData.getData('text/plain');
-                                            } else {
-                                                // Handle key press
-                                                var key = theEvent.keyCode || theEvent.which;
-                                                key = String.fromCharCode(key);
-                                            }
-                                            var regex = /[0-9]|\./;
-                                            if (!regex.test(key)) {
-                                                theEvent.returnValue = false;
-                                                if (theEvent.preventDefault) theEvent.preventDefault();
-                                            }
-                                        }
-                                    </script>
+                                    <input type="text" class="form-control" name="sip" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3">Spesialis</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="spesialis" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3">Alamat</label>
+                                <div class="col-md-9">
+                                    <textarea class="form-control" name="alamat" rows="3" required></textarea>
                                 </div>
                             </div>
                         </div>

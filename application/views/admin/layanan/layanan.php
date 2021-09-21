@@ -1,4 +1,4 @@
-<title>SI Klinik - Obat</title>
+<title>SI Klinik - Layanan</title>
 <div class="page-wrapper">
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
@@ -6,12 +6,12 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-                <h4 class="page-title">Obat</h4>
+                <h4 class="page-title">Layanan</h4>
                 <div class="ms-auto text-end">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Obat</li>
+                            <li class="breadcrumb-item active" aria-current="page">Layanan</li>
                         </ol>
                     </nav>
                 </div>
@@ -33,66 +33,25 @@
         <link href="<?php echo base_url(); ?>assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
 
         <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header bg-dark text-white font-weight-bold text-center">Tambah Data Obat</div>
-                    <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>obat/save">
+            <div class="col-md-4">
+                <div class="card" id="create">
+                    <div class="card-header bg-dark text-white font-weight-bold text-center">Tambah Data Layanan</div>
+                    <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>layanan/save">
                         <div class="card-body">
                             <div class="form-group row">
-                                <label class="col-md-3">Nama Obat</label>
-                                <div class="col-md-9">
+                                <label class="col-md-12">Nama Layanan</label>
+                                <div class="col-md-12">
                                     <input type="text" class="form-control" name="nama" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3">Deskripsi</label>
-                                <div class="col-md-9">
-                                    <textarea class="form-control" name="deskripsi" rows="5" required></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-3">Stok</label>
-                                <div class="col-md-9">
-                                    <input type="number" class="form-control" name="stok" required>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-3">Harga Modal</label>
-                                <div class="col-md-9">
-                                    <div class="input-group">
+                                <label class="col-md-12">Biaya</label>
+                                <div class="col-md-12">
+                                <div class="input-group">
                                         <div class="input-group-append">
                                             <span class="input-group-text" id="basic-addon2">Rp</span>
                                         </div>
-                                        <input type="text" class="form-control" name="harga_modal" maxlength="20" onkeypress='validate(event)' aria-describedby="basic-addon2" required>
-                                    </div>
-                                    <script>
-                                        function validate(evt) {
-                                            var theEvent = evt || window.event;
-                                            // Handle paste
-                                            if (theEvent.type === 'paste') {
-                                                key = event.clipboardData.getData('text/plain');
-                                            } else {
-                                                // Handle key press
-                                                var key = theEvent.keyCode || theEvent.which;
-                                                key = String.fromCharCode(key);
-                                            }
-                                            var regex = /[0-9]|\./;
-                                            if (!regex.test(key)) {
-                                                theEvent.returnValue = false;
-                                                if (theEvent.preventDefault) theEvent.preventDefault();
-                                            }
-                                        }
-                                    </script>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-3">Harga Jual</label>
-                                <div class="col-md-9">
-                                    <div class="input-group">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2">Rp</span>
-                                        </div>
-                                        <input type="text" class="form-control" name="harga_jual" maxlength="20" onkeypress='validate(event)' aria-describedby="basic-addon2" required>
+                                        <input type="text" class="form-control" name="biaya" maxlength="20" onkeypress='validate(event)' aria-describedby="basic-addon2" required>
                                     </div>
                                     <script>
                                         function validate(evt) {
@@ -124,54 +83,99 @@
                         </div>
                     </form>
                 </div>
+                <div class="card" id="update">
+                    <div class="card-header bg-dark text-white font-weight-bold text-center">Perbarui Data Layanan</div>
+                    <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>layanan/update">
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label class="col-md-12">Nama Layanan</label>
+                                <div class="col-md-12">
+                                    <input type="hidden" class="form-control" name="kd_layanan" id="kd_layanan" required>
+                                    <input type="text" class="form-control" name="nama" id="nama" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-12">Biaya</label>
+                                <div class="col-md-12">
+                                <div class="input-group">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="basic-addon2">Rp</span>
+                                        </div>
+                                        <input type="text" class="form-control" name="biaya" maxlength="20" onkeypress='validate(event)' aria-describedby="basic-addon2" id="biaya" required>
+                                    </div>
+                                    <script>
+                                        function validate(evt) {
+                                            var theEvent = evt || window.event;
+                                            // Handle paste
+                                            if (theEvent.type === 'paste') {
+                                                key = event.clipboardData.getData('text/plain');
+                                            } else {
+                                                // Handle key press
+                                                var key = theEvent.keyCode || theEvent.which;
+                                                key = String.fromCharCode(key);
+                                            }
+                                            var regex = /[0-9]|\./;
+                                            if (!regex.test(key)) {
+                                                theEvent.returnValue = false;
+                                                if (theEvent.preventDefault) theEvent.preventDefault();
+                                            }
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-top"></div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <button type="reset" class="btn btn-warning">Reset</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                    <button class="btn btn-success text-white" id="add">Pindah Tambah Data</button>
+                </div>
             </div>
-        </div>
 
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header bg-dark text-white font-weight-bold text-center">Daftar Obat</div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="zero_config" class="table table-striped table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama Obat</th>
-                                    <th>Deskripsi</th>
-                                    <th>Stok</th>
-                                    <th>Harga Modal</th>
-                                    <th>Harga Jual</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-dark text-white font-weight-bold text-center">Daftar Layanan</div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="zero_config" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Layanan</th>
+                                        <th>Biaya</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
                             <?php 
 							$no = 1;
-							foreach($obat as $data)
+							foreach($layanan as $data)
 							{
 							?>
-                                <tr>
-                                    <td><?php echo $no++; ?></td>
-                                    <td><?php echo $data->nm_obat; ?></td>
-                                    <td><?php echo $data->deskripsi; ?></td>
-                                    <td><?php echo $data->stok; ?></td>
-                                    <td><?php echo $this->CI->rupiah($data->harga_modal); ?></td>
-                                    <td><?php echo $this->CI->rupiah($data->harga_jual); ?></td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-settings mdi-18px"></i></button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="<?php echo base_url(); ?>obat/edit/<?php echo $data->kd_obat; ?>">Edit</a>
-                                                <a class="dropdown-item" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>obat/delete/<?php echo $data->kd_obat; ?>">Hapus</a>
+                                    <tr>
+                                        <td><?php echo $no++; ?></td>
+                                        <td><?php echo $data->nm_layanan; ?></td>
+                                        <td><?php echo $this->CI->rupiah($data->biaya); ?></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-settings mdi-18px"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item edit" kode="<?php echo $data->kd_layanan;?>" nama="<?php echo $data->nm_layanan;?>" biaya="<?php echo $data->biaya;?>">Edit</a>
+                                                    <a class="dropdown-item" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>layanan/delete/<?php echo $data->kd_layanan; ?>">Hapus</a>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
                             <?php
 							}
 							?>
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -247,5 +251,26 @@
         });
         var quill = new Quill('#editor', {
             theme: 'snow'
+        });
+        $(document).ready(function(){
+            $("#update").hide();
+
+            $("#add").click(function(){
+                $("#create").show();
+                $("#update").hide();
+            });
+
+            $(".edit").click(function(){
+                $("#create").hide();
+                $("#update").show();
+            });
+        });
+        $('.edit').on('click', function() {
+            var kode = $(this).attr("kode");
+            var nama = $(this).attr("nama");
+            var biaya = $(this).attr("biaya");
+            $('#kd_layanan').val(kode);
+            $('#nama').val(nama);
+            $('#biaya').val(biaya);
         });
     </script>

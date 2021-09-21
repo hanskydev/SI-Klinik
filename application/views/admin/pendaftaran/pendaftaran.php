@@ -1,4 +1,4 @@
-<title>SI Klinik - Kunjungan</title>
+<title>SI Klinik - Pendaftaran</title>
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/libs/select2/dist/css/select2.min.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/libs/jquery-minicolors/jquery.minicolors.css">
@@ -12,12 +12,12 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-                <h4 class="page-title">Kunjungan</h4>
+                <h4 class="page-title">Pendaftaran</h4>
                 <div class="ms-auto text-end">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Kunjungan</li>
+                            <li class="breadcrumb-item active" aria-current="page">Pendaftaran</li>
                         </ol>
                     </nav>
                 </div>
@@ -42,7 +42,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header bg-dark text-white font-weight-bold text-center">Pendaftaran Kunjungan Pasien</div>
-                    <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>kunjungan/save">
+                    <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>pendaftaran/save">
                         <div class="card-body">
                             <div class="form-group row">
                                 <label class="col-md-3">Pasien</label>
@@ -68,6 +68,7 @@
                                     <input type="text" class="form-control" name="no_pasien" id="no_pasien" readonly required>
                                 </div>
                             </div>
+                            <div class="border-top mt-3 mb-3"></div>
                             <div class="form-group row">
                                 <label class="col-md-3">Tanggal Pendaftaran</label>
                                 <div class="col-md-9">
@@ -121,7 +122,7 @@
 
         <div class="col-12">
             <div class="card">
-                <div class="card-header bg-dark text-white font-weight-bold text-center">Daftar Kunjungan</div>
+                <div class="card-header bg-dark text-white font-weight-bold text-center">Daftar Kunjungan Pasien</div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table id="zero_config" class="table table-striped table-bordered">
@@ -139,7 +140,7 @@
                             <tbody>
                             <?php 
 							$no = 1;
-							foreach($kunjungan as $data)
+							foreach($pendaftaran as $data)
 							{
 							?>
                                 <tr>
@@ -155,9 +156,9 @@
                                         echo '<span class="badge bg-success"><i class="mdi mdi-calendar-check"></i>';}?> <?php echo $data->status; ?></span></td>
                                     <td>
                                         <div class="btn-group">
-                                            <a class="btn btn-outline-success btn-sm" href="<?php echo base_url(); ?>kunjungan/done/<?php echo $data->no_pendaftaran; ?>"><i class="mdi mdi-check"></i></a>
-                                            <a class="btn btn-outline-warning btn-sm" href="<?php echo base_url(); ?>kunjungan/wait/<?php echo $data->no_pendaftaran; ?>"><i class="mdi mdi-close"></i></a>
-                                            <a class="btn btn-outline-danger btn-sm" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>kunjungan/delete/<?php echo $data->no_pendaftaran; ?>"><i class="mdi mdi-delete"></i></a>
+                                            <a class="btn btn-outline-success btn-sm" href="<?php echo base_url(); ?>pendaftaran/done/<?php echo $data->no_pendaftaran; ?>"><i class="mdi mdi-check"></i></a>
+                                            <a class="btn btn-outline-warning btn-sm" href="<?php echo base_url(); ?>pendaftaran/wait/<?php echo $data->no_pendaftaran; ?>"><i class="mdi mdi-close"></i></a>
+                                            <a class="btn btn-outline-danger btn-sm" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>pendaftaran/delete/<?php echo $data->no_pendaftaran; ?>"><i class="mdi mdi-delete"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -242,7 +243,6 @@
         var quill = new Quill('#editor', {
             theme: 'snow'
         });
-
         $('#pasien').on('change', function() {
             var kode = $(this).find(":selected").attr("kode");
             var nama = $(this).find(":selected").attr("nama");

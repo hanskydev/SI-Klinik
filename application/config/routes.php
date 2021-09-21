@@ -56,8 +56,10 @@ $route['form'] = 'form';
 $route['dokter'] = 'dokter';
 $route['pasien'] = 'pasien';
 $route['obat'] = 'obat';
-$route['kunjungan'] = 'kunjungan';
+$route['pendaftaran'] = 'pendaftaran';
 $route['penyakit'] = 'penyakit';
+$route['layanan'] = 'layanan';
+$route['periksa'] = 'periksa';
 $route['laporan'] = 'laporan';
 
 $route['404_override'] = '';

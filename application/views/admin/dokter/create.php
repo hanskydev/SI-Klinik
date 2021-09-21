@@ -38,10 +38,9 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
+                    <div class="card-header bg-dark text-white font-weight-bold text-center">Data Informasi Dokter</div>
                     <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>dokter/save">
                         <div class="card-body">
-                            <h5 class="card-title">Data Informasi Dokter</h5>
-                            <br>
                             <div class="form-group row">
                                 <label class="col-md-3">Nama Dokter</label>
                                 <div class="col-md-9">
@@ -103,9 +102,9 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-3">Spesialisasi</label>
+                                <label class="col-md-3">Spesialis</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="spesialisasi" required>
+                                    <input type="text" class="form-control" name="spesialis" required>
                                 </div>
                             </div>
                             <div class="form-group row">

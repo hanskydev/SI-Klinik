@@ -1,4 +1,4 @@
-<title>SI Klinik - Tambah Periksa</title>
+<title>SI Klinik - Periksa Pasien</title>
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/libs/select2/dist/css/select2.min.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/libs/jquery-minicolors/jquery.minicolors.css">
@@ -12,13 +12,13 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-                <h4 class="page-title">Tambah Periksa</h4>
+                <h4 class="page-title">Periksa Pasien</h4>
                 <div class="ms-auto text-end">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Dashboard</a></li>
                             <li class="breadcrumb-item"><a href="<?php echo base_url('periksa'); ?>">Periksa</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Tambah Periksa</li>
+                            <li class="breadcrumb-item active" aria-current="page">Periksa Pasien</li>
                         </ol>
                     </nav>
                 </div>
@@ -35,83 +35,112 @@
         <!-- ============================================================== -->
         <!-- Main  -->
         <!-- ============================================================== -->
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>periksa/save">
+        <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>periksa/save">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header bg-dark text-white font-weight-bold text-center">Pasien</div>
                         <div class="card-body">
-                            <h5 class="card-title">Data Informasi Periksa</h5>
-                            <br>
                             <div class="form-group row">
-                                <label class="col-md-3">Nama Periksa</label>
+                                <label class="col-md-3">Pasien</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="nama" required>
+                                    <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" name="pasien" id="pasien" required>
+                                        <option>Pilih</option>
+                                        <?php foreach($pasien as $pasien) : ?>
+                                        <option kd_pasien="<?php echo $pasien->kd_pasien;?>" pasien="<?php echo $pasien->nm_pasien;?>" no_pasien="<?php echo $pasien->no_pasien;?>" jekel_pasien="<?php echo $pasien->jns_kelamin;?>" tgl_pasien="<?php echo $pasien->tgl_lahir;?>" goldarah_pasien="<?php echo $pasien->gol_darah;?>"><?php echo $pasien->nm_pasien; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3">Nama Pasien</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="nm_pasien" id="nm_pasien" readonly required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3">Nomor Pasien</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="no_pasien" id="no_pasien" readonly required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3">Jenis Kelamin</label>
                                 <div class="col-md-9">
-                                    <div class="form-check">
-                                        <input type="radio" class="form-check-input" id="customControlValidation1" name="jenis_kelamin" value="Laki-laki" required>
-                                        <label class="form-check-label mb-0" for="customControlValidation1">Laki-laki</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="radio" class="form-check-input" id="customControlValidation2" name="jenis_kelamin" value="Perempuan" required>
-                                        <label class="form-check-label mb-0" for="customControlValidation2">Perempuan</label>
-                                    </div>
+                                    <input type="text" class="form-control" name="jekel_pasien" id="jekel_pasien" readonly required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3">Tanggal Lahir</label>
                                 <div class="col-md-9">
+                                    <input type="text" class="form-control" name="tgl_pasien" id="tgl_pasien" readonly required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3">Golongan Darah</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="goldarah_pasien" id="goldarah_pasien" readonly required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header bg-dark text-white font-weight-bold text-center">Dokter</div>
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label class="col-md-3">Dokter</label>
+                                <div class="col-md-9">
+                                    <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" name="dokter" id="dokter" required>
+                                        <option>Pilih</option>
+                                        <?php foreach($dokter as $dokter) : ?>
+                                        <option kd_dokter="<?php echo $dokter->kd_dokter;?>" dokter="<?php echo $dokter->nm_dokter;?>" spesialis="<?php echo $dokter->spesialis;?>"><?php echo $dokter->nm_dokter; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3">Nama Dokter</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="nm_dokter" id="nm_dokter" readonly required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3">Spesialis</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="spesialis" id="spesialis" readonly required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-header bg-dark text-white font-weight-bold text-center">Tanggal</div>
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label class="col-md-3">Tanggal Periksa</label>
+                                <div class="col-md-9">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="datepicker-autoclose" placeholder="dd/mm/yyyy" name="tanggal_lahir" required>
+                                        <input type="text" class="form-control" id="datepicker-autoclose" placeholder="dd/mm/yyyy" name="tanggal_periksa" required>
                                         <div class="input-group-append">
                                             <span class="input-group-text h-100"><i class="fa fa-calendar"></i></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Keluhan Pasien</h4>
                             <div class="form-group row">
-                                <label class="col-md-3">Nomor Telepon</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" name="no_telp" maxlength="13" onkeypress='validate(event)' required>
-                                    <script>
-                                        function validate(evt) {
-                                            var theEvent = evt || window.event;
-                                            // Handle paste
-                                            if (theEvent.type === 'paste') {
-                                                key = event.clipboardData.getData('text/plain');
-                                            } else {
-                                                // Handle key press
-                                                var key = theEvent.keyCode || theEvent.which;
-                                                key = String.fromCharCode(key);
-                                            }
-                                            var regex = /[0-9]|\./;
-                                            if (!regex.test(key)) {
-                                                theEvent.returnValue = false;
-                                                if (theEvent.preventDefault) theEvent.preventDefault();
-                                            }
-                                        }
-                                    </script>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-3">SIP</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" name="sip" required>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-3">Spesialis</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" name="spesialis" required>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-3">Alamat</label>
-                                <div class="col-md-9">
-                                    <textarea class="form-control" name="alamat" rows="3" required></textarea>
+                                <div class="col-md-12">
+                                    <input type="hidden" class="form-control" name="kd_pasien" id="kd_pasien" required>
+                                    <input type="hidden" class="form-control" name="kd_dokter" id="kd_dokter" required>
+                                    <textarea class="form-control" name="keluhan" rows="5" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -122,10 +151,10 @@
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </div>
-                    </form>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+        </form>
         <!-- ============================================================== -->
         <!-- End Main -->
         <!-- ============================================================== -->
@@ -186,5 +215,27 @@
     });
     var quill = new Quill('#editor', {
         theme: 'snow'
+    });
+    $('#pasien').on('change', function() {
+        var kd_pasien = $(this).find(":selected").attr("kd_pasien");
+        var pasien = $(this).find(":selected").attr("pasien");
+        var no_pasien = $(this).find(":selected").attr("no_pasien");
+        var jekel_pasien = $(this).find(":selected").attr("jekel_pasien");
+        var tgl_pasien = $(this).find(":selected").attr("tgl_pasien");
+        var goldarah_pasien = $(this).find(":selected").attr("goldarah_pasien");
+        $('#kd_pasien').val(kd_pasien);
+        $('#nm_pasien').val(pasien);
+        $('#no_pasien').val(no_pasien);
+        $('#jekel_pasien').val(jekel_pasien);
+        $('#tgl_pasien').val(tgl_pasien);
+        $('#goldarah_pasien').val(goldarah_pasien);
+    });
+    $('#dokter').on('change', function() {
+        var kd_dokter = $(this).find(":selected").attr("kd_dokter");
+        var dokter = $(this).find(":selected").attr("dokter");
+        var spesialis = $(this).find(":selected").attr("spesialis");
+        $('#kd_dokter').val(kd_dokter);
+        $('#nm_dokter').val(dokter);
+        $('#spesialis').val(spesialis);
     });
 </script>

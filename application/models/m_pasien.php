@@ -27,7 +27,9 @@ class M_pasien extends CI_Model
 
     public function delete($id)
     {
-        return $this->db->delete($this->table, array('kd_pasien' => $id));
+        $tables = array('keluarga', 'pendaftaran', 'periksa', 'pasien');
+        $this->db->where('kd_pasien', $id);
+        return $this->db->delete($tables);
     }
 
     public function addcontact($data)

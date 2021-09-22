@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2021 at 09:08 AM
+-- Generation Time: Sep 22, 2021 at 10:05 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -57,17 +57,17 @@ CREATE TABLE `dokter` (
   `no_telepon` varchar(13) NOT NULL,
   `alamat` text NOT NULL,
   `sip` varchar(100) NOT NULL,
-  `spesialisasi` varchar(100) NOT NULL
+  `spesialis` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `dokter`
 --
 
-INSERT INTO `dokter` (`kd_dokter`, `nm_dokter`, `jns_kelamin`, `tgl_lahir`, `no_telepon`, `alamat`, `sip`, `spesialisasi`) VALUES
-(1, 'Hans Mulya', 'Laki-laki', '10/07/2000', '081222441212', 'Jln. Pusat Kota no 12, Padang', 'DOKTER-2000', 'Mata'),
-(2, 'Putri', 'Perempuan', '31/07/2000', '081200009999', 'Jln. Dekat Jalan No 11, Padang', 'DOKTER-2021', 'Jantung'),
-(3, 'Hanna', 'Perempuan', '12/06/2000', '081261112311', 'Jln. Khatib Sulaiman no 6', 'DOKTER-2000', 'Hati');
+INSERT INTO `dokter` (`kd_dokter`, `nm_dokter`, `jns_kelamin`, `tgl_lahir`, `no_telepon`, `alamat`, `sip`, `spesialis`) VALUES
+(1, 'Hans Mulya', 'Laki-laki', '10/07/2000', '081222441212', 'Jln. Pusat Kota no 12, Padang', 'DOKTER-2000', 'Penyakit Umum'),
+(2, 'Putri Melia', 'Perempuan', '31/07/2000', '081200009999', 'Jln. Dekat Jalan No 11, Padang', 'DOKTER-2021', 'Jantung'),
+(3, 'Hanna Ardhani', 'Perempuan', '12/06/2000', '081261112311', 'Jln. Khatib Sulaiman no 6', 'DOKTER-2000', 'Hati');
 
 -- --------------------------------------------------------
 
@@ -96,27 +96,24 @@ INSERT INTO `keluarga` (`kd_keluarga`, `kd_pasien`, `nm_keluarga`, `status_kelua
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kunjungan`
+-- Table structure for table `layanan`
 --
 
-CREATE TABLE `kunjungan` (
-  `no_pendaftaran` int(11) NOT NULL,
-  `kd_pasien` int(11) NOT NULL,
-  `tgl_daftar` varchar(10) NOT NULL,
-  `tgl_kunjungan` varchar(10) NOT NULL,
-  `jam` varchar(5) NOT NULL,
-  `status` enum('Menunggu','Selesai') NOT NULL
+CREATE TABLE `layanan` (
+  `kd_layanan` int(11) NOT NULL,
+  `nm_layanan` varchar(256) NOT NULL,
+  `biaya` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kunjungan`
+-- Dumping data for table `layanan`
 --
 
-INSERT INTO `kunjungan` (`no_pendaftaran`, `kd_pasien`, `tgl_daftar`, `tgl_kunjungan`, `jam`, `status`) VALUES
-(1, 1, '15/09/2021', '18/09/2021', '10:00', 'Selesai'),
-(2, 3, '16/09/2021', '20/09/2021', '09:30', 'Menunggu'),
-(3, 2, '16/09/2021', '01/10/2021', '08:30', 'Menunggu'),
-(4, 4, '25/10/2021', '02/10/2021', '09:00', 'Menunggu');
+INSERT INTO `layanan` (`kd_layanan`, `nm_layanan`, `biaya`) VALUES
+(1, 'Konsultasi', 75000),
+(2, 'Rawat Inap', 200000),
+(3, 'Rawat Jalan', 175000),
+(4, 'Suntik Vaksin Covid-19', 250000);
 
 -- --------------------------------------------------------
 
@@ -129,8 +126,8 @@ CREATE TABLE `obat` (
   `nm_obat` varchar(256) NOT NULL,
   `deskripsi` text NOT NULL,
   `stok` int(11) NOT NULL,
-  `harga_modal` varchar(20) NOT NULL,
-  `harga_jual` varchar(20) NOT NULL
+  `harga_modal` int(15) NOT NULL,
+  `harga_jual` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -138,10 +135,10 @@ CREATE TABLE `obat` (
 --
 
 INSERT INTO `obat` (`kd_obat`, `nm_obat`, `deskripsi`, `stok`, `harga_modal`, `harga_jual`) VALUES
-(1, 'Paracetamol 500MG', 'Mengatasi demam, nyeri, sakit kepala, dan ngilu-ngilu.', 25, '30000', '32000'),
-(2, 'Promag Tablet', 'Promag 1box isi 3 lembar@10 tablet untuk meringankan gejala sakit maag akibat kelebihan asam lambung.', 30, '20000', '22000'),
-(3, 'Freshcare 10ML', 'KANDUNGAN/KOMPOSISI\r\nMenthol 20%, Camphor 4%, Olive Virgin Oil 19%, Essensial oil 6% hingga 100%.', 50, '15000', '16000'),
-(4, 'Combantrin Jeruk Sirup 10ML', 'Combantrin Jeruk Sirup merupakan obat cacing yang bekerja untuk mengatasi cacing kremi (Enterobius vermicularis), cacing gelang (Ascaris lumbricoides), cacing tambang (Ancylostoma duodenale), Cacing tambang (Necator americanus), cacing Trichostrongyfus colubriformis dan Trichostrongylus orientalls.', 30, '18500', '20000');
+(1, 'Paracetamol 500MG', 'Mengatasi demam, nyeri, sakit kepala, dan ngilu-ngilu.', 25, 30000, 32000),
+(2, 'Promag Tablet', 'Promag 1box isi 3 lembar@10 tablet untuk meringankan gejala sakit maag akibat kelebihan asam lambung.', 30, 20000, 22000),
+(3, 'Freshcare 10ML', 'KANDUNGAN/KOMPOSISI\r\nMenthol 20%, Camphor 4%, Olive Virgin Oil 19%, Essensial oil 6% hingga 100%.', 50, 15000, 16000),
+(4, 'Combantrin Jeruk Sirup 10ML', 'Combantrin Jeruk Sirup merupakan obat cacing yang bekerja untuk mengatasi cacing kremi, cacing gelang, cacing tambang, Cacing tambang, cacing Trichostrongyfus colubriformis dan Trichostrongylus orientalls.', 30, 18500, 20000);
 
 -- --------------------------------------------------------
 
@@ -174,6 +171,31 @@ INSERT INTO `pasien` (`kd_pasien`, `nm_pasien`, `no_pasien`, `no_identitas`, `jn
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pendaftaran`
+--
+
+CREATE TABLE `pendaftaran` (
+  `no_pendaftaran` int(11) NOT NULL,
+  `kd_pasien` int(11) NOT NULL,
+  `tgl_daftar` varchar(10) NOT NULL,
+  `tgl_kunjungan` varchar(10) NOT NULL,
+  `jam` varchar(5) NOT NULL,
+  `status` enum('Menunggu','Selesai') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pendaftaran`
+--
+
+INSERT INTO `pendaftaran` (`no_pendaftaran`, `kd_pasien`, `tgl_daftar`, `tgl_kunjungan`, `jam`, `status`) VALUES
+(1, 1, '15/09/2021', '18/09/2021', '10:00', 'Selesai'),
+(2, 3, '16/09/2021', '20/09/2021', '09:30', 'Selesai'),
+(3, 2, '16/09/2021', '01/10/2021', '08:30', 'Menunggu'),
+(4, 4, '21/09/2021', '25/09/2021', '08:00', 'Menunggu');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `penyakit`
 --
 
@@ -191,6 +213,44 @@ INSERT INTO `penyakit` (`kd_penyakit`, `nm_penyakit`, `kd_icd`) VALUES
 (1, 'Demam', 'A01.1'),
 (2, 'Sakit Kepala', 'R51'),
 (3, 'Infeksi Virus Corona', 'B34.2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `periksa`
+--
+
+CREATE TABLE `periksa` (
+  `kd_periksa` int(11) NOT NULL,
+  `kd_dokter` int(11) NOT NULL,
+  `kd_pasien` int(11) NOT NULL,
+  `kd_penyakit` int(11) DEFAULT NULL,
+  `kd_resep` int(11) DEFAULT NULL,
+  `kd_layanan` int(11) DEFAULT NULL,
+  `tgl_periksa` varchar(10) NOT NULL,
+  `keluhan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `periksa`
+--
+
+INSERT INTO `periksa` (`kd_periksa`, `kd_dokter`, `kd_pasien`, `kd_penyakit`, `kd_resep`, `kd_layanan`, `tgl_periksa`, `keluhan`) VALUES
+(1, 1, 1, 1, NULL, 1, '01/10/2021', 'Kepala pusing, badan terasa panas dan pegal-pegal, terasa nyeri dileher'),
+(2, 2, 2, NULL, NULL, NULL, '22/09/2021', 'Perut terasa mual');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `resep`
+--
+
+CREATE TABLE `resep` (
+  `kd_resep` int(11) NOT NULL,
+  `kd_periksa` int(11) NOT NULL,
+  `kd_obat` int(11) NOT NULL,
+  `pemakaian` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -213,14 +273,13 @@ ALTER TABLE `dokter`
 --
 ALTER TABLE `keluarga`
   ADD PRIMARY KEY (`kd_keluarga`),
-  ADD KEY `kontak` (`kd_pasien`);
+  ADD KEY `keluarga_pasien` (`kd_pasien`);
 
 --
--- Indexes for table `kunjungan`
+-- Indexes for table `layanan`
 --
-ALTER TABLE `kunjungan`
-  ADD PRIMARY KEY (`no_pendaftaran`),
-  ADD KEY `kunjungan` (`kd_pasien`);
+ALTER TABLE `layanan`
+  ADD PRIMARY KEY (`kd_layanan`);
 
 --
 -- Indexes for table `obat`
@@ -235,10 +294,36 @@ ALTER TABLE `pasien`
   ADD PRIMARY KEY (`kd_pasien`);
 
 --
+-- Indexes for table `pendaftaran`
+--
+ALTER TABLE `pendaftaran`
+  ADD PRIMARY KEY (`no_pendaftaran`),
+  ADD KEY `pendaftaran_pasien` (`kd_pasien`) USING BTREE;
+
+--
 -- Indexes for table `penyakit`
 --
 ALTER TABLE `penyakit`
   ADD PRIMARY KEY (`kd_penyakit`);
+
+--
+-- Indexes for table `periksa`
+--
+ALTER TABLE `periksa`
+  ADD PRIMARY KEY (`kd_periksa`),
+  ADD KEY `periksa_dokter` (`kd_dokter`),
+  ADD KEY `periksa_pasien` (`kd_pasien`),
+  ADD KEY `periksa_penyakit` (`kd_penyakit`),
+  ADD KEY `periksa_layanan` (`kd_layanan`),
+  ADD KEY `periksa_resep` (`kd_resep`);
+
+--
+-- Indexes for table `resep`
+--
+ALTER TABLE `resep`
+  ADD PRIMARY KEY (`kd_resep`),
+  ADD KEY `resep_periksa` (`kd_periksa`),
+  ADD KEY `resep_obat` (`kd_obat`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -263,10 +348,10 @@ ALTER TABLE `keluarga`
   MODIFY `kd_keluarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `kunjungan`
+-- AUTO_INCREMENT for table `layanan`
 --
-ALTER TABLE `kunjungan`
-  MODIFY `no_pendaftaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `layanan`
+  MODIFY `kd_layanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `obat`
@@ -281,10 +366,28 @@ ALTER TABLE `pasien`
   MODIFY `kd_pasien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `pendaftaran`
+--
+ALTER TABLE `pendaftaran`
+  MODIFY `no_pendaftaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `penyakit`
 --
 ALTER TABLE `penyakit`
   MODIFY `kd_penyakit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `periksa`
+--
+ALTER TABLE `periksa`
+  MODIFY `kd_periksa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `resep`
+--
+ALTER TABLE `resep`
+  MODIFY `kd_resep` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -294,13 +397,30 @@ ALTER TABLE `penyakit`
 -- Constraints for table `keluarga`
 --
 ALTER TABLE `keluarga`
-  ADD CONSTRAINT `kontak` FOREIGN KEY (`kd_pasien`) REFERENCES `pasien` (`kd_pasien`);
+  ADD CONSTRAINT `keluarga_pasien` FOREIGN KEY (`kd_pasien`) REFERENCES `pasien` (`kd_pasien`);
 
 --
--- Constraints for table `kunjungan`
+-- Constraints for table `pendaftaran`
 --
-ALTER TABLE `kunjungan`
-  ADD CONSTRAINT `kunjungan` FOREIGN KEY (`kd_pasien`) REFERENCES `pasien` (`kd_pasien`);
+ALTER TABLE `pendaftaran`
+  ADD CONSTRAINT `pendaftaran_pasien` FOREIGN KEY (`kd_pasien`) REFERENCES `pasien` (`kd_pasien`);
+
+--
+-- Constraints for table `periksa`
+--
+ALTER TABLE `periksa`
+  ADD CONSTRAINT `periksa_dokter` FOREIGN KEY (`kd_dokter`) REFERENCES `dokter` (`kd_dokter`),
+  ADD CONSTRAINT `periksa_layanan` FOREIGN KEY (`kd_layanan`) REFERENCES `layanan` (`kd_layanan`),
+  ADD CONSTRAINT `periksa_pasien` FOREIGN KEY (`kd_pasien`) REFERENCES `pasien` (`kd_pasien`),
+  ADD CONSTRAINT `periksa_penyakit` FOREIGN KEY (`kd_penyakit`) REFERENCES `penyakit` (`kd_penyakit`),
+  ADD CONSTRAINT `periksa_resep` FOREIGN KEY (`kd_resep`) REFERENCES `resep` (`kd_resep`);
+
+--
+-- Constraints for table `resep`
+--
+ALTER TABLE `resep`
+  ADD CONSTRAINT `resep_obat` FOREIGN KEY (`kd_obat`) REFERENCES `obat` (`kd_obat`),
+  ADD CONSTRAINT `resep_periksa` FOREIGN KEY (`kd_periksa`) REFERENCES `periksa` (`kd_periksa`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

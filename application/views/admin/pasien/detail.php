@@ -70,8 +70,9 @@
                                 </tr>
                             </table>
                         </div>
-                        <div class="d-flex justify-content-center">
+                        <div class="d-flex justify-content-around">
                             <a href="<?php echo base_url(); ?>pasien/edit/<?php echo $pasien->kd_pasien; ?>" class="btn btn-success text-white"><i class="mdi mdi-account-edit"></i> Edit Data</a>
+                            <a onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>pasien/delete/<?php echo $pasien->kd_pasien; ?>" class="btn btn-danger text-white"><i class="mdi mdi-delete"></i> Hapus Data</a>
                         </div>
                     </div>
                 </div>

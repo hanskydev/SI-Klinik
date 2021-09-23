@@ -2,11 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Periksa extends CI_Controller {
+	public $CI = NULL;
 
 	function __construct(){
 		parent::__construct();
 		$this->load->model('m_periksa');
         $this->load->library('form_validation');
+		$this->CI = & get_instance();
 	
 		if($this->session->userdata('status') != 'login'){
 			redirect(base_url('auth?msg=login_warning'));
@@ -21,6 +23,23 @@ class Periksa extends CI_Controller {
 		$this->load->view('admin/message');
 		$this->load->view('layout/sidebar');
 		$this->load->view('admin/periksa/periksa', $data);
+		$this->load->view('layout/footer');
+	}
+
+	public function diagnosa($kd_periksa)
+	{
+		$data['periksa'] = $this->m_periksa->getDiagnosa($kd_periksa);
+		$data['penyakit'] = $this->m_periksa->getPenyakit();
+		$data['obat'] = $this->m_periksa->getObat();
+		$data['layanan'] = $this->m_periksa->getLayanan();
+
+		$data['get_penyakit'] = $this->m_periksa->getPasienPenyakit($kd_periksa);
+		$data['get_layanan'] = $this->m_periksa->getPasienLayanan($kd_periksa);
+
+		$this->load->view('layout/header');
+		$this->load->view('admin/message');
+		$this->load->view('layout/sidebar');
+		$this->load->view('admin/periksa/diagnosa', $data);
 		$this->load->view('layout/footer');
 	}
 
@@ -65,24 +84,25 @@ class Periksa extends CI_Controller {
 		}
 	}
 
-	public function done($no_pendaftaran)
+	public function proses()
 	{
-		$data['status'] = 'Selesai';
-		$this->m_periksa->setDone($data, $no_pendaftaran);
-		redirect(base_url('periksa?msg=set_done'));
+		$kd_periksa = $this->input->post('kd_periksa');
+		$data['kd_penyakit'] = $this->input->post('kd_penyakit');
+		$data['kd_layanan'] = $this->input->post('kd_layanan');
+		$this->m_periksa->update($data, $kd_periksa);
+		redirect(base_url('diagnosa/'.$kd_periksa.'?msg=diagnosa'));
 	}
 
-	public function wait($no_pendaftaran)
+	public function delete($kd_periksa)
 	{
-		$data['status'] = 'Menunggu';
-		$this->m_periksa->setWait($data, $no_pendaftaran);
-		redirect(base_url('periksa?msg=set_wait'));
-	}
-
-	public function delete($no_pendaftaran)
-	{
-		$this->m_periksa->delete($no_pendaftaran);
+		$this->m_periksa->delete($kd_periksa);
 		redirect(base_url('periksa?msg=delete_success'));
 	}
+
+	public function rupiah($angka)
+    {
+        $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+        return $hasil_rupiah;
+    }
 	
 }

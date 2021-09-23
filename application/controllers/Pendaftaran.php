@@ -51,14 +51,14 @@ class Pendaftaran extends CI_Controller {
 	public function done($no_pendaftaran)
 	{
 		$data['status'] = 'Selesai';
-		$this->m_pendaftaran->setDone($data, $no_pendaftaran);
+		$this->m_pendaftaran->update($data, $no_pendaftaran);
 		redirect(base_url('pendaftaran?msg=set_done'));
 	}
 
 	public function wait($no_pendaftaran)
 	{
 		$data['status'] = 'Menunggu';
-		$this->m_pendaftaran->setWait($data, $no_pendaftaran);
+		$this->m_pendaftaran->update($data, $no_pendaftaran);
 		redirect(base_url('pendaftaran?msg=set_wait'));
 	}
 

@@ -74,9 +74,11 @@
                                     <td><?php echo $data->spesialis; ?></td>
                                     <td>
                                         <div class="btn-group">
-                                            <a class="btn btn-outline-success btn-sm" href="<?php echo base_url(); ?>periksa/done/<?php echo $data->kd_periksa; ?>"><i class="mdi mdi-check"></i></a>
-                                            <a class="btn btn-outline-warning btn-sm" href="<?php echo base_url(); ?>periksa/wait/<?php echo $data->kd_periksa; ?>"><i class="mdi mdi-close"></i></a>
-                                            <a class="btn btn-outline-danger btn-sm" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>periksa/delete/<?php echo $data->kd_periksa; ?>"><i class="mdi mdi-delete"></i></a>
+                                            <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-settings mdi-18px"></i></button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="<?php echo base_url(); ?>diagnosa/<?php echo $data->kd_pasien; ?>">Diagnosa</a>
+                                                <a class="dropdown-item" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>periksa/delete/<?php echo $data->kd_periksa; ?>">Hapus</a>
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>

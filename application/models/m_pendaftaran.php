@@ -41,14 +41,4 @@ class M_pendaftaran extends CI_Model
         return $query;
     }
 
-    public function setDone($data, $id)
-    {
-        return $this->db->update($this->table, $data, array('no_pendaftaran' => $id));
-    }
-
-    public function setWait($data, $id)
-    {
-        return $this->db->update($this->table, $data, array('no_pendaftaran' => $id));
-    }
-
 }

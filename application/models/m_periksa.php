@@ -22,17 +22,17 @@ class M_periksa extends CI_Model
 
     public function getById($id)
     {
-        return $this->db->get_where($this->table, ['no_pendaftaran' => $id])->row();
+        return $this->db->get_where($this->table, ['kd_periksa' => $id])->row();
     }
 
     public function update($data, $id)
     {
-        return $this->db->update($this->table, $data, array('no_pendaftaran' => $id));
+        return $this->db->update($this->table, $data, array('kd_periksa' => $id));
     }
 
     public function delete($id)
     {
-        return $this->db->delete($this->table, array('no_pendaftaran' => $id));
+        return $this->db->delete($this->table, array('kd_periksa' => $id));
     }
 
     public function getPasien()
@@ -70,14 +70,36 @@ class M_periksa extends CI_Model
         return $query;
     }
 
-    public function setDone($data, $id)
+    public function getDiagnosa($id)
     {
-        return $this->db->update($this->table, $data, array('no_pendaftaran' => $id));
+        $this->db->select('*');
+        $this->db->from('periksa');
+        $this->db->join('dokter','periksa.kd_dokter = dokter.kd_dokter');
+        $this->db->join('pasien','periksa.kd_pasien = pasien.kd_pasien');
+        $this->db->where('kd_periksa', $id);
+        $this->db->order_by('nm_pasien', 'asc');
+        $query = $this->db->get();
+        return $query->row();
     }
 
-    public function setWait($data, $id)
+    public function getPasienPenyakit($id)
     {
-        return $this->db->update($this->table, $data, array('no_pendaftaran' => $id));
+    $this->db->select('*');
+    $this->db->from('periksa');
+    $this->db->join('penyakit','periksa.kd_penyakit = penyakit.kd_penyakit');
+    $this->db->where('periksa.kd_periksa', $id);
+    $query = $this->db->get();
+    return $query->row();
+    }
+
+    public function getPasienLayanan($id)
+    {
+    $this->db->select('*');
+    $this->db->from('layanan');
+    $this->db->join('periksa','layanan.kd_layanan = periksa.kd_layanan');
+    $this->db->where('periksa.kd_periksa', $id);
+    $query = $this->db->get();
+    return $query->row();
     }
 
 }

@@ -60,6 +60,7 @@ $route['pendaftaran'] = 'pendaftaran';
 $route['penyakit'] = 'penyakit';
 $route['layanan'] = 'layanan';
 $route['periksa'] = 'periksa';
+$route['diagnosa/(:num)'] = 'periksa/diagnosa/$1';
 $route['laporan'] = 'laporan';
 
 $route['404_override'] = '';

@@ -112,9 +112,6 @@
                                     <input type="text" class="form-control" name="spesialis" id="spesialis" readonly required>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-header bg-dark text-white font-weight-bold text-center">Tanggal</div>
-                        <div class="card-body">
                             <div class="form-group row">
                                 <label class="col-md-3">Tanggal Periksa</label>
                                 <div class="col-md-9">

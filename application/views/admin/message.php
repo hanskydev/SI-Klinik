@@ -73,4 +73,10 @@ if ($msg=='set_wait') {
     </script>
     ";
 }
+if ($msg=='diagnosa') {
+	echo "<script> 
+	toastr.success('Data diagnosa berhasil diperbarui', 'Berhasil!');
+    </script>
+    ";
+}
 ?>

@@ -29,6 +29,10 @@
         <!-- ============================================================== -->
         <!-- Main  -->
         <!-- ============================================================== -->
+
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/extra-libs/multicheck/multicheck.css">
+        <link href="<?php echo base_url(); ?>assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+        
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -77,9 +81,6 @@
                     </div>
                 </div>
             </div>
-
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/extra-libs/multicheck/multicheck.css">
-            <link href="<?php echo base_url(); ?>assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
 
             <div class="col-md-6">
                 <div class="card">
@@ -180,7 +181,7 @@
                                 </tr>
                                 <?php 
                                 if (empty($kontak)){
-                                    echo '<td colspan="4">Belum ada data</td>';
+                                    echo '<td colspan="4">Tidak ada data</td>';
                                 }
 							    $no = 1;
 							    foreach($kontak as $k)

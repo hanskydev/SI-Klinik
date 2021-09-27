@@ -32,7 +32,7 @@
 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/extra-libs/multicheck/multicheck.css">
         <link href="<?php echo base_url(); ?>assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
-        
+
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -82,7 +82,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <div class="card">
                     <div class="card-header bg-dark text-white font-weight-bold text-center">Kontak Keluarga</div>
                     <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>pasien/addcontact">
@@ -167,38 +167,35 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <div class="card">
                     <div class="card-header bg-dark text-white font-weight-bold text-center">Rekam Medis</div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover table-responsive text-center">
-                                <tr>
-                                    <th>No</th>
-                                    <th>Tanggal</th>
-                                    <th>Status</th>
-                                    <th><i class="mdi mdi-briefcase-check mdi-18px"></i></th>
-                                </tr>
-                                <?php 
-                                if (empty($kontak)){
-                                    echo '<td colspan="4">Tidak ada data</td>';
-                                }
-							    $no = 1;
-							    foreach($kontak as $k)
-							    {
-							    ?>
-                                <tr>
-                                    <td><?php echo $no; ?></td>
-                                    <td>08/09/2021</td>
-                                    <td>Selesai</td>
-                                    <td><a href="#" class="btn btn-success text-white"><i class="mdi mdi-file-check"></i></a></td>
-                                </tr>
-                                <?php
-                                $no++;
-							    }
-							    ?>
-                            </table>
-                        </div>
+                        <?php 
+                        if (empty($periksa)){
+                            echo 'Tidak ada data ditemukan!';
+                        }
+						$no = 1;
+						foreach($periksa as $hasil)
+						{
+						?>
+                            <div class="card">
+                                <a class="card-header link" data-bs-toggle="collapse" href="#collapse-<?php echo $no; ?>" role="button" aria-expanded="false" aria-controls="collapse-<?php echo $no; ?>">
+                                    <i class="mdi mdi-briefcase" aria-hidden="true"></i>
+                                    <span>Rekam Medis #<?php echo $no; ?> - <?php echo $hasil->tgl_periksa; ?></span>
+                                </a>
+                                <div id="collapse-<?php echo $no; ?>" class="collapse <?php if ($no=='1') echo 'show '?>multi-collapse">
+                                    <div class="card-body widget-content">
+                                        <h4>Keluhan</h4>
+                                        <p><?php echo $hasil->keluhan; ?></p>
+                                        <a href="<?php echo base_url(); ?>diagnosa/<?php echo $hasil->kd_periksa; ?>" target="_blank" class="btn btn-success text-white"><i class="mdi mdi-open-in-new"></i> Periksa Hasil</a>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php
+                        $no++;
+						}
+						?>
                     </div>
                 </div>
             </div>

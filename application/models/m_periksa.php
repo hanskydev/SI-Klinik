@@ -17,12 +17,19 @@ class M_periksa extends CI_Model
 
     public function save($data)
     {
-        return $this->db->insert($this->table, $data);
+        $this->db->insert($this->table, $data);
+        $insert_id = $this->db->insert_id();
+        return $insert_id;
     }
 
     public function getById($id)
     {
         return $this->db->get_where($this->table, ['kd_periksa' => $id])->row();
+    }
+
+    public function getByPasien($id)
+    {
+        return $this->db->get_where($this->table, ['kd_pasien' => $id])->result();
     }
 
     public function update($data, $id)
@@ -78,8 +85,8 @@ class M_periksa extends CI_Model
         $this->db->join('pasien','periksa.kd_pasien = pasien.kd_pasien');
         $this->db->where('kd_periksa', $id);
         $this->db->order_by('nm_pasien', 'asc');
-        $query = $this->db->get();
-        return $query->row();
+        $query = $this->db->get()->row();
+        return $query;
     }
 
     public function getPasienPenyakit($id)
@@ -88,8 +95,8 @@ class M_periksa extends CI_Model
     $this->db->from('periksa');
     $this->db->join('penyakit','periksa.kd_penyakit = penyakit.kd_penyakit');
     $this->db->where('periksa.kd_periksa', $id);
-    $query = $this->db->get();
-    return $query->row();
+    $query = $this->db->get()->row();
+    return $query;
     }
 
     public function getPasienLayanan($id)
@@ -98,8 +105,8 @@ class M_periksa extends CI_Model
     $this->db->from('layanan');
     $this->db->join('periksa','layanan.kd_layanan = periksa.kd_layanan');
     $this->db->where('periksa.kd_periksa', $id);
-    $query = $this->db->get();
-    return $query->row();
+    $query = $this->db->get()->row();
+    return $query;
     }
 
 }

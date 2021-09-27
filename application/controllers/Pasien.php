@@ -29,6 +29,9 @@ class Pasien extends CI_Controller {
 		$data['pasien'] = $this->m_pasien->getById($kd_pasien);
 		$data['kontak'] = $this->m_pasien->getContact($kd_pasien);
 
+		$this->load->model('m_periksa');
+		$data['periksa'] = $this->m_periksa->getByPasien($kd_pasien);
+
 		$this->load->view('layout/header');
 		$this->load->view('admin/message');
 		$this->load->view('layout/sidebar');

@@ -75,8 +75,8 @@ class Periksa extends CI_Controller {
 			$data['kd_penyakit'] = NULL;
 			$data['kd_resep'] = NULL;
 			$data['kd_layanan'] = NULL;
-			$this->m_periksa->save($data);
-			redirect(base_url('periksa?msg=input_success'));
+			$insert_id = $this->m_periksa->save($data);
+			redirect(base_url('diagnosa/'.$insert_id.'?msg=input_success'));
 		}
 		else
 		{

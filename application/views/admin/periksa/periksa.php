@@ -53,8 +53,8 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Pasien</th>
                                     <th>Tanggal Periksa</th>
+                                    <th>Nama Pasien</th>
                                     <th>Dokter Pemeriksa</th>
                                     <th>Spesialis</th>
                                     <th>Aksi</th>
@@ -68,15 +68,15 @@
 							?>
                                 <tr>
                                     <td><?php echo $no++; ?></td>
-                                    <td><?php echo $data->nm_pasien; ?></td>
                                     <td><?php echo $data->tgl_periksa; ?></td>
+                                    <td><?php echo $data->nm_pasien; ?></td>
                                     <td><?php echo $data->nm_dokter; ?></td>
                                     <td><?php echo $data->spesialis; ?></td>
                                     <td>
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-settings mdi-18px"></i></button>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="<?php echo base_url(); ?>diagnosa/<?php echo $data->kd_pasien; ?>">Diagnosa</a>
+                                                <a class="dropdown-item" href="<?php echo base_url(); ?>diagnosa/<?php echo $data->kd_periksa; ?>">Diagnosa</a>
                                                 <a class="dropdown-item" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>periksa/delete/<?php echo $data->kd_periksa; ?>">Hapus</a>
                                             </div>
                                         </div>

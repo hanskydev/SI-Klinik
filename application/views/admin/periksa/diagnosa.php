@@ -231,9 +231,60 @@
                 <div class="card">
                     <div class="card-header bg-dark text-white font-weight-bold text-center">Resep Obat</div>
                     <div class="card-body">
-                        <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>periksa/save">
-
+                        <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>periksa/resep">
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label>Obat</label>
+                                    <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" name="obat" id="obat" required>
+                                        <option>Pilih</option>
+                                        <?php foreach($obat as $obat) : ?>
+                                        <option kd_obat="<?php echo $obat->kd_obat;?>" obat="<?php echo $obat->nm_obat;?>"><?php echo $obat->nm_obat; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <input type="hidden" class="form-control" name="kd_periksa" id="kd_periksa" value="<?php echo $periksa->kd_periksa;?>" required>
+                                    <input type="hidden" class="form-control" name="kd_obat" id="kd_obat" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label>Pemakaian</label>
+                                    <input type="text" class="form-control" name="pemakaian" id="pemakaian" required>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary"><i class="mdi mdi-plus-circle"></i></button>
+                            </div>
                         </form>
+                    </div>
+                    <div class="card-body border-top">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-responsive text-center">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Obat</th>
+                                    <th>Pemakaian</th>
+                                    <th><i class="mdi mdi-settings mdi-18px"></i></th>
+                                </tr>
+                                <?php 
+                                if (empty($get_resep)){
+                                    echo '<td colspan="4">Tidak ada obat</td>';
+                                }
+							    $no = 1;
+							    foreach($get_resep as $resep)
+							    {
+							    ?>
+                                <tr>
+                                    <td><?php echo $no; ?></td>
+                                    <td><?php echo $resep->nm_obat; ?></td>
+                                    <td><?php echo $resep->pemakaian; ?></td>
+                                    <td><a onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>periksa/delresep/<?php echo $periksa->kd_periksa; ?>/<?php echo $resep->kd_resep; ?>" class="btn btn-danger text-white"><i class="mdi mdi-delete"></i></a></td>
+                                </tr>
+                                <?php
+                                $no++;
+							    }
+							    ?>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -290,5 +341,10 @@
                 $("#list").show();
                 $("#update").hide();
             });
+        });
+        //Obat
+        $('#obat').on('change', function() {
+            var kd_obat = $(this).find(":selected").attr("kd_obat");
+            $('#kd_obat').val(kd_obat);
         });
     </script>

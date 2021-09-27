@@ -3,6 +3,7 @@
 class M_periksa extends CI_Model
 {
     private $table = 'periksa';
+    private $resep = 'resep';
 
     public function getAll()
     {
@@ -107,6 +108,27 @@ class M_periksa extends CI_Model
     $this->db->where('periksa.kd_periksa', $id);
     $query = $this->db->get()->row();
     return $query;
+    }
+
+    public function resep($data)
+    {
+        return $this->db->insert($this->resep, $data);
+    }
+
+    public function getPasienResep($id)
+    {
+    $this->db->select('*');
+    $this->db->from('resep');
+    $this->db->join('obat','resep.kd_obat = obat.kd_obat');
+    $this->db->join('periksa','resep.kd_periksa = periksa.kd_periksa');
+    $this->db->where('periksa.kd_periksa', $id);
+    $query = $this->db->get()->result();
+    return $query;
+    }
+
+    public function deleteResep($id)
+    {
+        return $this->db->delete($this->resep, array('kd_resep' => $id));
     }
 
 }

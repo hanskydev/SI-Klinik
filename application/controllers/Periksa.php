@@ -35,6 +35,7 @@ class Periksa extends CI_Controller {
 
 		$data['get_penyakit'] = $this->m_periksa->getPasienPenyakit($kd_periksa);
 		$data['get_layanan'] = $this->m_periksa->getPasienLayanan($kd_periksa);
+		$data['get_resep'] = $this->m_periksa->getPasienResep($kd_periksa);
 
 		$this->load->view('layout/header');
 		$this->load->view('admin/message');
@@ -73,7 +74,6 @@ class Periksa extends CI_Controller {
 			$data['keluhan'] = $this->input->post('keluhan');
 
 			$data['kd_penyakit'] = NULL;
-			$data['kd_resep'] = NULL;
 			$data['kd_layanan'] = NULL;
 			$insert_id = $this->m_periksa->save($data);
 			redirect(base_url('diagnosa/'.$insert_id.'?msg=input_success'));
@@ -93,10 +93,26 @@ class Periksa extends CI_Controller {
 		redirect(base_url('diagnosa/'.$kd_periksa.'?msg=diagnosa'));
 	}
 
+	public function resep()
+	{
+		$kd_periksa = $this->input->post('kd_periksa');
+		$data['kd_periksa'] = $this->input->post('kd_periksa');
+		$data['kd_obat'] = $this->input->post('kd_obat');
+		$data['pemakaian'] = $this->input->post('pemakaian');
+		$this->m_periksa->resep($data);
+		redirect(base_url('diagnosa/'.$kd_periksa.'?msg=diagnosa'));
+	}
+
 	public function delete($kd_periksa)
 	{
 		$this->m_periksa->delete($kd_periksa);
 		redirect(base_url('periksa?msg=delete_success'));
+	}
+
+	public function delresep($kd_periksa, $kd_resep)
+	{
+		$this->m_periksa->deleteResep($kd_resep);
+		redirect(base_url('diagnosa/'.$kd_periksa.'?msg=delete_success'));
 	}
 
 	public function rupiah($angka)

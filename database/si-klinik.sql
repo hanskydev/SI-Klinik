@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2021 at 10:05 AM
+-- Generation Time: Sep 27, 2021 at 10:40 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -65,7 +65,7 @@ CREATE TABLE `dokter` (
 --
 
 INSERT INTO `dokter` (`kd_dokter`, `nm_dokter`, `jns_kelamin`, `tgl_lahir`, `no_telepon`, `alamat`, `sip`, `spesialis`) VALUES
-(1, 'Hans Mulya', 'Laki-laki', '10/07/2000', '081222441212', 'Jln. Pusat Kota no 12, Padang', 'DOKTER-2000', 'Penyakit Umum'),
+(1, 'Hansky M', 'Laki-laki', '10/07/2000', '081222441212', 'Jln. Pusat Kota no 12, Padang', 'DOKTER-2000', 'Penyakit Umum'),
 (2, 'Putri Melia', 'Perempuan', '31/07/2000', '081200009999', 'Jln. Dekat Jalan No 11, Padang', 'DOKTER-2021', 'Jantung'),
 (3, 'Hanna Ardhani', 'Perempuan', '12/06/2000', '081261112311', 'Jln. Khatib Sulaiman no 6', 'DOKTER-2000', 'Hati');
 
@@ -225,7 +225,6 @@ CREATE TABLE `periksa` (
   `kd_dokter` int(11) NOT NULL,
   `kd_pasien` int(11) NOT NULL,
   `kd_penyakit` int(11) DEFAULT NULL,
-  `kd_resep` int(11) DEFAULT NULL,
   `kd_layanan` int(11) DEFAULT NULL,
   `tgl_periksa` varchar(10) NOT NULL,
   `keluhan` text NOT NULL
@@ -235,9 +234,11 @@ CREATE TABLE `periksa` (
 -- Dumping data for table `periksa`
 --
 
-INSERT INTO `periksa` (`kd_periksa`, `kd_dokter`, `kd_pasien`, `kd_penyakit`, `kd_resep`, `kd_layanan`, `tgl_periksa`, `keluhan`) VALUES
-(1, 1, 1, 1, NULL, 1, '01/10/2021', 'Kepala pusing, badan terasa panas dan pegal-pegal, terasa nyeri dileher'),
-(2, 2, 2, NULL, NULL, NULL, '22/09/2021', 'Perut terasa mual');
+INSERT INTO `periksa` (`kd_periksa`, `kd_dokter`, `kd_pasien`, `kd_penyakit`, `kd_layanan`, `tgl_periksa`, `keluhan`) VALUES
+(1, 1, 1, 1, 2, '01/10/2021', 'Kepala pusing, badan terasa panas dan pegal-pegal, terasa nyeri dileher'),
+(2, 2, 2, NULL, NULL, '22/09/2021', 'Perut terasa mual'),
+(3, 1, 3, 1, 1, '26/09/2021', 'Badan panas'),
+(4, 1, 3, 3, 4, '27/09/2021', 'Vaksin Covid-19');
 
 -- --------------------------------------------------------
 
@@ -251,6 +252,15 @@ CREATE TABLE `resep` (
   `kd_obat` int(11) NOT NULL,
   `pemakaian` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `resep`
+--
+
+INSERT INTO `resep` (`kd_resep`, `kd_periksa`, `kd_obat`, `pemakaian`) VALUES
+(1, 3, 1, '2x sehari'),
+(2, 1, 4, '3x sehari sesudah makan'),
+(3, 3, 4, '3x sehari sesudah makan');
 
 --
 -- Indexes for dumped tables
@@ -314,8 +324,7 @@ ALTER TABLE `periksa`
   ADD KEY `periksa_dokter` (`kd_dokter`),
   ADD KEY `periksa_pasien` (`kd_pasien`),
   ADD KEY `periksa_penyakit` (`kd_penyakit`),
-  ADD KEY `periksa_layanan` (`kd_layanan`),
-  ADD KEY `periksa_resep` (`kd_resep`);
+  ADD KEY `periksa_layanan` (`kd_layanan`);
 
 --
 -- Indexes for table `resep`
@@ -381,13 +390,13 @@ ALTER TABLE `penyakit`
 -- AUTO_INCREMENT for table `periksa`
 --
 ALTER TABLE `periksa`
-  MODIFY `kd_periksa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `kd_periksa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `resep`
 --
 ALTER TABLE `resep`
-  MODIFY `kd_resep` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `kd_resep` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -412,8 +421,7 @@ ALTER TABLE `periksa`
   ADD CONSTRAINT `periksa_dokter` FOREIGN KEY (`kd_dokter`) REFERENCES `dokter` (`kd_dokter`),
   ADD CONSTRAINT `periksa_layanan` FOREIGN KEY (`kd_layanan`) REFERENCES `layanan` (`kd_layanan`),
   ADD CONSTRAINT `periksa_pasien` FOREIGN KEY (`kd_pasien`) REFERENCES `pasien` (`kd_pasien`),
-  ADD CONSTRAINT `periksa_penyakit` FOREIGN KEY (`kd_penyakit`) REFERENCES `penyakit` (`kd_penyakit`),
-  ADD CONSTRAINT `periksa_resep` FOREIGN KEY (`kd_resep`) REFERENCES `resep` (`kd_resep`);
+  ADD CONSTRAINT `periksa_penyakit` FOREIGN KEY (`kd_penyakit`) REFERENCES `penyakit` (`kd_penyakit`);
 
 --
 -- Constraints for table `resep`

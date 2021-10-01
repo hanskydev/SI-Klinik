@@ -119,7 +119,7 @@
                                     <div class="form-group row">
                                         <div class="col-md-12">
                                             <input type="checkbox" class="form-check-input" onclick="myFunction()">
-                                            <label class="form-check-label mb-0">Show Password</label>
+                                            <label class="form-check-label mb-0"><small>Show Password</small></label>
                                             <script>
                                                 function myFunction() {
                                                     var x = document.getElementById("password");
@@ -136,7 +136,7 @@
                                 <div class="border-top">
                                     <div class="card-body">
                                         <div class="wrapper" style="text-align: center;">
-                                            <button type="submit" class="btn btn-dark">Login</button>
+                                            <button type="submit" class="btn btn-dark btn-md"><i class="mdi mdi-login"></i>Login</button>
                                         </div>
                                     </div>
                             </form>

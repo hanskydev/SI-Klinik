@@ -171,6 +171,10 @@
                 <div class="card">
                     <div class="card-header bg-dark text-white font-weight-bold text-center">Rekam Medis</div>
                     <div class="card-body">
+                        <div class="accordion" id="accordion">
+                            <style>
+                                .accordion-button:not(.collapsed) {background-color: #fff;}
+                            </style>
                         <?php 
                         if (empty($periksa)){
                             echo 'Tidak ada data ditemukan!';
@@ -179,13 +183,14 @@
 						foreach($periksa as $hasil)
 						{
 						?>
-                            <div class="card">
-                                <a class="card-header link" data-bs-toggle="collapse" href="#collapse-<?php echo $no; ?>" role="button" aria-expanded="false" aria-controls="collapse-<?php echo $no; ?>">
-                                    <i class="mdi mdi-briefcase" aria-hidden="true"></i>
-                                    <span>Rekam Medis #<?php echo $no; ?> - <?php echo $hasil->tgl_periksa; ?></span>
-                                </a>
-                                <div id="collapse-<?php echo $no; ?>" class="collapse <?php if ($no=='1') echo 'show '?>multi-collapse">
-                                    <div class="card-body widget-content">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading<?php echo $no; ?>">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $no; ?>" aria-expanded="true" aria-controls="collapse<?php echo $no; ?>">
+                                        <span>Rekam Medis #<?php echo $no; ?> - <?php echo $hasil->tgl_periksa; ?></span>
+                                    </button>
+                                </h2>
+                                <div id="collapse<?php echo $no; ?>" class="accordion-collapse collapse" aria-labelledby="heading<?php echo $no; ?>" data-bs-parent="#accordion">
+                                    <div class="accordion-body">
                                         <h4>Keluhan</h4>
                                         <p><?php echo $hasil->keluhan; ?></p>
                                         <a href="<?php echo base_url(); ?>diagnosa/<?php echo $hasil->kd_periksa; ?>" target="_blank" class="btn btn-success text-white"><i class="mdi mdi-open-in-new"></i> Periksa Hasil</a>
@@ -196,6 +201,7 @@
                         $no++;
 						}
 						?>
+                        </div>
                     </div>
                 </div>
             </div>

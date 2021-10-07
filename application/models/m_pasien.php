@@ -32,19 +32,19 @@ class M_pasien extends CI_Model
         return $this->db->delete($tables);
     }
 
-    public function addcontact($data)
+    public function addContact($data)
     {
         return $this->db->insert($this->contact, $data);
     }
 
     public function getContact($id)
     {
-    $this->db->select('*');
-    $this->db->from('keluarga');
-    $this->db->join('pasien','keluarga.kd_pasien = pasien.kd_pasien');
-    $this->db->where('keluarga.kd_pasien', $id);
-    $query = $this->db->get();
-    return $query->result();
+        $this->db->select('*');
+        $this->db->from('keluarga');
+        $this->db->join('pasien','keluarga.kd_pasien = pasien.kd_pasien');
+        $this->db->where('keluarga.kd_pasien', $id);
+        $query = $this->db->get();
+        return $query->result();
     }
 
     public function deleteContact($id)

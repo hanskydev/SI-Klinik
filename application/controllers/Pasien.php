@@ -135,7 +135,7 @@ class Pasien extends CI_Controller {
 			$data['status_keluarga'] = $this->input->post('status');
 			$data['no_kontak'] = $this->input->post('no_telp');
 			$data['kd_pasien'] = $this->input->post('kd_pasien');
-			$this->m_pasien->addcontact($data);
+			$this->m_pasien->addContact($data);
 			redirect(base_url('pasien/detail/'.$this->input->post('kd_pasien').'?msg=input_success'));
 		}
 	}

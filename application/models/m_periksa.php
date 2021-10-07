@@ -92,22 +92,22 @@ class M_periksa extends CI_Model
 
     public function getPasienPenyakit($id)
     {
-    $this->db->select('*');
-    $this->db->from('periksa');
-    $this->db->join('penyakit','periksa.kd_penyakit = penyakit.kd_penyakit');
-    $this->db->where('periksa.kd_periksa', $id);
-    $query = $this->db->get()->row();
-    return $query;
+        $this->db->select('*');
+        $this->db->from('periksa');
+        $this->db->join('penyakit','periksa.kd_penyakit = penyakit.kd_penyakit');
+        $this->db->where('periksa.kd_periksa', $id);
+        $query = $this->db->get()->row();
+        return $query;
     }
 
     public function getPasienLayanan($id)
     {
-    $this->db->select('*');
-    $this->db->from('layanan');
-    $this->db->join('periksa','layanan.kd_layanan = periksa.kd_layanan');
-    $this->db->where('periksa.kd_periksa', $id);
-    $query = $this->db->get()->row();
-    return $query;
+        $this->db->select('*');
+        $this->db->from('layanan');
+        $this->db->join('periksa','layanan.kd_layanan = periksa.kd_layanan');
+        $this->db->where('periksa.kd_periksa', $id);
+        $query = $this->db->get()->row();
+        return $query;
     }
 
     public function resep($data)
@@ -117,13 +117,13 @@ class M_periksa extends CI_Model
 
     public function getPasienResep($id)
     {
-    $this->db->select('*');
-    $this->db->from('resep');
-    $this->db->join('obat','resep.kd_obat = obat.kd_obat');
-    $this->db->join('periksa','resep.kd_periksa = periksa.kd_periksa');
-    $this->db->where('periksa.kd_periksa', $id);
-    $query = $this->db->get()->result();
-    return $query;
+        $this->db->select('*');
+        $this->db->from('resep');
+        $this->db->join('obat','resep.kd_obat = obat.kd_obat');
+        $this->db->join('periksa','resep.kd_periksa = periksa.kd_periksa');
+        $this->db->where('periksa.kd_periksa', $id);
+        $query = $this->db->get()->result();
+        return $query;
     }
 
     public function deleteResep($id)

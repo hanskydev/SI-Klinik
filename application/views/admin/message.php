@@ -82,6 +82,54 @@ else if ($msg=='diagnosa') {
     </script>
     ";
 }
+else if ($msg=='item_success') {
+	echo "<script> 
+	toastr.success('Item berhasil ditambahkan', 'Berhasil!');
+    </script>
+    ";
+}
+else if ($msg=='item_error') {
+	echo "<script> 
+	toastr.warning('Item tidak valid', 'Peringatan!');
+    </script>
+    ";
+}
+else if ($msg=='item_update') {
+	echo "<script> 
+	toastr.success('Item berhasil diperbarui', 'Berhasil!');
+    </script>
+    ";
+}
+else if ($msg=='item_delete') {
+	echo "<script> 
+	toastr.success('Item berhasil dihapus', 'Berhasil!');
+    </script>
+    ";
+}
+else if ($msg=='transaction_new') {
+	echo "<script> 
+	toastr.success('Transaksi dibuat', 'Berhasil!');
+    </script>
+    ";
+}
+else if ($msg=='transaction_success') {
+	echo "<script> 
+	toastr.success('Transaksi selesai', 'Berhasil!');
+    </script>
+    ";
+}
+else if ($msg=='transaction_delete') {
+	echo "<script> 
+	toastr.success('Transaksi berhasil dihapus', 'Berhasil!');
+    </script>
+    ";
+}
+else if ($msg=='transaction_error') {
+	echo "<script> 
+	toastr.warning('Transaksi tidak valid atau gagal', 'Peringatan!');
+    </script>
+    ";
+}
 else {
     echo "<script> 
 	toastr.error('Pesan tidak ditemukan', 'Error!');

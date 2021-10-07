@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2021 at 10:40 AM
+-- Generation Time: Oct 07, 2021 at 10:10 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -30,9 +30,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `nm_admin` varchar(255) NOT NULL
+  `username` varchar(256) NOT NULL,
+  `password` varchar(256) NOT NULL,
+  `nm_admin` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -72,6 +72,29 @@ INSERT INTO `dokter` (`kd_dokter`, `nm_dokter`, `jns_kelamin`, `tgl_lahir`, `no_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `item`
+--
+
+CREATE TABLE `item` (
+  `kd_item` int(11) NOT NULL,
+  `kd_transaksi` int(11) NOT NULL,
+  `nm_item` varchar(256) NOT NULL,
+  `harga` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `item`
+--
+
+INSERT INTO `item` (`kd_item`, `kd_transaksi`, `nm_item`, `harga`, `jumlah`) VALUES
+(1, 1, 'Combantrin Jeruk Sirup 10ML', 20000, 2),
+(2, 1, 'Konsultasi', 75000, 1),
+(3, 2, 'Suntik Vaksin Covid-19', 150000, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `keluarga`
 --
 
@@ -102,7 +125,7 @@ INSERT INTO `keluarga` (`kd_keluarga`, `kd_pasien`, `nm_keluarga`, `status_kelua
 CREATE TABLE `layanan` (
   `kd_layanan` int(11) NOT NULL,
   `nm_layanan` varchar(256) NOT NULL,
-  `biaya` int(15) NOT NULL
+  `biaya` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -113,7 +136,8 @@ INSERT INTO `layanan` (`kd_layanan`, `nm_layanan`, `biaya`) VALUES
 (1, 'Konsultasi', 75000),
 (2, 'Rawat Inap', 200000),
 (3, 'Rawat Jalan', 175000),
-(4, 'Suntik Vaksin Covid-19', 250000);
+(4, 'Suntik Vaksin Covid-19', 150000),
+(5, 'Rapid Test Antibodi COVID-19', 100000);
 
 -- --------------------------------------------------------
 
@@ -126,8 +150,8 @@ CREATE TABLE `obat` (
   `nm_obat` varchar(256) NOT NULL,
   `deskripsi` text NOT NULL,
   `stok` int(11) NOT NULL,
-  `harga_modal` int(15) NOT NULL,
-  `harga_jual` int(15) NOT NULL
+  `harga_modal` int(11) NOT NULL,
+  `harga_jual` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -262,6 +286,30 @@ INSERT INTO `resep` (`kd_resep`, `kd_periksa`, `kd_obat`, `pemakaian`) VALUES
 (2, 1, 4, '3x sehari sesudah makan'),
 (3, 3, 4, '3x sehari sesudah makan');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaksi`
+--
+
+CREATE TABLE `transaksi` (
+  `kd_transaksi` int(11) NOT NULL,
+  `tgl_transaksi` varchar(100) DEFAULT NULL,
+  `total` int(11) DEFAULT NULL,
+  `bayar` int(11) DEFAULT NULL,
+  `kembalian` int(11) DEFAULT NULL,
+  `kasir` varchar(256) NOT NULL,
+  `status` enum('Proses','Selesai') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transaksi`
+--
+
+INSERT INTO `transaksi` (`kd_transaksi`, `tgl_transaksi`, `total`, `bayar`, `kembalian`, `kasir`, `status`) VALUES
+(1, '6 October 2021, 16:32', 115000, 120000, 5000, '', 'Selesai'),
+(2, '7 October 2021, 15:03', 150000, 150000, 0, '', 'Selesai');
+
 --
 -- Indexes for dumped tables
 --
@@ -277,6 +325,13 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `dokter`
   ADD PRIMARY KEY (`kd_dokter`);
+
+--
+-- Indexes for table `item`
+--
+ALTER TABLE `item`
+  ADD PRIMARY KEY (`kd_item`),
+  ADD KEY `item_transaksi` (`kd_transaksi`);
 
 --
 -- Indexes for table `keluarga`
@@ -335,6 +390,12 @@ ALTER TABLE `resep`
   ADD KEY `resep_obat` (`kd_obat`);
 
 --
+-- Indexes for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD PRIMARY KEY (`kd_transaksi`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -360,7 +421,7 @@ ALTER TABLE `keluarga`
 -- AUTO_INCREMENT for table `layanan`
 --
 ALTER TABLE `layanan`
-  MODIFY `kd_layanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `kd_layanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `obat`
@@ -401,6 +462,12 @@ ALTER TABLE `resep`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `item`
+--
+ALTER TABLE `item`
+  ADD CONSTRAINT `item_transaksi` FOREIGN KEY (`kd_transaksi`) REFERENCES `transaksi` (`kd_transaksi`);
 
 --
 -- Constraints for table `keluarga`

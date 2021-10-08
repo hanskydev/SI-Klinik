@@ -6,6 +6,9 @@
 
 <?php
 date_default_timezone_set("Asia/Jakarta");
+if (empty($transaksi->kd_transaksi)){
+    redirect(base_url("transaksi?msg=transaction_error"));
+}
 ?>
 
 <div class="page-wrapper">
@@ -56,12 +59,12 @@ date_default_timezone_set("Asia/Jakarta");
                                     <option>Pilih</option>
                                     <optgroup label="Obat">
                                         <?php foreach($obat as $obat) : ?>
-                                        <option kode="<?php echo $obat->kd_obat;?>" item="<?php echo $obat->nm_obat;?>" harga="<?php echo $obat->harga_jual;?>"><?php echo $obat->nm_obat; ?></option>
+                                        <option kode="<?php echo $obat->kd_obat;?>" item="<?php echo $obat->nm_obat;?>" harga="<?php echo $obat->harga_jual;?>" modal="<?php echo $obat->harga_modal;?>"><?php echo $obat->nm_obat; ?></option>
                                         <?php endforeach; ?>
                                     </optgroup>
                                     <optgroup label="Layanan">
                                         <?php foreach($layanan as $layanan) : ?>
-                                        <option kode="<?php echo $layanan->kd_layanan;?>" item="<?php echo $layanan->nm_layanan;?>" harga="<?php echo $layanan->biaya;?>"><?php echo $layanan->nm_layanan; ?></option>
+                                        <option kode="<?php echo $layanan->kd_layanan;?>" item="<?php echo $layanan->nm_layanan;?>" harga="<?php echo $layanan->biaya;?>" modal="<?php echo $layanan->biaya;?>"><?php echo $layanan->nm_layanan; ?></option>
                                         <?php endforeach; ?>
                                     </optgroup>
                                 </select>
@@ -93,6 +96,7 @@ date_default_timezone_set("Asia/Jakarta");
                                             }
                                         }
                                     </script>
+                                    <input type="hidden" class="form-control" name="item_modal" id="item_modal" required>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -123,6 +127,7 @@ date_default_timezone_set("Asia/Jakarta");
                                 }
 							    $no = 1;
                                 $total_item = 0;
+                                $total_modal = 0;
 							    foreach($item as $item)
 							    {
 							    ?>
@@ -139,8 +144,9 @@ date_default_timezone_set("Asia/Jakarta");
                                         <?php
                                         $harga = $item->harga;
                                         $jumlah = $item->jumlah;
-
                                         $total = $harga*$jumlah;
+                                        $modal = $item->modal*$jumlah;
+
                                         echo $this->CI->rupiah($total);
                                         ?>
                                     </td>
@@ -153,6 +159,7 @@ date_default_timezone_set("Asia/Jakarta");
                                 <?php
                                 $no++;
                                 $total_item += $total;
+                                $total_modal += $modal;
 							    }
 							    ?>
                             </table>
@@ -170,13 +177,18 @@ date_default_timezone_set("Asia/Jakarta");
                                 </div>
                                 <div class="col-md-6">
                                     <label>Bayar</label>
-                                    <input type="text" class="form-control" name="bayar" id="bayar">
+                                    <input type="text" class="form-control" name="bayar" id="bayar" value="<?php if (isset($transaksi->bayar)) {  echo $transaksi->bayar;};?>">
                                 </div>
                             </div>
-                            <div class="form-group row d-flex justify-content-end">
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label>Kasir</label>
+                                    <input type="hidden" class="form-control" name="modal" id="modal" value="<?php echo $total_modal; ?>" required>
+                                    <input type="text" class="form-control" name="kasir" id="kasir" value="<?php echo $this->session->userdata("username"); ?>" readonly>
+                                </div>
                                 <div class="col-md-6">
                                     <label>Kembalian</label>
-                                    <input type="text" class="form-control" name="kembalian" id="kembalian">
+                                    <input type="text" class="form-control" name="kembalian" id="kembalian" value="<?php if (isset($transaksi->kembalian)) {  echo $transaksi->kembalian;};?>">
                                 </div>
                             </div>
                         </div>
@@ -214,11 +226,12 @@ date_default_timezone_set("Asia/Jakarta");
         $(".select2").select2();
         //Item
         $('#item').on('change', function() {
-            var kode = $(this).find(":selected").attr("kode");
             var item = $(this).find(":selected").attr("item");
             var harga = $(this).find(":selected").attr("harga");
+            var modal = $(this).find(":selected").attr("modal");
             $('#item_baru').val(item);
             $('#item_harga').val(harga);
+            $('#item_modal').val(modal);
         });
         /// Transaksi
         $("#total, #bayar").keyup(function() {

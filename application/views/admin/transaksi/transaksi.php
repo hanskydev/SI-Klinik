@@ -52,6 +52,8 @@ date_default_timezone_set("Asia/Jakarta");
                                     <th>No</th>
                                     <th>Tanggal Transaksi</th>
                                     <th>Total</th>
+                                    <th>Keuntungan</th>
+                                    <th>Kasir</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -66,14 +68,21 @@ date_default_timezone_set("Asia/Jakarta");
                                     <td><?php echo $no++; ?></td>
                                     <td><?php echo $data->tgl_transaksi; ?></td>
                                     <td><?php echo $this->CI->rupiah($data->total); ?></td>
+                                    <td>
+                                        <?php 
+                                        $total = $data->total;
+                                        $modal = $data->modal;
+                                        $keuntungan = $total-$modal;
+
+                                        echo $this->CI->rupiah($keuntungan);
+                                        ?>
+                                    </td>
+                                    <td><?php echo $data->kasir; ?></td>
                                     <td><?php echo $data->status; ?></td>
                                     <td>
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-settings mdi-18px"></i></button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="">Edit</a>
-                                                <a class="dropdown-item" onclick="return confirm('Hapus data berikut?')" href="">Hapus</a>
-                                            </div>
+                                            <a class="btn btn-outline-success btn-sm" href="<?php echo base_url(); ?>transaksi/create/<?php echo $data->kd_transaksi; ?>"><i class="mdi mdi-pencil"></i></a>
+                                            <a class="btn btn-outline-danger btn-sm" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>transaksi/delete/<?php echo $data->kd_transaksi; ?>"><i class="mdi mdi-delete"></i></a>
                                         </div>
                                     </td>
                                 </tr>

@@ -6,7 +6,7 @@ class Transaksi extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('m_transaksi');
-        $this->load->library('form_validation');
+    	$this->load->library('form_validation');
 		$this->CI = & get_instance();
 	
 		if($this->session->userdata('status') != "login"){
@@ -29,11 +29,11 @@ class Transaksi extends CI_Controller {
 	{
 		$id = $this->m_transaksi->getIdTransaksi();
 
+		date_default_timezone_set("Asia/Jakarta");
+
 		$data['kd_transaksi'] = $id;
-		$data['tgl_transaksi'] = NULL;
-		$data['total'] = NULL;
-		$data['bayar'] = NULL;
-		$data['kembalian'] = NULL;
+		$data['tgl_transaksi'] = date("j F Y, G:i");
+		$data['kasir'] = $this->session->userdata("username");
 		$data['status'] = 'Proses';
 		$insert_id = $this->m_transaksi->save($data);
 		redirect(base_url('transaksi/create/'.$id.'?msg=transaction_new'));
@@ -58,6 +58,7 @@ class Transaksi extends CI_Controller {
 		$this->form_validation->set_rules('kd_transaksi','Kode Transaksi','required');
 		$this->form_validation->set_rules('item_baru','Item Baru','required');
 		$this->form_validation->set_rules('item_harga','Item Harga','required');
+		$this->form_validation->set_rules('item_modal','Item Modal','required');
 		if ($this->form_validation->run()==true)
         {
 			$id = $this->m_transaksi->getIdItem();
@@ -67,6 +68,7 @@ class Transaksi extends CI_Controller {
 			$data['kd_transaksi'] = $this->input->post('kd_transaksi');
 			$data['nm_item'] = $this->input->post('item_baru');
 			$data['harga'] = $this->input->post('item_harga');
+			$data['modal'] = $this->input->post('item_modal');
 			$data['jumlah'] = '1';
 			$this->m_transaksi->saveItem($data);
 			redirect(base_url('transaksi/create/'.$kd_transaksi.'?msg=item_success'));
@@ -114,6 +116,8 @@ class Transaksi extends CI_Controller {
 		$this->form_validation->set_rules('total','Total Item','required');
 		$this->form_validation->set_rules('bayar','Uang Konsumen','required');
 		$this->form_validation->set_rules('kembalian','Kembalian Uang Konsumen','required');
+		$this->form_validation->set_rules('modal','Total Modal Item','required');
+		$this->form_validation->set_rules('kasir','Kasir','required');
 		if ($this->form_validation->run()==true)
         {
 			$kd_transaksi = $this->input->post('kd_transaksi');
@@ -121,6 +125,8 @@ class Transaksi extends CI_Controller {
 			$data['total'] = $this->input->post('total');
 			$data['bayar'] = $this->input->post('bayar');
 			$data['kembalian'] = $this->input->post('kembalian');
+			$data['modal'] = $this->input->post('modal');
+			$data['kasir'] = $this->input->post('kasir');
 			$data['status'] = 'Selesai';
 			$this->m_transaksi->update($data, $kd_transaksi);
 			redirect(base_url('transaksi?msg=transaction_success'));

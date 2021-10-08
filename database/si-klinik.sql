@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 07, 2021 at 10:10 AM
+-- Generation Time: Oct 08, 2021 at 11:47 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -80,6 +80,7 @@ CREATE TABLE `item` (
   `kd_transaksi` int(11) NOT NULL,
   `nm_item` varchar(256) NOT NULL,
   `harga` int(11) NOT NULL,
+  `modal` int(11) NOT NULL,
   `jumlah` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -87,10 +88,12 @@ CREATE TABLE `item` (
 -- Dumping data for table `item`
 --
 
-INSERT INTO `item` (`kd_item`, `kd_transaksi`, `nm_item`, `harga`, `jumlah`) VALUES
-(1, 1, 'Combantrin Jeruk Sirup 10ML', 20000, 2),
-(2, 1, 'Konsultasi', 75000, 1),
-(3, 2, 'Suntik Vaksin Covid-19', 150000, 1);
+INSERT INTO `item` (`kd_item`, `kd_transaksi`, `nm_item`, `harga`, `modal`, `jumlah`) VALUES
+(1, 1, 'Combantrin Jeruk Sirup 10ML', 20000, 18500, 1),
+(2, 1, 'Konsultasi', 75000, 75000, 1),
+(3, 2, 'Combantrin Jeruk Sirup 10ML', 20000, 18500, 1),
+(4, 2, 'Freshcare 10ML', 16000, 15000, 1),
+(5, 2, 'Konsultasi', 75000, 75000, 1);
 
 -- --------------------------------------------------------
 
@@ -294,10 +297,11 @@ INSERT INTO `resep` (`kd_resep`, `kd_periksa`, `kd_obat`, `pemakaian`) VALUES
 
 CREATE TABLE `transaksi` (
   `kd_transaksi` int(11) NOT NULL,
-  `tgl_transaksi` varchar(100) DEFAULT NULL,
-  `total` int(11) DEFAULT NULL,
-  `bayar` int(11) DEFAULT NULL,
-  `kembalian` int(11) DEFAULT NULL,
+  `tgl_transaksi` varchar(100) NOT NULL,
+  `total` int(11) NOT NULL,
+  `bayar` int(11) NOT NULL,
+  `kembalian` int(11) NOT NULL,
+  `modal` int(11) NOT NULL,
   `kasir` varchar(256) NOT NULL,
   `status` enum('Proses','Selesai') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -306,9 +310,10 @@ CREATE TABLE `transaksi` (
 -- Dumping data for table `transaksi`
 --
 
-INSERT INTO `transaksi` (`kd_transaksi`, `tgl_transaksi`, `total`, `bayar`, `kembalian`, `kasir`, `status`) VALUES
-(1, '6 October 2021, 16:32', 115000, 120000, 5000, '', 'Selesai'),
-(2, '7 October 2021, 15:03', 150000, 150000, 0, '', 'Selesai');
+INSERT INTO `transaksi` (`kd_transaksi`, `tgl_transaksi`, `total`, `bayar`, `kembalian`, `modal`, `kasir`, `status`) VALUES
+(1, '8 October 2021, 16:00', 95000, 100000, 5000, 93500, 'admin', 'Selesai'),
+(2, '8 October 2021, 16:27', 111000, 120000, 9000, 108500, 'farhan', 'Selesai'),
+(3, '8 October 2021, 16:27', 0, 0, 0, 0, 'farhan', 'Proses');
 
 --
 -- Indexes for dumped tables

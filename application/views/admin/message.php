@@ -1,5 +1,5 @@
 <?php
-$active_user = $this->session->userdata("username");
+$active_user = $this->session->userdata("nama");
 $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
 if ($msg==null) {
 	return;
@@ -18,7 +18,13 @@ else if ($msg=='login_info') {
 }
 else if ($msg=='login_error') {
 	echo "<script> 
-	toastr.error('Pengguna tidak ditemukan, cek kembali data anda', 'Gagal!');
+	toastr.error('Pengguna tidak ditemukan', 'Gagal!');
+    </script>
+    ";
+}
+else if ($msg=='login_form') {
+	echo "<script> 
+	toastr.warning('Cek kembali data username dan password anda', 'Gagal!');
     </script>
     ";
 }

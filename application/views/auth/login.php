@@ -107,13 +107,13 @@
                                     <div class="form-group row">
                                         <div class="col-md-12">
                                             <label class="col-md-12">Username</label>
-                                            <input type="text" class="form-control" name="username" required>
+                                            <input type="text" class="form-control" name="username" id="username" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-md-12">
                                             <label class="col-md-12">Password</label>
-                                            <input type="password" class="form-control" name="password" id="password">
+                                            <input type="password" class="form-control" name="password" id="password" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">

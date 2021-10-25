@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2021 at 11:47 AM
+-- Generation Time: Oct 25, 2021 at 09:02 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -78,6 +78,7 @@ INSERT INTO `dokter` (`kd_dokter`, `nm_dokter`, `jns_kelamin`, `tgl_lahir`, `no_
 CREATE TABLE `item` (
   `kd_item` int(11) NOT NULL,
   `kd_transaksi` int(11) NOT NULL,
+  `kd_obat` int(11) NOT NULL,
   `nm_item` varchar(256) NOT NULL,
   `harga` int(11) NOT NULL,
   `modal` int(11) NOT NULL,
@@ -88,12 +89,11 @@ CREATE TABLE `item` (
 -- Dumping data for table `item`
 --
 
-INSERT INTO `item` (`kd_item`, `kd_transaksi`, `nm_item`, `harga`, `modal`, `jumlah`) VALUES
-(1, 1, 'Combantrin Jeruk Sirup 10ML', 20000, 18500, 1),
-(2, 1, 'Konsultasi', 75000, 75000, 1),
-(3, 2, 'Combantrin Jeruk Sirup 10ML', 20000, 18500, 1),
-(4, 2, 'Freshcare 10ML', 16000, 15000, 1),
-(5, 2, 'Konsultasi', 75000, 75000, 1);
+INSERT INTO `item` (`kd_item`, `kd_transaksi`, `kd_obat`, `nm_item`, `harga`, `modal`, `jumlah`) VALUES
+(1, 1, 4, 'Combantrin Jeruk Sirup 10ML', 20000, 18500, 2),
+(2, 1, 0, 'Konsultasi', 75000, 75000, 1),
+(3, 2, 1, 'Paracetamol 500MG', 32000, 30000, 2),
+(4, 2, 0, 'Konsultasi', 75000, 75000, 1);
 
 -- --------------------------------------------------------
 
@@ -117,7 +117,8 @@ INSERT INTO `keluarga` (`kd_keluarga`, `kd_pasien`, `nm_keluarga`, `status_kelua
 (1, 1, 'Hamdo', 'Saudara', '0813676754541'),
 (2, 2, 'Nisa Rahmawati', 'Ibu', '0812987612126'),
 (3, 3, 'Brando', 'Ayah', '0812747417741'),
-(4, 3, 'Brenny', 'Ibu', '081278781212');
+(4, 3, 'Brenny', 'Ibu', '081278781212'),
+(5, 5, 'Joko', 'Ayah', '08312731123');
 
 -- --------------------------------------------------------
 
@@ -193,7 +194,8 @@ INSERT INTO `pasien` (`kd_pasien`, `nm_pasien`, `no_pasien`, `no_identitas`, `jn
 (1, 'Nauval Zaloni', 'PASIEN-1', '3315143107821342', 'Laki-laki', '02/02/2000', '081200008888', 'A', 'Jln. Lintas Sumatera no 11, Padang'),
 (2, 'Mawar Kartika', 'PASIEN-2', '191293189831298300', 'Perempuan', '07/09/2000', '081233332222', 'AB', 'Jln. Simpang laut no 9, Padang'),
 (3, 'Huddatul Hidayat', 'PASIEN-3', '048127412741928749', 'Laki-laki', '04/12/2000', '0812741741874', 'A', 'Jln. Sudut Kota no 22, Padang'),
-(4, 'Hani Leziana', 'PASIEN-4', '214464465442138468', 'Perempuan', '08/08/2001', '0821989861233', 'B', 'Jln. Belanti Indah no 11, Padang');
+(4, 'Hani Leziana', 'PASIEN-4', '214464465442138468', 'Perempuan', '08/08/2001', '0821989861233', 'B', 'Jln. Belanti Indah no 11, Padang'),
+(5, 'Walid', 'PASIEN-5', '03109382109831092', 'Laki-laki', '05/03/2000', '0812319283912', 'A', 'Jln. Lubuk Minturun no 4, Padang');
 
 -- --------------------------------------------------------
 
@@ -218,7 +220,8 @@ INSERT INTO `pendaftaran` (`no_pendaftaran`, `kd_pasien`, `tgl_daftar`, `tgl_kun
 (1, 1, '15/09/2021', '18/09/2021', '10:00', 'Selesai'),
 (2, 3, '16/09/2021', '20/09/2021', '09:30', 'Selesai'),
 (3, 2, '16/09/2021', '01/10/2021', '08:30', 'Menunggu'),
-(4, 4, '21/09/2021', '25/09/2021', '08:00', 'Menunggu');
+(4, 4, '21/09/2021', '25/09/2021', '08:00', 'Menunggu'),
+(5, 5, '25/10/2021', '30/10/2021', '09:00', 'Selesai');
 
 -- --------------------------------------------------------
 
@@ -265,7 +268,8 @@ INSERT INTO `periksa` (`kd_periksa`, `kd_dokter`, `kd_pasien`, `kd_penyakit`, `k
 (1, 1, 1, 1, 2, '01/10/2021', 'Kepala pusing, badan terasa panas dan pegal-pegal, terasa nyeri dileher'),
 (2, 2, 2, NULL, NULL, '22/09/2021', 'Perut terasa mual'),
 (3, 1, 3, 1, 1, '26/09/2021', 'Badan panas'),
-(4, 1, 3, 3, 4, '27/09/2021', 'Vaksin Covid-19');
+(4, 1, 3, 3, 4, '27/09/2021', 'Vaksin Covid-19'),
+(5, 1, 5, 1, 1, '30/10/2021', 'Demam, kepala pusing, ngak enak badan');
 
 -- --------------------------------------------------------
 
@@ -287,7 +291,8 @@ CREATE TABLE `resep` (
 INSERT INTO `resep` (`kd_resep`, `kd_periksa`, `kd_obat`, `pemakaian`) VALUES
 (1, 3, 1, '2x sehari'),
 (2, 1, 4, '3x sehari sesudah makan'),
-(3, 3, 4, '3x sehari sesudah makan');
+(3, 3, 4, '3x sehari sesudah makan'),
+(4, 5, 1, '2x sehari sesudah makan');
 
 -- --------------------------------------------------------
 
@@ -311,9 +316,8 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`kd_transaksi`, `tgl_transaksi`, `total`, `bayar`, `kembalian`, `modal`, `kasir`, `status`) VALUES
-(1, '8 October 2021, 16:00', 95000, 100000, 5000, 93500, 'admin', 'Selesai'),
-(2, '8 October 2021, 16:27', 111000, 120000, 9000, 108500, 'farhan', 'Selesai'),
-(3, '8 October 2021, 16:27', 0, 0, 0, 0, 'farhan', 'Proses');
+(1, '25 October 2021, 13:41', 115000, 120000, 5000, 112000, 'farhan', 'Selesai'),
+(2, '25 October 2021, 13:50', 139000, 140000, 1000, 135000, 'farhan', 'Selesai');
 
 --
 -- Indexes for dumped tables
@@ -420,7 +424,7 @@ ALTER TABLE `dokter`
 -- AUTO_INCREMENT for table `keluarga`
 --
 ALTER TABLE `keluarga`
-  MODIFY `kd_keluarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `kd_keluarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `layanan`
@@ -438,13 +442,13 @@ ALTER TABLE `obat`
 -- AUTO_INCREMENT for table `pasien`
 --
 ALTER TABLE `pasien`
-  MODIFY `kd_pasien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `kd_pasien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `pendaftaran`
 --
 ALTER TABLE `pendaftaran`
-  MODIFY `no_pendaftaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `no_pendaftaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `penyakit`
@@ -456,13 +460,13 @@ ALTER TABLE `penyakit`
 -- AUTO_INCREMENT for table `periksa`
 --
 ALTER TABLE `periksa`
-  MODIFY `kd_periksa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `kd_periksa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `resep`
 --
 ALTER TABLE `resep`
-  MODIFY `kd_resep` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `kd_resep` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

@@ -1,4 +1,4 @@
-<title>SI Klinik - Buat Transaksi</title>
+<title>SI Klinik - Edit Transaksi</title>
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/libs/select2/dist/css/select2.min.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/extra-libs/multicheck/multicheck.css">
@@ -18,13 +18,13 @@ if (empty($transaksi->kd_transaksi)){
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-                <h4 class="page-title">Buat Transaksi</h4>
+                <h4 class="page-title">Edit Transaksi</h4>
                 <div class="ms-auto text-end">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Dashboard</a></li>
                             <li class="breadcrumb-item"><a href="<?php echo base_url('transaksi'); ?>">Transaksi</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Buat Transaksi</li>
+                            <li class="breadcrumb-item active" aria-current="page">Edit Transaksi</li>
                         </ol>
                     </nav>
                 </div>
@@ -44,7 +44,7 @@ if (empty($transaksi->kd_transaksi)){
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header bg-dark text-white font-weight-bold text-center">Buat Transaksi</div>
+                    <div class="card-header bg-dark text-white font-weight-bold text-center">Edit Transaksi</div>
                     <div class="card-body">
                         <table class="table table-bordered">
                             <tr>

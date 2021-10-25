@@ -81,7 +81,7 @@ date_default_timezone_set("Asia/Jakarta");
                                     <td><?php echo $data->status; ?></td>
                                     <td>
                                         <div class="btn-group">
-                                            <a class="btn btn-outline-success btn-sm" href="<?php echo base_url(); ?>transaksi/create/<?php echo $data->kd_transaksi; ?>"><i class="mdi mdi-pencil"></i></a>
+                                            <a class="btn btn-outline-success btn-sm" href="<?php echo base_url(); ?>transaksi/edit/<?php echo $data->kd_transaksi; ?>"><i class="mdi mdi-pencil"></i></a>
                                             <a class="btn btn-outline-danger btn-sm" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>transaksi/delete/<?php echo $data->kd_transaksi; ?>"><i class="mdi mdi-delete"></i></a>
                                         </div>
                                     </td>

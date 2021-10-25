@@ -27,9 +27,8 @@ class Transaksi extends CI_Controller {
 
 	public function new()
 	{
-		$id = $this->m_transaksi->getIdTransaksi();
-
 		date_default_timezone_set("Asia/Jakarta");
+		$id = $this->m_transaksi->getIdTransaksi();
 
 		$data['kd_transaksi'] = $id;
 		$data['tgl_transaksi'] = date("j F Y, G:i");
@@ -56,7 +55,7 @@ class Transaksi extends CI_Controller {
 	public function additem()
 	{
 		$this->form_validation->set_rules('kd_transaksi','Kode Transaksi','required');
-		$this->form_validation->set_rules('item_baru','Item Baru','required');
+		$this->form_validation->set_rules('item_nama','Item','required');
 		$this->form_validation->set_rules('item_harga','Item Harga','required');
 		$this->form_validation->set_rules('item_modal','Item Modal','required');
 		if ($this->form_validation->run()==true)
@@ -66,7 +65,8 @@ class Transaksi extends CI_Controller {
 			$data['kd_item'] = $id;
 			$kd_transaksi = $this->input->post('kd_transaksi');
 			$data['kd_transaksi'] = $this->input->post('kd_transaksi');
-			$data['nm_item'] = $this->input->post('item_baru');
+			$data['kd_obat'] = $this->input->post('item_kode');
+			$data['nm_item'] = $this->input->post('item_nama');
 			$data['harga'] = $this->input->post('item_harga');
 			$data['modal'] = $this->input->post('item_modal');
 			$data['jumlah'] = '1';
@@ -101,6 +101,9 @@ class Transaksi extends CI_Controller {
 	public function edit($kd_transaksi)
 	{
 		$data['transaksi'] = $this->m_transaksi->getById($kd_transaksi);
+		$data['obat'] = $this->m_transaksi->getObat();
+		$data['layanan'] = $this->m_transaksi->getLayanan();
+		$data['item'] = $this->m_transaksi->getItem($kd_transaksi);
 
 		$this->load->view('layout/header');
 		$this->load->view('admin/message');
@@ -129,6 +132,26 @@ class Transaksi extends CI_Controller {
 			$data['kasir'] = $this->input->post('kasir');
 			$data['status'] = 'Selesai';
 			$this->m_transaksi->update($data, $kd_transaksi);
+
+			$item = $this->m_transaksi->getItem($kd_transaksi);
+			$this->load->model('m_obat');
+			foreach($item as $items)
+			{
+				$kd_obat = $items->kd_obat;
+				if ($kd_obat>0)
+				{
+					$obat = $this->m_obat->getById($kd_obat);
+
+					$stok_sekarang = $obat->stok;
+					$stok_dibeli = $items->jumlah;
+					$stok = $stok_sekarang - $stok_dibeli;
+
+					$data = array(
+						'stok' => $stok
+					);
+					$this->m_obat->update($data, $kd_obat);
+				}
+			}
 			redirect(base_url('transaksi?msg=transaction_success'));
 		}
 		else

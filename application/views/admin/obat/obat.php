@@ -32,105 +32,11 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/extra-libs/multicheck/multicheck.css">
         <link href="<?php echo base_url(); ?>assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
 
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header bg-dark text-white font-weight-bold text-center">Tambah Data Obat</div>
-                    <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>obat/save">
-                        <div class="card-body">
-                            <div class="form-group row">
-                                <label class="col-md-3">Nama Obat</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" name="nama" required>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-3">Deskripsi</label>
-                                <div class="col-md-9">
-                                    <textarea class="form-control" name="deskripsi" rows="5" required></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-3">Stok</label>
-                                <div class="col-md-9">
-                                    <input type="number" class="form-control" name="stok" required>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-3">Harga Modal</label>
-                                <div class="col-md-9">
-                                    <div class="input-group">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2">Rp</span>
-                                        </div>
-                                        <input type="text" class="form-control" name="harga_modal" maxlength="20" onkeypress='validate(event)' aria-describedby="basic-addon2" required>
-                                    </div>
-                                    <script>
-                                        function validate(evt) {
-                                            var theEvent = evt || window.event;
-                                            // Handle paste
-                                            if (theEvent.type === 'paste') {
-                                                key = event.clipboardData.getData('text/plain');
-                                            } else {
-                                                // Handle key press
-                                                var key = theEvent.keyCode || theEvent.which;
-                                                key = String.fromCharCode(key);
-                                            }
-                                            var regex = /[0-9]|\./;
-                                            if (!regex.test(key)) {
-                                                theEvent.returnValue = false;
-                                                if (theEvent.preventDefault) theEvent.preventDefault();
-                                            }
-                                        }
-                                    </script>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-3">Harga Jual</label>
-                                <div class="col-md-9">
-                                    <div class="input-group">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2">Rp</span>
-                                        </div>
-                                        <input type="text" class="form-control" name="harga_jual" maxlength="20" onkeypress='validate(event)' aria-describedby="basic-addon2" required>
-                                    </div>
-                                    <script>
-                                        function validate(evt) {
-                                            var theEvent = evt || window.event;
-                                            // Handle paste
-                                            if (theEvent.type === 'paste') {
-                                                key = event.clipboardData.getData('text/plain');
-                                            } else {
-                                                // Handle key press
-                                                var key = theEvent.keyCode || theEvent.which;
-                                                key = String.fromCharCode(key);
-                                            }
-                                            var regex = /[0-9]|\./;
-                                            if (!regex.test(key)) {
-                                                theEvent.returnValue = false;
-                                                if (theEvent.preventDefault) theEvent.preventDefault();
-                                            }
-                                        }
-                                    </script>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border-top"></div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <button type="reset" class="btn btn-warning">Reset</button>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
         <div class="col-12">
             <div class="card">
                 <div class="card-header bg-dark text-white font-weight-bold text-center">Daftar Obat</div>
                 <div class="card-body">
+                    <button type="button" class="btn btn-success btn-sm text-white mb-3" data-bs-toggle="modal" data-bs-target="#Modal"><i class="mdi mdi-flask-empty"></i> Tambah Obat</button>
                     <div class="table-responsive">
                         <table id="zero_config" class="table table-striped table-bordered">
                             <thead>
@@ -145,11 +51,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php 
-							$no = 1;
-							foreach($obat as $data)
-							{
-							?>
+                                <?php 
+							    $no = 1;
+							    foreach($obat as $data)
+							    {
+							    ?>
                                 <tr>
                                     <td><?php echo $no++; ?></td>
                                     <td><?php echo $data->nm_obat; ?></td>
@@ -159,20 +65,115 @@
                                     <td><?php echo $this->CI->rupiah($data->harga_jual); ?></td>
                                     <td>
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-settings mdi-18px"></i></button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="<?php echo base_url(); ?>obat/edit/<?php echo $data->kd_obat; ?>">Edit</a>
-                                                <a class="dropdown-item" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>obat/delete/<?php echo $data->kd_obat; ?>">Hapus</a>
-                                            </div>
+                                            <a class="btn btn-outline-success btn-sm" href="<?php echo base_url(); ?>obat/edit/<?php echo $data->kd_obat; ?>"><i class="mdi mdi-pencil"></i></a>
+                                            <a class="btn btn-outline-danger btn-sm" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>obat/delete/<?php echo $data->kd_obat; ?>"><i class="mdi mdi-delete"></i></a>
                                         </div>
                                     </td>
                                 </tr>
-                            <?php
-							}
-							?>
+                                <?php
+							    }
+							    ?>
                             </tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Add -->
+        <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabel">Tambah Obat</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>obat/save">
+                        <div class="modal-body">
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label class="col-md-3">Nama Obat</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="nama" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3">Deskripsi</label>
+                                    <div class="col-md-9">
+                                        <textarea class="form-control" name="deskripsi" rows="5" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3">Stok</label>
+                                    <div class="col-md-9">
+                                        <input type="number" class="form-control" name="stok" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3">Harga Modal</label>
+                                    <div class="col-md-9">
+                                        <div class="input-group">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="basic-addon2">Rp</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="harga_modal" maxlength="20" onkeypress='validate(event)' aria-describedby="basic-addon2" required>
+                                        </div>
+                                        <script>
+                                            function validate(evt) {
+                                                var theEvent = evt || window.event;
+                                                // Handle paste
+                                                if (theEvent.type === 'paste') {
+                                                    key = event.clipboardData.getData('text/plain');
+                                                } else {
+                                                    // Handle key press
+                                                    var key = theEvent.keyCode || theEvent.which;
+                                                    key = String.fromCharCode(key);
+                                                }
+                                                var regex = /[0-9]|\./;
+                                                if (!regex.test(key)) {
+                                                    theEvent.returnValue = false;
+                                                    if (theEvent.preventDefault) theEvent.preventDefault();
+                                                }
+                                            }
+                                        </script>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3">Harga Jual</label>
+                                    <div class="col-md-9">
+                                        <div class="input-group">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="basic-addon2">Rp</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="harga_jual" maxlength="20" onkeypress='validate(event)' aria-describedby="basic-addon2" required>
+                                        </div>
+                                        <script>
+                                            function validate(evt) {
+                                                var theEvent = evt || window.event;
+                                                // Handle paste
+                                                if (theEvent.type === 'paste') {
+                                                    key = event.clipboardData.getData('text/plain');
+                                                } else {
+                                                    // Handle key press
+                                                    var key = theEvent.keyCode || theEvent.which;
+                                                    key = String.fromCharCode(key);
+                                                }
+                                                var regex = /[0-9]|\./;
+                                                if (!regex.test(key)) {
+                                                    theEvent.returnValue = false;
+                                                    if (theEvent.preventDefault) theEvent.preventDefault();
+                                                }
+                                            }
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-between align-items-center">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="reset" class="btn btn-warning">Reset</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

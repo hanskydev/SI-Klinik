@@ -4,8 +4,8 @@ class M_auth extends CI_Model
 {
 	private $table = 'admin';
 
-    function cek_login($table,$where){		
-		return $this->db->get_where($table,$where);
+    function login($admin){		
+		return $this->db->get_where($this->table, $admin);
 	}
 
 	public function getAll()
@@ -18,19 +18,19 @@ class M_auth extends CI_Model
         return $this->db->insert($this->table, $data);
     }
 
-    public function getById($id)
+    public function getById($username)
     {
-        return $this->db->get_where($this->table, ['username' => $id])->row();
+        return $this->db->get_where($this->table, ['username' => $username])->row();
     }
 
-    public function update($data, $id)
+    public function update($data, $username)
     {
-        return $this->db->update($this->table, $data, array('username' => $id));
+        return $this->db->update($this->table, $data, array('username' => $username));
     }
 
-    public function delete($id)
+    public function delete($username)
     {
-        return $this->db->delete($this->table, array('username' => $id));
+        return $this->db->delete($this->table, array('username' => $username));
     }
     
 }

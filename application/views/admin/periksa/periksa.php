@@ -61,11 +61,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php 
-							$no = 1;
-							foreach($periksa as $data)
-							{
-							?>
+                                <?php 
+							    $no = 1;
+							    foreach($periksa as $data)
+							    {
+							    ?>
                                 <tr>
                                     <td><?php echo $no++; ?></td>
                                     <td><?php echo $data->tgl_periksa; ?></td>
@@ -74,17 +74,14 @@
                                     <td><?php echo $data->spesialis; ?></td>
                                     <td>
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-settings mdi-18px"></i></button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="<?php echo base_url(); ?>diagnosa/<?php echo $data->kd_periksa; ?>">Diagnosa</a>
-                                                <a class="dropdown-item" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>periksa/delete/<?php echo $data->kd_periksa; ?>">Hapus</a>
-                                            </div>
+                                            <a class="btn btn-outline-primary btn-sm" href="<?php echo base_url(); ?>diagnosa/<?php echo $data->kd_periksa; ?>"><i class="mdi mdi-file-check"></i></a>
+                                            <a class="btn btn-outline-danger btn-sm" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>periksa/delete/<?php echo $data->kd_periksa; ?>"><i class="mdi mdi-delete"></i></a>
                                         </div>
                                     </td>
                                 </tr>
-                            <?php
-							}
-							?>
+                                <?php
+							    }
+							    ?>
                             </tbody>
                         </table>
                     </div>

@@ -150,14 +150,12 @@
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="<?php echo base_url(); ?>assets/images/users/user.png" alt="user" class="rounded-circle" width="31">
+                            <img src="<?php echo base_url($this->session->userdata("image")); ?>" alt="user" class="rounded-circle" width="31">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="mdi mdi-account-circle me-1 ms-1"></i><?php echo $this->session->userdata("username"); ?></a>
+                            <a class="dropdown-item" href="<?php echo base_url('admin'); ?>"><i class="mdi mdi-account-settings-variant me-1 ms-1"></i>Admin</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="mdi mdi-inbox me-1 ms-1"></i>Inbox</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="mdi mdi-account-settings-variant me-1 ms-1"></i>Account Setting</a>
+                            <a class="dropdown-item" href="<?php echo base_url('pendaftaran'); ?>"><i class="mdi mdi-plus-circle me-1 ms-1"></i>Pendaftaran Pasien</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="<?php echo base_url('auth/logout'); ?>"><i class="mdi mdi-logout me-1 ms-1"></i>Logout</a>
                         </ul>
@@ -182,7 +180,7 @@
             <nav class="sidebar-nav">
                 <ul id="sidebarnav" class="pt-4">
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url(); ?>" aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu">Dashboard</span></a></li>
-                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url('pendaftaran'); ?>" aria-expanded="false"><i class="mdi mdi-book"></i><span class="hide-menu">Pendaftaran</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url('pendaftaran'); ?>" aria-expanded="false"><i class="mdi mdi-plus-circle"></i><span class="hide-menu">Pendaftaran</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-file-document-box"></i><span class="hide-menu">Data</span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
                             <li class="sidebar-item"><a href="<?php echo base_url('dokter'); ?>" class="sidebar-link"><i class="mdi mdi-stethoscope"></i><span class="hide-menu">Dokter</span></a></li>
@@ -192,9 +190,10 @@
                             <li class="sidebar-item"><a href="<?php echo base_url('layanan'); ?>" class="sidebar-link"><i class="mdi mdi-hotel"></i><span class="hide-menu">Layanan</span></a></li>
                         </ul>
                     </li>
-                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url('periksa'); ?>" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">Periksa</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url('periksa'); ?>" aria-expanded="false"><i class="mdi mdi-heart-pulse"></i><span class="hide-menu">Periksa</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url('transaksi'); ?>" aria-expanded="false"><i class="mdi mdi-cart"></i><span class="hide-menu">Transaksi</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url('laporan'); ?>" aria-expanded="false"><i class="mdi mdi-file-document"></i><span class="hide-menu">Laporan</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url('admin'); ?>" aria-expanded="false"><i class="mdi mdi-account-settings-variant"></i><span class="hide-menu">Admin</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url('auth/logout'); ?>" aria-expanded="false"><i class="mdi mdi-logout"></i><span class="hide-menu">Logout</span></a></li>
                 </ul>
             </nav>

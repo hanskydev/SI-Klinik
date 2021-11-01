@@ -12,7 +12,13 @@ else if ($msg=='login') {
 }
 else if ($msg=='login_info') {
 	echo "<script> 
-	toastr.info('Anda telah login', 'Info!');
+	toastr.info('Anda telah login', 'Notifikasi');
+    </script>
+    ";
+}
+else if ($msg=='relogin') {
+	echo "<script> 
+	toastr.warning('Harap login kembali', 'Peringatan!');
     </script>
     ";
 }
@@ -133,6 +139,12 @@ else if ($msg=='transaction_delete') {
 else if ($msg=='transaction_error') {
 	echo "<script> 
 	toastr.warning('Transaksi tidak valid atau gagal', 'Peringatan!');
+    </script>
+    ";
+}
+else if ($msg=='upload_error') {
+	echo "<script> 
+	toastr.warning('Gambar tidak valid', 'Peringatan!');
     </script>
     ";
 }

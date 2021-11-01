@@ -105,28 +105,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                            <?php 
-							$no = 1;
-							foreach($penyakit as $data)
-							{
-							?>
+                                    <?php 
+							        $no = 1;
+							        foreach($penyakit as $data)
+							        {
+							        ?>
                                     <tr>
                                         <td><?php echo $no++; ?></td>
                                         <td><?php echo $data->nm_penyakit; ?></td>
                                         <td><?php echo $data->kd_icd; ?></td>
                                         <td>
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-settings mdi-18px"></i></button>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item edit" kode="<?php echo $data->kd_penyakit;?>" nama="<?php echo $data->nm_penyakit;?>" icd="<?php echo $data->kd_icd;?>">Edit</a>
-                                                    <a class="dropdown-item" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>penyakit/delete/<?php echo $data->kd_penyakit; ?>">Hapus</a>
-                                                </div>
+                                                <a class="btn btn-outline-success btn-sm edit" kode="<?php echo $data->kd_penyakit;?>" nama="<?php echo $data->nm_penyakit;?>" icd="<?php echo $data->kd_icd;?>"><i class="mdi mdi-pencil"></i></a>
+                                                <a class="btn btn-outline-danger btn-sm" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>penyakit/delete/<?php echo $data->kd_penyakit; ?>"><i class="mdi mdi-delete"></i></a>
                                             </div>
                                         </td>
                                     </tr>
-                            <?php
-							}
-							?>
+                                    <?php
+							        }
+							        ?>
                                 </tbody>
                             </table>
                         </div>

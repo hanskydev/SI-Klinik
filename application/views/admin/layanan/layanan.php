@@ -151,28 +151,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                            <?php 
-							$no = 1;
-							foreach($layanan as $data)
-							{
-							?>
+                                    <?php 
+							        $no = 1;
+							        foreach($layanan as $data)
+							        {
+							        ?>
                                     <tr>
                                         <td><?php echo $no++; ?></td>
                                         <td><?php echo $data->nm_layanan; ?></td>
                                         <td><?php echo $this->CI->rupiah($data->biaya); ?></td>
                                         <td>
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-settings mdi-18px"></i></button>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item edit" kode="<?php echo $data->kd_layanan;?>" nama="<?php echo $data->nm_layanan;?>" biaya="<?php echo $data->biaya;?>">Edit</a>
-                                                    <a class="dropdown-item" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>layanan/delete/<?php echo $data->kd_layanan; ?>">Hapus</a>
-                                                </div>
+                                                <a class="btn btn-outline-success btn-sm edit" kode="<?php echo $data->kd_layanan;?>" nama="<?php echo $data->nm_layanan;?>" biaya="<?php echo $data->biaya;?>"><i class="mdi mdi-pencil"></i></a>
+                                                <a class="btn btn-outline-danger btn-sm" onclick="return confirm('Hapus data berikut?')" href="<?php echo base_url(); ?>layanan/delete/<?php echo $data->kd_layanan; ?>"><i class="mdi mdi-delete"></i></a>
                                             </div>
                                         </td>
                                     </tr>
-                            <?php
-							}
-							?>
+                                    <?php
+							        }
+							        ?>
                                 </tbody>
                             </table>
                         </div>

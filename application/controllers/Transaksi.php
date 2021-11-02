@@ -183,5 +183,13 @@ class Transaksi extends CI_Controller {
         $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
         return $hasil_rupiah;
     }
+
+	public function struk($kd_transaksi)
+	{
+		$data['transaksi'] = $this->m_transaksi->getById($kd_transaksi);
+		$data['item'] = $this->m_transaksi->getItem($kd_transaksi);
+
+		$this->load->view('admin/cetak/struk', $data);
+	}
 	
 }

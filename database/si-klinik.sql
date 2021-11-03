@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2021 at 09:02 AM
+-- Generation Time: Nov 03, 2021 at 07:18 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -29,19 +29,22 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `id` int(11) NOT NULL,
   `username` varchar(256) NOT NULL,
   `password` varchar(256) NOT NULL,
-  `nm_admin` varchar(256) NOT NULL
+  `email` varchar(256) NOT NULL,
+  `nama` varchar(256) NOT NULL,
+  `image` varchar(256) NOT NULL,
+  `last_edit` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `username`, `password`, `nm_admin`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Admin'),
-(2, 'farhan', 'd1bbb2af69fd350b6d6bd88655757b47', 'Farhan');
+INSERT INTO `admin` (`username`, `password`, `email`, `nama`, `image`, `last_edit`) VALUES
+('admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@siklinik.com', 'Administrator', 'assets/images/users/admin.png', '2021-10-28 08:21:18'),
+('farhan', 'd1bbb2af69fd350b6d6bd88655757b47', 'farhan@siklinik.com', 'Farhan', 'assets/images/users/farhan.jpg', '2021-11-01 07:59:43'),
+('test', '098f6bcd4621d373cade4e832627b4f6', 'test@siklinik.com', 'Test', 'assets/images/users/test.png', '2021-11-01 07:59:09');
 
 -- --------------------------------------------------------
 
@@ -93,7 +96,8 @@ INSERT INTO `item` (`kd_item`, `kd_transaksi`, `kd_obat`, `nm_item`, `harga`, `m
 (1, 1, 4, 'Combantrin Jeruk Sirup 10ML', 20000, 18500, 2),
 (2, 1, 0, 'Konsultasi', 75000, 75000, 1),
 (3, 2, 1, 'Paracetamol 500MG', 32000, 30000, 2),
-(4, 2, 0, 'Konsultasi', 75000, 75000, 1);
+(4, 2, 3, 'Freshcare 10ML', 16000, 15000, 1),
+(5, 2, 0, 'Konsultasi', 75000, 75000, 1);
 
 -- --------------------------------------------------------
 
@@ -163,10 +167,11 @@ CREATE TABLE `obat` (
 --
 
 INSERT INTO `obat` (`kd_obat`, `nm_obat`, `deskripsi`, `stok`, `harga_modal`, `harga_jual`) VALUES
-(1, 'Paracetamol 500MG', 'Mengatasi demam, nyeri, sakit kepala, dan ngilu-ngilu.', 25, 30000, 32000),
+(1, 'Paracetamol 500MG', 'Mengatasi demam, nyeri, sakit kepala, dan ngilu-ngilu.', 23, 30000, 32000),
 (2, 'Promag Tablet', 'Promag 1box isi 3 lembar@10 tablet untuk meringankan gejala sakit maag akibat kelebihan asam lambung.', 30, 20000, 22000),
-(3, 'Freshcare 10ML', 'KANDUNGAN/KOMPOSISI\r\nMenthol 20%, Camphor 4%, Olive Virgin Oil 19%, Essensial oil 6% hingga 100%.', 50, 15000, 16000),
-(4, 'Combantrin Jeruk Sirup 10ML', 'Combantrin Jeruk Sirup merupakan obat cacing yang bekerja untuk mengatasi cacing kremi, cacing gelang, cacing tambang, Cacing tambang, cacing Trichostrongyfus colubriformis dan Trichostrongylus orientalls.', 30, 18500, 20000);
+(3, 'Freshcare 10ML', 'KANDUNGAN/KOMPOSISI\r\nMenthol 20%, Camphor 4%, Olive Virgin Oil 19%, Essensial oil 6% hingga 100%.', 49, 15000, 16000),
+(4, 'Combantrin Jeruk Sirup 10ML', 'Combantrin Jeruk Sirup merupakan obat cacing yang bekerja untuk mengatasi cacing kremi, cacing gelang, cacing tambang, Cacing tambang, cacing Trichostrongyfus colubriformis dan Trichostrongylus orientalls.', 30, 18500, 20000),
+(5, 'Herbana Relief Sari Meniran - 60 Kapsul', 'Fungsi utama: Membantu Memelihara Daya Tahan Tubuh\r\nAturan pakai: 1x1 kapsul\r\n\r\nHerbana menyediakan alternatif untuk gaya hidup yang lebih sehat dengan mengkombinasikan kearifan lokal dengan proses yang modern, sehingga anda bisa menikmati potensi dari alam dengan lebih mudah. Herbana terbuat dari ekstrak tunggal tumbuhan yang diproses dengan menggunakan System Quadra Extraction.', 25, 150000, 160000);
 
 -- --------------------------------------------------------
 
@@ -221,7 +226,7 @@ INSERT INTO `pendaftaran` (`no_pendaftaran`, `kd_pasien`, `tgl_daftar`, `tgl_kun
 (2, 3, '16/09/2021', '20/09/2021', '09:30', 'Selesai'),
 (3, 2, '16/09/2021', '01/10/2021', '08:30', 'Menunggu'),
 (4, 4, '21/09/2021', '25/09/2021', '08:00', 'Menunggu'),
-(5, 5, '25/10/2021', '30/10/2021', '09:00', 'Selesai');
+(5, 5, '26/10/2021', '30/10/2021', '09:00', 'Menunggu');
 
 -- --------------------------------------------------------
 
@@ -242,7 +247,9 @@ CREATE TABLE `penyakit` (
 INSERT INTO `penyakit` (`kd_penyakit`, `nm_penyakit`, `kd_icd`) VALUES
 (1, 'Demam', 'A01.1'),
 (2, 'Sakit Kepala', 'R51'),
-(3, 'Infeksi Virus Corona', 'B34.2');
+(3, 'Infeksi Virus Corona', 'B34.2'),
+(4, 'Sakit Perut', 'R10.4'),
+(5, 'Sakit Kepala', 'R51');
 
 -- --------------------------------------------------------
 
@@ -317,7 +324,7 @@ CREATE TABLE `transaksi` (
 
 INSERT INTO `transaksi` (`kd_transaksi`, `tgl_transaksi`, `total`, `bayar`, `kembalian`, `modal`, `kasir`, `status`) VALUES
 (1, '25 October 2021, 13:41', 115000, 120000, 5000, 112000, 'farhan', 'Selesai'),
-(2, '25 October 2021, 13:50', 139000, 140000, 1000, 135000, 'farhan', 'Selesai');
+(2, '2 November 2021, 16:01', 155000, 160000, 5000, 150000, 'admin', 'Selesai');
 
 --
 -- Indexes for dumped tables
@@ -327,7 +334,7 @@ INSERT INTO `transaksi` (`kd_transaksi`, `tgl_transaksi`, `total`, `bayar`, `kem
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`username`);
 
 --
 -- Indexes for table `dokter`
@@ -409,12 +416,6 @@ ALTER TABLE `transaksi`
 --
 
 --
--- AUTO_INCREMENT for table `admin`
---
-ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `dokter`
 --
 ALTER TABLE `dokter`
@@ -436,7 +437,7 @@ ALTER TABLE `layanan`
 -- AUTO_INCREMENT for table `obat`
 --
 ALTER TABLE `obat`
-  MODIFY `kd_obat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `kd_obat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `pasien`
@@ -454,7 +455,7 @@ ALTER TABLE `pendaftaran`
 -- AUTO_INCREMENT for table `penyakit`
 --
 ALTER TABLE `penyakit`
-  MODIFY `kd_penyakit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `kd_penyakit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `periksa`

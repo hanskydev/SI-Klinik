@@ -21,7 +21,50 @@
 
 <style>
     body {
-        background: #eeeeee
+        background: #eeeeee;
+    }
+
+    * {
+        transition: all 0.6s;
+    }
+
+    html {
+        height: 100%;
+    }
+
+    body {
+        font-family: 'Lato', sans-serif;
+        color: #888;
+        margin: 0;
+    }
+
+    #main {
+        display: table;
+        width: 100%;
+        height: 80vh;
+        text-align: center;
+    }
+
+    .fof {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .fof h1 {
+        font-size: 50px;
+        display: inline-block;
+        padding-right: 12px;
+        animation: type .5s alternate infinite;
+    }
+
+    @keyframes type {
+        from {
+            box-shadow: inset -3px 0px 0px #888;
+        }
+
+        to {
+            box-shadow: inset -3px 0px 0px transparent;
+        }
     }
 </style>
 
@@ -84,57 +127,20 @@
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-        <title>SI Klinik - Login</title>
+        <title>SI Klinik - 404</title>
         <!-- ============================================================== -->
         <!-- Container fluid  -->
         <!-- ============================================================== -->
-        <div class="container-fluid mt-5" style="height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #eeeeee;">
+        <div class="container-fluid">
             <!-- ============================================================== -->
             <!-- Main  -->
             <!-- ============================================================== -->
             <div class="row">
                 <div class="col-12">
-                    <div class="card" style="width: 60vh;">
-                        <form class="form-horizontal" action="<?php echo base_url('auth/login'); ?>" method="post">
-                            <div class="card-body">
-                                <h1 class="logo-badge text-center"><i class="fa fa-user-circle fa-2x"></i></h1>
-                                <h5 class="card-title text-center mb-3">Personal Info</h5>
-                                <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <label class="col-md-12">Username</label>
-                                        <input type="text" class="form-control" name="username" id="username" required>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <label class="col-md-12">Password</label>
-                                        <input type="password" class="form-control" name="password" id="password" required>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <input type="checkbox" class="form-check-input" onclick="myFunction()">
-                                        <label class="form-check-label mb-0"><small>Show Password</small></label>
-                                        <script>
-                                            function myFunction() {
-                                                var x = document.getElementById("password");
-                                                if (x.type === "password") {
-                                                    x.type = "text";
-                                                } else {
-                                                    x.type = "password";
-                                                }
-                                            }
-                                        </script>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="border-top">
-                                <div class="card-body">
-                                    <div class="wrapper" style="text-align: center;">
-                                        <button type="submit" class="btn btn-dark btn-md"><i class="mdi mdi-login"></i> Login</button>
-                                    </div>
-                                </div>
-                        </form>
+                    <div id="main">
+                        <div class="fof">
+                            <h1>Error 404 - Halaman Tidak Ditemukan!</h1>
+                        </div>
                     </div>
                 </div>
             </div>

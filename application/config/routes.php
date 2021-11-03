@@ -64,7 +64,6 @@ $route['periksa'] = 'periksa';
 $route['diagnosa/(:num)'] = 'periksa/diagnosa/$1';
 $route['transaksi'] = 'transaksi';
 $route['transaksi/create/new'] = 'transaksi/new';
-$route['laporan'] = 'laporan';
 
-$route['404_override'] = '';
+$route['404_override'] = 'e404';
 $route['translate_uri_dashes'] = FALSE;

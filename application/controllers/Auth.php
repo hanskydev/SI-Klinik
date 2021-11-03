@@ -86,8 +86,8 @@ class Auth extends CI_Controller{
 			$config['upload_path']          = './assets/images/users/';
 			$config['allowed_types']        = 'gif|jpg|png';
 			$config['max_size']             = 1024;
-			$config['file_name']             = $username;
-			$config['overwrite']             = TRUE;
+			$config['file_name']            = $username;
+			$config['overwrite']            = TRUE;
 			$this->load->library('upload', $config);
 			$this->upload->initialize($config);
 			
@@ -136,8 +136,8 @@ class Auth extends CI_Controller{
 			$config['upload_path']          = './assets/images/users/';
 			$config['allowed_types']        = 'gif|jpg|png';
 			$config['max_size']             = 1024;
-			$config['file_name']             = $username;
-			$config['overwrite']             = TRUE;
+			$config['file_name']            = $username;
+			$config['overwrite']            = TRUE;
 			$this->load->library('upload', $config);
 			$this->upload->initialize($config);
 			

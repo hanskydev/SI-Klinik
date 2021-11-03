@@ -17,7 +17,6 @@
     <header class="topbar" data-navbarbg="skin5">
         <nav class="navbar top-navbar navbar-expand-md navbar-dark">
             <div class="navbar-header" data-logobg="skin5">
-
                 <!-- ============================================================== -->
                 <!-- Logo -->
                 <!-- ============================================================== -->
@@ -27,21 +26,18 @@
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon -->
                         <img src="<?php echo base_url(); ?>assets/images/logo-icon.png" alt="homepage" class="light-logo" />
-
                     </b>
                     <!--End Logo icon -->
                     <!-- Logo text -->
                     <span class="logo-text">
                         <!-- dark Logo text -->
                         <img src="<?php echo base_url(); ?>assets/images/logo-text.png" alt="homepage" class="light-logo" />
-
                     </span>
                     <!-- Logo icon -->
                     <!-- <b class="logo-icon"> -->
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
                     <!-- <img src="assets/images/logo-text.png" alt="homepage" class="light-logo" /> -->
-
                     <!-- </b> -->
                     <!--End Logo icon -->
                 </a>
@@ -72,15 +68,20 @@
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="mdi mdi-pencil font-24"></i>
+                            <i class="mdi mdi-plus font-24"></i>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="<?php echo base_url(); ?>dokter/create">Dokter</a></li>
+                            <li><a class="dropdown-item" href="<?php echo base_url(); ?>pasien/create">Pasien</a></li>
+                            <li><a class="dropdown-item" href="<?php echo base_url(); ?>obat">Obat</a></li>
+                            <li><a class="dropdown-item" href="<?php echo base_url(); ?>penyakit">Penyakit</a></li>
+                            <li><a class="dropdown-item" href="<?php echo base_url(); ?>layanan">Layanan</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="<?php echo base_url(); ?>pendaftaran">Pendaftaran Pasien</a></li>
+                            <li><a class="dropdown-item" href="<?php echo base_url(); ?>periksa/create">Periksa Pasien</a></li>
+                            <li><a class="dropdown-item" href="<?php echo base_url(); ?>transaksi/create/new">Transaksi Baru</a></li>
                         </ul>
                     </li>
                     <!-- ============================================================== -->
@@ -192,7 +193,6 @@
                     </li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url('periksa'); ?>" aria-expanded="false"><i class="mdi mdi-heart-pulse"></i><span class="hide-menu">Periksa</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url('transaksi'); ?>" aria-expanded="false"><i class="mdi mdi-cart"></i><span class="hide-menu">Transaksi</span></a></li>
-                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url('laporan'); ?>" aria-expanded="false"><i class="mdi mdi-file-document"></i><span class="hide-menu">Laporan</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url('admin'); ?>" aria-expanded="false"><i class="mdi mdi-account-settings-variant"></i><span class="hide-menu">Admin</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url('auth/logout'); ?>" aria-expanded="false"><i class="mdi mdi-logout"></i><span class="hide-menu">Logout</span></a></li>
                 </ul>

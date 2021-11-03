@@ -26,10 +26,6 @@
     <!-- ============================================================== -->
 
     <style>
-        body {
-            background: #eeeeee
-        }
-
         .form-control:focus {
             box-shadow: none;
             border-color: #BA68C8

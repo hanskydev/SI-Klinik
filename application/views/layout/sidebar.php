@@ -101,20 +101,20 @@
                                         <!-- Message -->
                                         <a href="javascript:void(0)" class="link border-top">
                                             <div class="d-flex no-block align-items-center p-10">
-                                                <span class="btn btn-success btn-circle"><i class="ti-calendar"></i></span>
+                                                <span class="btn btn-success btn-circle"><i class="ti-user"></i></span>
                                                 <div class="ms-2">
-                                                    <h5 class="mb-0">Event today</h5>
-                                                    <span class="mail-desc">Just a reminder that event</span>
+                                                    <h5 class="mb-0">Pendaftaran Pasien</h5>
+                                                    <span class="mail-desc">Mawar Kartika <i class="mdi mdi-calendar-clock"></i> Menunggu</span>
                                                 </div>
                                             </div>
                                         </a>
                                         <!-- Message -->
                                         <a href="javascript:void(0)" class="link border-top">
                                             <div class="d-flex no-block align-items-center p-10">
-                                                <span class="btn btn-info btn-circle"><i class="ti-settings"></i></span>
+                                                <span class="btn btn-info btn-circle"><i class="ti-user"></i></span>
                                                 <div class="ms-2">
-                                                    <h5 class="mb-0">Settings</h5>
-                                                    <span class="mail-desc">You can customize this template</span>
+                                                    <h5 class="mb-0">Pendaftaran Pasien</h5>
+                                                    <span class="mail-desc">Hani Leziana <i class="mdi mdi-calendar-clock"></i> Menunggu</span>
                                                 </div>
                                             </div>
                                         </a>
@@ -123,18 +123,8 @@
                                             <div class="d-flex no-block align-items-center p-10">
                                                 <span class="btn btn-primary btn-circle"><i class="ti-user"></i></span>
                                                 <div class="ms-2">
-                                                    <h5 class="mb-0">Pavan kumar</h5>
-                                                    <span class="mail-desc">Just see the my admin!</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="javascript:void(0)" class="link border-top">
-                                            <div class="d-flex no-block align-items-center p-10">
-                                                <span class="btn btn-danger btn-circle"><i class="fa fa-link"></i></span>
-                                                <div class="ms-2">
-                                                    <h5 class="mb-0">Luanch Admin</h5>
-                                                    <span class="mail-desc">Just see the my new admin!</span>
+                                                    <h5 class="mb-0">Pendaftaran Pasien</h5>
+                                                    <span class="mail-desc">Walid <i class="mdi mdi-calendar-clock"></i> Menunggu</span>
                                                 </div>
                                             </div>
                                         </a>
